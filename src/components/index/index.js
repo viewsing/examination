@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
-import { NavBar, Picker, Icon, ActivityIndicator } from 'antd-mobile';
+import { NavBar, Picker, List, Icon, ActivityIndicator } from 'antd-mobile';
 import axios from 'axios';
 import hospitalImg from '../../img/hospital.jpg';
+import level from '../../img/level.svg';
+import category from '../../img/category.svg';
+import telephone from '../../img/telephone.svg';
+import desc from '../../img/desc.svg';
+import location from '../../img/location.svg';
 
 let hospitals
 class Index extends Component {
@@ -20,16 +25,16 @@ class Index extends Component {
     componentWillMount() {
         axios.get(window.USERURL+'hospital/getHospitalInfo').then( response => {
             hospitals = response.data.result;
-            var pickerHospitals = hospitals.map( item => {
+            var pickerHospitals = hospitals.map( (item, index) => {
                 return {
-                    label: hospitals[0].branchName,
-                    data: hospitals[0].branchCode 
+                    label: hospitals[index].branchName,
+                    data: hospitals[index].branchCode 
                 }
             })
             this.setState({
                 init: true,
                 title: hospitals[0].branchName,
-                pickerHospital: hospitals[0].branchCode,
+                pickerHospital: [hospitals[0].branchCode],
                 pickerHospitals: pickerHospitals
             })
         })
@@ -44,17 +49,25 @@ class Index extends Component {
             if (hospital.value === val[0]) {
             this.setState({
                 pickerVisible: false,
-                pickerHospital: val,
+                pickerHospital: [val],
                 title: hospital.label
             })
             }
         })
     }
     render(){
+        let itemKey = 0;
         return this.state.init ? 
         (<div>
             <NavBar mode="light"><span onClick={this.showPicker}>{this.state.title}</span><Icon type="down"/></NavBar>
             <img src={hospitalImg} alt="医院" width="100%"/>
+            <List className="my-list">
+                <List.Item extra={'extra content'}> <img src={level}/> 级别:</List.Item>
+                <List.Item extra={'extra content'}> <img src={category}/> 类别:</List.Item>
+                <List.Item extra={'extra content'}> <img src={telephone}/> 电话:</List.Item>
+                <List.Item multipleLine={true} extra={'extra content'}> <img src={desc}/> 介绍:</List.Item>
+                <List.Item extra={'extra content'}> <img src={location}/> 地址:</List.Item>
+            </List>
             <Picker
             visible = {this.state.pickerVisible}
             title="选择医院"
@@ -64,7 +77,7 @@ class Index extends Component {
             value={this.state.pickerHospital}
             onOk={this.handleOk}
             onDismiss={() => this.setState({ pickerVisible: false })}
-            />
+            ></Picker>
         </div>) :  <div style={{ height: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}><ActivityIndicator size="large" /></div>  ;
     }
 }

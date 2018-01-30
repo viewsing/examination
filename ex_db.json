@@ -40,14 +40,14 @@
             "location": "广东省广州市天河区天河路600号",
             "picUrl": "http://127.0.0.1:8080/hr_examination_platform/picture/被偷走的那五年1516519191571.jpg"
         }, {
-            "id": "23f0ab42f32e4a1d96f90e39731f50b7",
-            "branchCode": "zssy",
-            "branchName": "中山大学附属第三医院",
+            "id": "534sab42f32e4a1d96f90e39731f50b7",
+            "branchCode": "sszy",
+            "branchName": "广州大学附属医院",
             "levle": "三甲",
             "category": "综合性医院",
             "telephone": "345145145",
             "desc": "我让她会为她和我谈话",
-            "location": "广东省广州市天河区天河路600号",
+            "location": "广东省广州市白云区天河路600号",
             "picUrl": "http://localhost:8080/hr_examination_user/hospital/zssy201801051015.jpg"
         }]
     },
