@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
-import { NavBar, Picker, List, Icon, ActivityIndicator } from 'antd-mobile';
+import { NavBar, Picker, List, Icon, ActivityIndicator, Button, WhiteSpace, WingBlank } from 'antd-mobile';
+import { Link } from 'react-router-dom';
+import TabBar2 from '../TabBar2.js';
 import axios from 'axios';
+
 import hospitalImg from '../../img/hospital.jpg';
 import level from '../../img/level.svg';
 import category from '../../img/category.svg';
 import telephone from '../../img/telephone.svg';
 import desc from '../../img/desc.svg';
 import location from '../../img/location.svg';
-import TabBar2 from '../TabBar2.js'
 
 let hospitals
 class Index extends Component {
@@ -78,6 +80,12 @@ class Index extends Component {
             onOk={this.handleOk}
             onDismiss={() => this.setState({ pickerVisible: false })}
             ></Picker>
+            <WhiteSpace/>
+            <WingBlank>
+                <Link to="appointment">
+                    <Button type="primary">预约体检</Button>
+                </Link>
+            </WingBlank>
             <TabBar2/>
         </div>) :  <div style={{ height: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}><ActivityIndicator size="large" /></div>  ;
     }

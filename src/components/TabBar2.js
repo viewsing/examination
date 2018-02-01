@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { TabBar } from 'antd-mobile';
-import { Link } from 'react-router-dom';
 import createHashHistory from "history/createHashHistory"
 
 import homePic from '../img/home.svg';
@@ -12,15 +11,12 @@ const history = createHashHistory()
 class TabBar2 extends Component {
     constructor(props) {
         super(props);
-        console.log(window.location);
         this.state = {
             selectedTab: window.location.hash.indexOf('personal') > -1 ? 'personal' : 'index'
         }
     }
     handleRouter(url){
-        history.push(url, {
-            some: url
-        })
+        history.push(url)
     }
     render(){
         return <div style={{ position: 'fixed',width: '100%', bottom: 0 }}>
