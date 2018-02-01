@@ -7,6 +7,7 @@ import category from '../../img/category.svg';
 import telephone from '../../img/telephone.svg';
 import desc from '../../img/desc.svg';
 import location from '../../img/location.svg';
+import TabBar2 from '../TabBar2.js'
 
 let hospitals
 class Index extends Component {
@@ -56,10 +57,9 @@ class Index extends Component {
         })
     }
     render(){
-        let itemKey = 0;
         return this.state.init ? 
         (<div>
-            <NavBar mode="light"><span onClick={this.showPicker}>{this.state.title}</span><Icon type="down"/></NavBar>
+            <NavBar><span onClick={this.showPicker}>{this.state.title}</span><Icon type="down"/></NavBar>
             <img src={hospitalImg} alt="医院" width="100%"/>
             <List className="my-list">
                 <List.Item extra={'extra content'}> <img src={level}/> 级别:</List.Item>
@@ -78,6 +78,7 @@ class Index extends Component {
             onOk={this.handleOk}
             onDismiss={() => this.setState({ pickerVisible: false })}
             ></Picker>
+            <TabBar2/>
         </div>) :  <div style={{ height: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}><ActivityIndicator size="large" /></div>  ;
     }
 }
