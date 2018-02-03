@@ -20,25 +20,30 @@ class Index extends Component {
             init: false,
             title: '',
             pickerHospital: '',
-            pickerHospitals: []
+            pickerHospitals: [],
+            others: {}
         }
         this.showPicker = this.showPicker.bind(this);
         this.handleOk = this.handleOk.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
     componentWillMount() {
         axios.get(window.USERURL+'hospital/getHospitalInfo').then( response => {
             hospitals = response.data.result;
-            var pickerHospitals = hospitals.map( (item, index) => {
-                return {
-                    label: hospitals[index].branchName,
-                    data: hospitals[index].branchCode 
-                }
+            var pickerHospitals = [];
+            hospitals.forEach( (item, index) => {
+                pickerHospitals.push({
+                    label: item.branchName,
+                    value: item.branchCode,
+                    others: item
+                });
             })
             this.setState({
                 init: true,
                 title: hospitals[0].branchName,
                 pickerHospital: [hospitals[0].branchCode],
-                pickerHospitals: pickerHospitals
+                pickerHospitals: pickerHospitals,
+                others: hospitals[0]
             })
         })
     }
@@ -47,14 +52,18 @@ class Index extends Component {
           pickerVisible: true
         })
     }
+    handleChange(val) {
+        console.log(val)
+    }
     handleOk(val) {
         this.state.pickerHospitals.forEach((hospital, index) => {
             if (hospital.value === val[0]) {
-            this.setState({
-                pickerVisible: false,
-                pickerHospital: [val],
-                title: hospital.label
-            })
+                this.setState({
+                    pickerVisible: false,
+                    pickerHospital: val,
+                    title: hospital.label,
+                    others: hospital.others
+                })
             }
         })
     }
@@ -62,18 +71,18 @@ class Index extends Component {
         return this.state.init ? 
         (<div>
             <NavBar><span onClick={this.showPicker}>{this.state.title}</span><Icon type="down"/></NavBar>
-            <img src={hospitalImg} alt="医院" width="100%"/>
+            <img src={ window.developing ? hospitalImg : this.state.others.picUrl} alt="医院" height='200px' width="100%"/>
             <List className="my-list">
-                <List.Item extra={'extra content'}> <img src={level}/> 级别:</List.Item>
-                <List.Item extra={'extra content'}> <img src={category}/> 类别:</List.Item>
-                <List.Item extra={'extra content'}> <img src={telephone}/> 电话:</List.Item>
-                <List.Item multipleLine={true} extra={'extra content'}> <img src={desc}/> 介绍:</List.Item>
-                <List.Item extra={'extra content'}> <img src={location}/> 地址:</List.Item>
+                <List.Item extra={this.state.others.levle}> <img src={level}/> 级别:</List.Item>
+                <List.Item extra={this.state.others.category}> <img src={category}/> 类别:</List.Item>
+                <List.Item extra={this.state.others.telephone}> <img src={telephone}/> 电话:</List.Item>
+                <List.Item wrap extra={this.state.others.desc}> <img src={desc}/> 介绍:</List.Item>
+                <List.Item wrap extra={this.state.others.location}> <img src={location}/> 地址:</List.Item>
             </List>
             <Picker
             visible = {this.state.pickerVisible}
             title="选择医院"
-            extra="请选择(必选)"
+            // onChange={ this.handleChange }
             cols={1}
             data={this.state.pickerHospitals}
             value={this.state.pickerHospital}
@@ -86,6 +95,9 @@ class Index extends Component {
                     <Button type="primary">预约体检</Button>
                 </Link>
             </WingBlank>
+            <WhiteSpace size='xl'/>
+            <WhiteSpace size='xl'/>
+            <WhiteSpace size='xl'/>
             <TabBar2/>
         </div>) :  <div style={{ height: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}><ActivityIndicator size="large" /></div>  ;
     }
