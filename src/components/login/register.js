@@ -3,7 +3,7 @@ import { NavBar, List, Icon } from 'antd-mobile';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-class ExamReport extends Component {
+class Register extends Component {
     constructor(props) {
         super(props);
         this.handleBack = this.handleBack.bind(this);
@@ -15,13 +15,13 @@ class ExamReport extends Component {
         return <div>
             <NavBar icon={<Icon type="left"/>}
                 onLeftClick = { this.handleBack }
-            >体检报告</NavBar>
+            >注册</NavBar>
         </div>
     }
 }
 
-ExamReport.contextTypes = {
+Register.contextTypes = {
     history: PropTypes.object
 }
 
-export default ExamReport;
+export default Register;

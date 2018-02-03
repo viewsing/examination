@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import { TabBar } from 'antd-mobile';
-import createHashHistory from "history/createHashHistory"
+import PropTypes from 'prop-types';
 
 import homePic from '../img/home.svg';
 import homePicActive from '../img/home_active.svg';
 import personalPic from '../img/personal.svg';
 import personalPicActive from '../img/personal_active.svg';
 
-const history = createHashHistory()
 class TabBar2 extends Component {
     constructor(props) {
         super(props);
         this.state = {
             selectedTab: window.location.hash.indexOf('personal') > -1 ? 'personal' : 'index'
-        }
+        },
+        this.handleRouter = this.handleRouter.bind(this);
     }
     handleRouter(url){
-        history.push(url)
+        this.context.history.push(url)
     }
     render(){
         return <div style={{ position: 'fixed',width: '100%', bottom: 0 }}>
@@ -72,6 +72,10 @@ class TabBar2 extends Component {
             </TabBar>
         </div>
     }
+}
+
+TabBar2.contextTypes = {
+    history: PropTypes.object
 }
 
 export default TabBar2;
