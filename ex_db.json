@@ -423,17 +423,29 @@
         "resultCode": "0",
         "resultDesc": "success",
         "result": [{
-            "id": "6ae5819bec574017b2d8c3bf10b6750a",
-            "itemCode": "nk",
-            "itemName": "内科",
-            "desc": "通过视、触、叩、听检查心、肺、肝、脾等重要脏器的基本状况，询问相关病史、家族史，发现常见疾病的相关征兆，或初步排除常见疾病。",
-            "checkPart": "全身"
-        }, {
-            "id": "6ae5819bec574017b2d8c3bf10b6750a",
-            "itemCode": "ydjc",
-            "itemName": "眼底检查",
-            "desc": "通过眼底镜检查玻璃体、后极部视网膜、视神经乳头和视网膜中央血管、黄斑等有无异常情况。裂隙灯下眼底检查立体感明显，范围更广。",
-            "checkPart": "眼睛"
+            "id": "9ada929f38a54db993558095253dccca",
+            "examinationCode": "xzbtc",
+            "examinationName": "心脏病套餐",
+            "desc": "可筛查心脏疾患，了解冠心病患者的心脏受损情况，心脏彩超是冠心病高危人群常规体检方法。",
+            "suitAge": "所有",
+            "suitSex": "A",
+            "fee": 153582,
+            "examinationDetail": [
+                {
+                    "id": "6ae5819bec574017b2d8c3bf10b6750a",
+                    "itemCode": "nk",
+                    "itemName": "内科",
+                    "desc": "通过视、触、叩、听检查心、肺、肝、脾等重要脏器的基本状况，询问相关病史、家族史，发现常见疾病的相关征兆，或初步排除常见疾病。",
+                    "checkPart": "全身"
+                },
+                {
+                    "id": "6ae5819bec574017b2d8c3bf10b6750a",
+                    "itemCode": "ydjc",
+                    "itemName": "眼底检查",
+                    "desc": "通过眼底镜检查玻璃体、后极部视网膜、视神经乳头和视网膜中央血管、黄斑等有无异常情况。裂隙灯下眼底检查立体感明显，范围更广。",
+                    "checkPart": "眼睛"
+                }
+            ]
         }]
     },
     "zssyexaminationupdExamination": {
