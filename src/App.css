@@ -25,6 +25,9 @@
 .am-list-item .am-list-line .am-list-extra {
   flex-basis: 75%;
 }
+.am-list-item .am-list-line .am-list-content {
+  flex-basis: 22%;
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

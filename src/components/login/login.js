@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { NavBar, List, Icon, InputItem, Button, Toast } from 'antd-mobile';
-import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { createForm } from 'rc-form';
 import axios from 'axios';
@@ -23,9 +22,13 @@ class LoginForm extends Component {
                             localStorage.setItem('userInfo', JSON.stringify(response.data.result));
                             this.context.history.push('/')
                         })
-                    } else {
-                        Toast.info('登录失败！请与系统管理员联系', 3)
+                    } else if (response.data.resultCode == 2){
+                        Toast.info(response.data.resultDesc, 2)
+                    }else {
+                        Toast.info('登录失败！请与系统管理员联系', 2)
                     }
+                }).catch(function(){
+                    Toast.info('服务器异常！请与系统管理员联系!', 2)
                 })
             } else {
                 Toast.info('请正确输入帐号密码')
@@ -46,13 +49,13 @@ class LoginForm extends Component {
             backgroundColor: '#fff'
         }}>
             <List
-                renderFooter={() => getFieldError('account') && getFieldError('account').join(',')}
+                renderFooter={() => getFieldError('account') && (<div style={{color: '#ef6241'}}>{getFieldError('account').join(',')}</div>)}
             >
                 <InputItem
                     {...getFieldProps('account', {
                         rules: [
-                        { required: true, message: '帐号不能为空' },
-                        { validator: this.validateAccount },
+                            { required: true, message: '帐号不能为空' },
+                            { validator: this.validateAccount },
                         ],
                     })}
                     clear

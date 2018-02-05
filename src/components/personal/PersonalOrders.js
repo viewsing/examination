@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import { NavBar, List, Icon } from 'antd-mobile';
-import {Link} from 'react-router-dom';
-import TabBar2 from '../TabBar2.js';
 import PropTypes from 'prop-types';
 
 class PersonalOrders extends Component {

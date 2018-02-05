@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { NavBar, List, Icon, Toast, InputItem, Button } from 'antd-mobile';
-import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { createForm } from 'rc-form';
 import axios from 'axios';
@@ -22,9 +21,13 @@ class RegisterForm extends Component {
                         Toast.info('注册成功', 1, () => {
                             this.context.history.push('/personalInfo')
                         })
-                    } else {
-                        Toast.info('注册失败！请与系统管理员联系')
+                    } else if (response.data.resultCode == 2){
+                        Toast.info(response.data.resultDesc, 2)
+                    }else {
+                        Toast.info('注册失败！请与系统管理员联系', 2)
                     }
+                }).catch(function(){
+                    Toast.info('服务器异常！请与系统管理员联系!', 2)
                 })
             } else {
                 Toast.info('请正确输入帐号密码')
@@ -45,7 +48,7 @@ class RegisterForm extends Component {
             backgroundColor: '#fff'
         }}>
             <List
-                renderFooter={() => getFieldError('account') && getFieldError('account').join(',')}
+                renderFooter={() => getFieldError('account') && (<div style={{color: '#ef6241'}}>{getFieldError('account').join(',')}</div>)}
             >
                 <InputItem
                     {...getFieldProps('account', {

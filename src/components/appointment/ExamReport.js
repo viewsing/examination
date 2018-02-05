@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { NavBar, List, Icon } from 'antd-mobile';
-import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class ExamReport extends Component {

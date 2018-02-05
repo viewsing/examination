@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import { NavBar, Picker, List, Icon, ActivityIndicator, Button, WhiteSpace, WingBlank } from 'antd-mobile';
+import { NavBar, Picker, List, Icon, ActivityIndicator, Button, WhiteSpace, WingBlank, Toast } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import TabBar2 from '../TabBar2.js';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 import hospitalImg from '../../img/hospital.jpg';
 import level from '../../img/level.svg';
@@ -25,7 +26,6 @@ class Index extends Component {
         }
         this.showPicker = this.showPicker.bind(this);
         this.handleOk = this.handleOk.bind(this);
-        this.handleChange = this.handleChange.bind(this);
     }
     componentWillMount() {
         axios.get(window.USERURL+'hospital/getHospitalInfo').then( response => {
@@ -45,6 +45,8 @@ class Index extends Component {
                 pickerHospitals: pickerHospitals,
                 others: hospitals[0]
             })
+        }).catch(function(){
+            Toast.info('服务器异常！请与系统管理员联系!', 2)
         })
     }
     showPicker() {
@@ -52,8 +54,8 @@ class Index extends Component {
           pickerVisible: true
         })
     }
-    handleChange(val) {
-        console.log(val)
+    handleGo(path) {
+        this.context.history.push(path);
     }
     handleOk(val) {
         this.state.pickerHospitals.forEach((hospital, index) => {
@@ -73,16 +75,15 @@ class Index extends Component {
             <NavBar><span onClick={this.showPicker}>{this.state.title}</span><Icon type="down"/></NavBar>
             <img src={ window.developing ? hospitalImg : this.state.others.picUrl} alt="医院" height='200px' width="100%"/>
             <List className="my-list">
-                <List.Item extra={this.state.others.levle}> <img src={level}/> 级别:</List.Item>
-                <List.Item extra={this.state.others.category}> <img src={category}/> 类别:</List.Item>
-                <List.Item extra={this.state.others.telephone}> <img src={telephone}/> 电话:</List.Item>
-                <List.Item wrap extra={this.state.others.desc}> <img src={desc}/> 介绍:</List.Item>
-                <List.Item wrap extra={this.state.others.location}> <img src={location}/> 地址:</List.Item>
+                <List.Item extra={this.state.others.levle}> <img src={level} alt="level"/> 级别:</List.Item>
+                <List.Item extra={this.state.others.category}> <img src={category} alt="category" /> 类别:</List.Item>
+                <List.Item extra={this.state.others.telephone}> <img src={telephone} alt="telephone" /> 电话:</List.Item>
+                <List.Item wrap extra={this.state.others.desc}> <img src={desc} alt="desc" /> 介绍:</List.Item>
+                <List.Item wrap extra={this.state.others.location}> <img src={location} alt="location" /> 地址:</List.Item>
             </List>
             <Picker
             visible = {this.state.pickerVisible}
             title="选择医院"
-            // onChange={ this.handleChange }
             cols={1}
             data={this.state.pickerHospitals}
             value={this.state.pickerHospital}
@@ -94,12 +95,8 @@ class Index extends Component {
                 display: 'flex',
                 justifyContent: 'space-around'
             }}>
-                <Link to="/appointment">
-                    <Button type="primary" inline>预约体检</Button>
-                </Link>
-                <Link to="/examReport">
-                    <Button type="ghost" inline>报告查询</Button>
-                </Link>
+                <Button type="primary" inline onClick={ () => {this.handleGo('/appointment')} } >预约体检</Button>
+                <Button type="ghost" inline  onClick={ () => {this.handleGo('/examReport')} } >报告查询</Button>
             </WingBlank>
             <WhiteSpace size='xl'/>
             <WhiteSpace size='xl'/>
@@ -107,6 +104,10 @@ class Index extends Component {
             <TabBar2/>
         </div>) :  <div style={{ height: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}><ActivityIndicator size="large" /></div>  ;
     }
+}
+
+Index.contextTypes = {
+    history: PropTypes.object
 }
 
 export default Index;

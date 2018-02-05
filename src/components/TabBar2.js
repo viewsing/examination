@@ -12,7 +12,7 @@ class TabBar2 extends Component {
         super(props);
         this.state = {
             selectedTab: window.location.hash.indexOf('personal') > -1 ? 'personal' : 'index'
-        },
+        };
         this.handleRouter = this.handleRouter.bind(this);
     }
     handleRouter(url){
