@@ -19,7 +19,7 @@ class TabBar2 extends Component {
         this.context.history.push(url)
     }
     render(){
-        return <div style={{ position: 'fixed',width: '100%', bottom: 0 }}>
+        return <div style={{ position: 'fixed',width: '100%', bottom: 0, zIndex: 2 }}>
             <TabBar>
                 <TabBar.Item
                 title="首页"

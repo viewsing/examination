@@ -90,9 +90,15 @@ class Index extends Component {
             onDismiss={() => this.setState({ pickerVisible: false })}
             ></Picker>
             <WhiteSpace/>
-            <WingBlank>
-                <Link to="appointment">
-                    <Button type="primary">预约体检</Button>
+            <WingBlank style={{
+                display: 'flex',
+                justifyContent: 'space-around'
+            }}>
+                <Link to="/appointment">
+                    <Button type="primary" inline>预约体检</Button>
+                </Link>
+                <Link to="/examReport">
+                    <Button type="ghost" inline>报告查询</Button>
                 </Link>
             </WingBlank>
             <WhiteSpace size='xl'/>

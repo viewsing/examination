@@ -21,7 +21,7 @@ class PersonalList extends Component {
                 >个人中心</NavBar>
                 <List className="my-list">
                     <Link to="/personalInfo" ><List.Item arrow="horizontal" > 个人信息 </List.Item></Link>
-                    <Link to="/examReport" ><List.Item arrow="horizontal" > 体检报告 </List.Item></Link>
+                    <Link to="/orders" ><List.Item arrow="horizontal" > 体检订单 </List.Item></Link>
                 </List>
                 <TabBar2/>
             </div>
