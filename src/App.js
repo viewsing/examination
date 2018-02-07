@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {Toast} from 'antd-mobile';
+import {Toast, ActivityIndicator} from 'antd-mobile';
 
 import Index from './components/index';
 import PersonalList from './components/personal/PersonalList.js'
@@ -13,12 +13,12 @@ import Login from './components/login/login.js';
 import PersonalOrders from './components/personal/PersonalOrders.js';
 import './App.css';
 import axios from 'axios';
-import createHashHistory from "history/createHashHistory"
+import createHashHistory from "history/createHashHistory";
+import ExamDetail from './components/appointment/ExamDetail.js'
 
 
 const axiosInstance = axios.create();
 //全局请求头，请求方法配置
-axiosInstance.defaults.method = 'post';
 axiosInstance.defaults.headers.post['Content-Type'] = 'application/json';
 
 axiosInstance.interceptors.request.use(function (config) {
@@ -30,6 +30,8 @@ axiosInstance.interceptors.request.use(function (config) {
 axiosInstance.interceptors.response.use(function (response) {
     if (response.data.resultCode == 3) {
         history.push('/login')
+    } else if (response.data.resultCode == 2) {
+        Toast.info(response.data.resultDesc);
     }
     return response;
 }, function (error) {
@@ -42,7 +44,8 @@ class App extends Component {
     getChildContext(){
         return {
             history: history,
-            axios: axiosInstance
+            axios: axiosInstance,
+            loading: <div style={{ position: 'fixed', left: '50%', top: '50%' }}><ActivityIndicator size="large" /></div>
         }
     }
     render() {
@@ -53,10 +56,11 @@ class App extends Component {
                     <Route path="/personalList" component={PersonalList}/>
                     <Route path="/personalInfo" component={PersonalInfo}/>
                     <Route path="/examReport" component={ExamReport}/>
-                    <Route path="/appointment" component={Appointment}/>
+                    <Route path="/appointment/:branchCode" component={Appointment}/>
                     <Route path="/register" component={Register}/>
                     <Route path="/login" component={Login}/>
                     <Route path="/orders" component={PersonalOrders}/>
+                    <Route path="/examDetail/:branchCode/:examinationCode" component={ExamDetail}/>
                 </div>
             </Router>
         );
@@ -65,6 +69,7 @@ class App extends Component {
 
 App.childContextTypes = {
     history: PropTypes.object,
-    axios: PropTypes.func
+    axios: PropTypes.func,
+    loading: PropTypes.object
 }
 export default App;

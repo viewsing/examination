@@ -10,11 +10,11 @@ class PersonalInfoForm extends Component {
     constructor(props){
         super(props);
         this.state = {
-            value: 1,
             radioData: [
                 { value: 'M', label: '男' },
                 { value: 'F', label: '女' },
             ],
+            status: 0,
             patSex: 'M',
             dpValue: now,
         }
@@ -25,15 +25,17 @@ class PersonalInfoForm extends Component {
         const self = this;
         this.context.axios({
             url: window.USERURL + 'user/getPatientInfo',
+            data: {
+                username: sessionStorage.getItem('username')
+            }
           }).then( response => {
             if (response.data.resultCode == 0) {
                 response.data.result.patBirth = new Date(response.data.result.patBirth);
                 form.setFieldsValue(response.data.result);
                 this.setState({
-                    patSex: response.data.result.patSex
+                    patSex: response.data.result.patSex,
+                    status: 1
                 })
-            } else if (response.data.resultCode == 2){
-                Toast.info(response.data.resultDesc, 2)
             } else if (response.data.resultCode == 1){
                 submitURL = window.USERURL + 'user/updUser'
             } else {
@@ -85,7 +87,7 @@ class PersonalInfoForm extends Component {
     }
     render(){
         const { getFieldProps, getFieldsError, getFieldError } = this.props.form;
-        return <form style={{
+        return <div style={{height: '100%'}}><form style={{
             paddingTop: '1em',
             backgroundColor: '#fff'
         }}>
@@ -254,13 +256,14 @@ class PersonalInfoForm extends Component {
                     <Button type="primary" onClick={this.onSubmit}>保存</Button>
                 </List.Item>
             </List>
-        </form>
+        </form> { !this.state.status && this.context.loading }</div>
     }
 }
 
 PersonalInfoForm.contextTypes = {
     history: PropTypes.object,
-    axios: PropTypes.func
+    axios: PropTypes.func,
+    loading: PropTypes.object
 }
 
 const PersonalInfoFormWrapper = createForm()(PersonalInfoForm);

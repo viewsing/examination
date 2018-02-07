@@ -24,9 +24,7 @@ class RegisterForm extends Component {
                             sessionStorage.setItem('username', params.account);
                             this.context.history.push('/personalInfo')
                         })
-                    } else if (response.data.resultCode == 2){
-                        Toast.info(response.data.resultDesc, 2)
-                    }else {
+                    } else {
                         Toast.info('注册失败！请与系统管理员联系', 2)
                     }
                 })

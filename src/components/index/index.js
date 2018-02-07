@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { NavBar, Picker, List, Icon, ActivityIndicator, Button, WhiteSpace, WingBlank, Toast } from 'antd-mobile';
+import { NavBar, Picker, List, Icon, Button, WhiteSpace, WingBlank, Toast } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import TabBar2 from '../TabBar2.js';
 import PropTypes from 'prop-types';
@@ -30,22 +30,26 @@ class Index extends Component {
         this.context.axios({
             url: window.USERURL+'hospital/getHospitalInfo'
         }).then( response => {
-            hospitals = response.data.result;
-            var pickerHospitals = [];
-            hospitals.forEach( (item, index) => {
-                pickerHospitals.push({
-                    label: item.branchName,
-                    value: item.branchCode,
-                    others: item
-                });
-            })
-            this.setState({
-                init: true,
-                title: hospitals[0].branchName,
-                pickerHospital: [hospitals[0].branchCode],
-                pickerHospitals: pickerHospitals,
-                others: hospitals[0]
-            })
+            if (response.data.resultCode == 0) {
+                hospitals = response.data.result;
+                var pickerHospitals = [];
+                hospitals.forEach( (item, index) => {
+                    pickerHospitals.push({
+                        label: item.branchName,
+                        value: item.branchCode,
+                        others: item
+                    });
+                })
+                this.setState({
+                    init: true,
+                    title: hospitals[0].branchName,
+                    pickerHospital: [hospitals[0].branchCode],
+                    pickerHospitals: pickerHospitals,
+                    others: hospitals[0]
+                })
+            } else {
+                Toast.info('请求失败！请与系统管理员联系', 2)
+            }
         })
     }
     showPicker() {
@@ -54,7 +58,7 @@ class Index extends Component {
         })
     }
     handleGo(path) {
-        this.context.history.push(path);
+        this.context.history.push(path + '/' + this.state.pickerHospital[0]);
     }
     handleOk(val) {
         this.state.pickerHospitals.forEach((hospital, index) => {
@@ -101,13 +105,14 @@ class Index extends Component {
             <WhiteSpace size='xl'/>
             <WhiteSpace size='xl'/>
             <TabBar2/>
-        </div>) :  <div style={{ height: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}><ActivityIndicator size="large" /></div>  ;
+        </div>) : this.context.loading;
     }
 }
 
 Index.contextTypes = {
     history: PropTypes.object,
-    axios: PropTypes.func
+    axios: PropTypes.func,
+    loading: PropTypes.object
 }
 
 export default Index;
