@@ -2,24 +2,26 @@ import React, {Component} from 'react';
 import { NavBar, List, Icon, InputItem, Button, Toast } from 'antd-mobile';
 import PropTypes from 'prop-types';
 import { createForm } from 'rc-form';
-import axios from 'axios';
 
 class LoginForm extends Component {
-    state = {
-        value: 1,
+    constructor(props) {
+        super(props);
+        this.onSubmit = this.onSubmit.bind(this);
     }
     onSubmit = () => {
+        const self = this;
         this.props.form.validateFields({ force: true }, (error) => {
             const params = this.props.form.getFieldsValue();
             if (!error) {
                 Toast.info('登录中...', 7)
-                axios.get(window.USERURL + 'user/login',{
-                    params: params
+                self.context.axios({
+                    url: window.USERURL + 'user/login',
+                    data: params
                 }).then( response => {
                     Toast.hide();
                     if (response.data.resultCode == 0) {
                         Toast.info('登录成功', 1, () => {
-                            localStorage.setItem('userInfo', JSON.stringify(response.data.result));
+                            sessionStorage.setItem('username', params.account);
                             this.context.history.push('/')
                         })
                     } else if (response.data.resultCode == 2){
@@ -27,8 +29,6 @@ class LoginForm extends Component {
                     }else {
                         Toast.info('登录失败！请与系统管理员联系', 2)
                     }
-                }).catch(function(){
-                    Toast.info('服务器异常！请与系统管理员联系!', 2)
                 })
             } else {
                 Toast.info('请正确输入帐号密码')
@@ -81,7 +81,8 @@ class LoginForm extends Component {
 }
 
 LoginForm.contextTypes = {
-    history: PropTypes.object
+    history: PropTypes.object,
+    axios: PropTypes.func
 }
 
 const LoginFormWrapper = createForm()(LoginForm);

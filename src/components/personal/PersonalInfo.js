@@ -2,25 +2,30 @@ import React, {Component} from 'react';
 import { NavBar, List, Icon, Toast, InputItem, Radio, Button, DatePicker } from 'antd-mobile';
 import PropTypes from 'prop-types';
 import { createForm } from 'rc-form';
-import axios from 'axios';
 
 const nowTimeStamp = Date.now();
 const now = new Date(nowTimeStamp);
-
+let submitURL = window.USERURL + 'user/bindPatientInfo';
 class PersonalInfoForm extends Component {
-    state = {
-        value: 1,
-        radioData: [
-            { value: 'M', label: '男' },
-            { value: 'F', label: '女' },
-        ],
-        patSex: 'M',
-        dpValue: now,
+    constructor(props){
+        super(props);
+        this.state = {
+            value: 1,
+            radioData: [
+                { value: 'M', label: '男' },
+                { value: 'F', label: '女' },
+            ],
+            patSex: 'M',
+            dpValue: now,
+        }
+        this.onSubmit = this.onSubmit.bind(this);
     }
     componentDidMount(){
         const form = this.props.form;
         const self = this;
-        axios.get(window.USERURL + 'user/getPatientInfo').then( response => {
+        this.context.axios({
+            url: window.USERURL + 'user/getPatientInfo',
+          }).then( response => {
             if (response.data.resultCode == 0) {
                 response.data.result.patBirth = new Date(response.data.result.patBirth);
                 form.setFieldsValue(response.data.result);
@@ -29,7 +34,9 @@ class PersonalInfoForm extends Component {
                 })
             } else if (response.data.resultCode == 2){
                 Toast.info(response.data.resultDesc, 2)
-            }else {
+            } else if (response.data.resultCode == 1){
+                submitURL = window.USERURL + 'user/updUser'
+            } else {
                 Toast.info('请求失败！请与系统管理员联系', 2)
             }
         }).catch(function(){
@@ -37,15 +44,17 @@ class PersonalInfoForm extends Component {
         })
     }
     onSubmit = () => {
+        const self = this;
         this.props.form.validateFields({ force: true }, (error) => {
             const params = this.props.form.getFieldsValue();
             params.patBirth = params.patBirth.getFullYear() + '-' + (params.patBirth.getMonth()+1) + '-' + params.patBirth.getDate();
             params.patSex = this.state.patSex;
             if (!error) {
                 Toast.info('保存中...', 7)
-                axios.get(window.USERURL + 'user/bindPatientInfo',{
-                    params: params
-                }).then( response => {
+                self.context.axios({
+                    data: params,
+                    url: submitURL
+                  }).then( response => {
                     Toast.hide();
                     if (response.data.resultCode == 0) {
                         Toast.info('保存成功', 1, () => {
@@ -56,8 +65,6 @@ class PersonalInfoForm extends Component {
                     }else {
                         Toast.info('保存失败！请与系统管理员联系', 2)
                     }
-                }).catch(function(){
-                    Toast.info('服务器异常！请与系统管理员联系!', 2)
                 })
             } else {
                 Toast.info('请按要求填写表单')
@@ -252,7 +259,8 @@ class PersonalInfoForm extends Component {
 }
 
 PersonalInfoForm.contextTypes = {
-    history: PropTypes.object
+    history: PropTypes.object,
+    axios: PropTypes.func
 }
 
 const PersonalInfoFormWrapper = createForm()(PersonalInfoForm);

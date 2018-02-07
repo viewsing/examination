@@ -2,23 +2,26 @@ import React, {Component} from 'react';
 import { NavBar, List, Icon, Toast, InputItem, Button } from 'antd-mobile';
 import PropTypes from 'prop-types';
 import { createForm } from 'rc-form';
-import axios from 'axios';
 
 class RegisterForm extends Component {
-    state = {
-        value: 1,
+    constructor(props){
+        super(props);
+        this.onSubmit = this.onSubmit.bind(this);
     }
     onSubmit = () => {
+        const self = this;
         this.props.form.validateFields({ force: true }, (error) => {
             const params = this.props.form.getFieldsValue();
             if (!error) {
                 Toast.info('注册中...', 7)
-                axios.get(window.USERURL + 'user/registry',{
-                    params: params
+                self.context.axios({
+                    url: window.USERURL + 'user/registry',
+                    data: params
                 }).then( response => {
                     Toast.hide();
                     if (response.data.resultCode == 0) {
                         Toast.info('注册成功', 1, () => {
+                            sessionStorage.setItem('username', params.account);
                             this.context.history.push('/personalInfo')
                         })
                     } else if (response.data.resultCode == 2){
@@ -26,8 +29,6 @@ class RegisterForm extends Component {
                     }else {
                         Toast.info('注册失败！请与系统管理员联系', 2)
                     }
-                }).catch(function(){
-                    Toast.info('服务器异常！请与系统管理员联系!', 2)
                 })
             } else {
                 Toast.info('请正确输入帐号密码')
@@ -80,7 +81,8 @@ class RegisterForm extends Component {
 }
 
 RegisterForm.contextTypes = {
-    history: PropTypes.object
+    history: PropTypes.object,
+    axios: PropTypes.func
 }
 
 const RegisterFormWrapper = createForm()(RegisterForm);

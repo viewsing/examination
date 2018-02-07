@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import {Toast} from 'antd-mobile';
 
 import Index from './components/index';
 import PersonalList from './components/personal/PersonalList.js'
@@ -11,14 +12,37 @@ import Register from './components/login/register.js';
 import Login from './components/login/login.js';
 import PersonalOrders from './components/personal/PersonalOrders.js';
 import './App.css';
-
+import axios from 'axios';
 import createHashHistory from "history/createHashHistory"
+
+
+const axiosInstance = axios.create();
+//全局请求头，请求方法配置
+axiosInstance.defaults.method = 'post';
+axiosInstance.defaults.headers.post['Content-Type'] = 'application/json';
+
+axiosInstance.interceptors.request.use(function (config) {
+    config.method = 'get';
+    return config;
+});
+
+//全局登录控制，如果resultCode为3则跳转至登录页面
+axiosInstance.interceptors.response.use(function (response) {
+    if (response.data.resultCode == 3) {
+        history.push('/login')
+    }
+    return response;
+}, function (error) {
+    Toast.info('服务器异常！请与系统管理员联系!', 2)
+});
+
 const history = createHashHistory()
 
 class App extends Component {
     getChildContext(){
         return {
-            history: history
+            history: history,
+            axios: axiosInstance
         }
     }
     render() {
@@ -40,6 +64,7 @@ class App extends Component {
 }
 
 App.childContextTypes = {
-    history: PropTypes.object
+    history: PropTypes.object,
+    axios: PropTypes.func
 }
 export default App;

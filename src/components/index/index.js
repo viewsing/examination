@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { NavBar, Picker, List, Icon, ActivityIndicator, Button, WhiteSpace, WingBlank, Toast } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import TabBar2 from '../TabBar2.js';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 
 import hospitalImg from '../../img/hospital.jpg';
@@ -28,7 +27,9 @@ class Index extends Component {
         this.handleOk = this.handleOk.bind(this);
     }
     componentWillMount() {
-        axios.get(window.USERURL+'hospital/getHospitalInfo').then( response => {
+        this.context.axios({
+            url: window.USERURL+'hospital/getHospitalInfo'
+        }).then( response => {
             hospitals = response.data.result;
             var pickerHospitals = [];
             hospitals.forEach( (item, index) => {
@@ -45,8 +46,6 @@ class Index extends Component {
                 pickerHospitals: pickerHospitals,
                 others: hospitals[0]
             })
-        }).catch(function(){
-            Toast.info('服务器异常！请与系统管理员联系!', 2)
         })
     }
     showPicker() {
@@ -107,7 +106,8 @@ class Index extends Component {
 }
 
 Index.contextTypes = {
-    history: PropTypes.object
+    history: PropTypes.object,
+    axios: PropTypes.func
 }
 
 export default Index;
