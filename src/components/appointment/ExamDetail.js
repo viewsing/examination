@@ -1,16 +1,44 @@
 import React, { Component } from 'react';
-import { NavBar, Icon, Card, WhiteSpace, Badge, List, Flex } from 'antd-mobile';
+import { NavBar, Icon, Card, WhiteSpace, Badge, List, Flex, Modal } from 'antd-mobile';
 import echometer from '../../img/echometer.png';
 import PropTypes from 'prop-types';
 
 const Item = List.Item;
+
+class ExamItem extends Component {
+    handleModal(){
+        Modal.alert(this.props.itemName, this.props.desc);
+    }
+    render(){
+        return <Item onClick = { () => this.handleModal() }>
+            {this.props.ownKey + '. '}
+            { this.props.itemName }
+            <span style={{margin: '.5em', display: 'inline-block', textAlign: 'center' , width: '1em', height: '1em', fontSize: '.5em',lineHeight: '1em',backgroundColor:'#fff', color:'rgb(48, 207, 214)', border: '1px solid rgb(48, 207, 214)', borderRadius: '1em'}}>i</span>
+        </Item>
+    }
+}
+
 class ExamDetail extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            modal: false,
+            items: [
+                { itemName:'血压', desc: '通过视、触、叩、听检查心、肺、肝、脾等重要脏器的基本状况，询问相关病史、家族史，发现常见疾病的相关征兆，或初步排除常见疾病。'},
+                { itemName:'心电图', desc: '通过视、触、叩、听检查心、肺、肝、脾等重要脏器的基本状况，询问相关病史、家族史，发现常见疾病的相关征兆，或初步排除常见疾病。'},
+                { itemName:'尿常规', desc: '通过视、触、叩、听检查心、肺、肝、脾等重要脏器的基本状况，询问相关病史、家族史，发现常见疾病的相关征兆，或初步排除常见疾病。'},
+                { itemName:'空腹血糖', desc: '通过视、触、叩、听检查心、肺、肝、脾等重要脏器的基本状况，询问相关病史、家族史，发现常见疾病的相关征兆，或初步排除常见疾病。'}
+            ],
+            desc: '平素健康人群，了解身体健康状况，及早发现潜在疾病'
+        }
         this.handleBack = this.handleBack.bind(this);
+        this.renderHeader = this.renderHeader.bind(this);
     }
     handleBack(){
         this.context.history.goBack();
+    }
+    renderHeader(){
+        return <span>套餐项: <Badge text={this.state.items.length + '项'} hot/></span>
     }
     render() {
         return (
@@ -28,35 +56,19 @@ class ExamDetail extends Component {
                         <Badge text="了解健康" style={{ marginLeft: 12, padding: '0 3px', backgroundColor: '#f19736', borderRadius: 2 }}/>
                         <Badge text="年轻必备" style={{ marginLeft: 12, padding: '0 3px', backgroundColor: '#21b68a', borderRadius: 2 }} />
                     </Card.Body>
-                    <Card.Footer content='平素健康人群，了解身体健康状况，及早发现潜在疾病'/>
+                    <Card.Footer content={this.state.desc} />
                 </Card>
                 <WhiteSpace size='lg'/>
-                <List>
-                    <Item>1. 身高、体重
-                        <span style={{margin: '.5em', display: 'inline-block', textAlign: 'center' , width: '1em', height: '1em', fontSize: '.5em',lineHeight: '1em',backgroundColor:'#fff', color:'rgb(48, 207, 214)', border: '1px solid rgb(48, 207, 214)', borderRadius: '1em'}}>i</span>
-                    </Item>
-                    <Item>2. 血压
-                        <span style={{margin: '.5em', display: 'inline-block', textAlign: 'center' , width: '1em', height: '1em', fontSize: '.5em',lineHeight: '1em',backgroundColor:'#fff', color:'rgb(48, 207, 214)', border: '1px solid rgb(48, 207, 214)', borderRadius: '1em'}}>i</span>
-                    </Item>
-                    <Item>3. 心电图
-                        <span style={{margin: '.5em', display: 'inline-block', textAlign: 'center' , width: '1em', height: '1em', fontSize: '.5em',lineHeight: '1em',backgroundColor:'#fff', color:'rgb(48, 207, 214)', border: '1px solid rgb(48, 207, 214)', borderRadius: '1em'}}>i</span>
-                    </Item>
-                    <Item>4. 尿常规
-                        <span style={{margin: '.5em', display: 'inline-block', textAlign: 'center' , width: '1em', height: '1em', fontSize: '.5em',lineHeight: '1em',backgroundColor:'#fff', color:'rgb(48, 207, 214)', border: '1px solid rgb(48, 207, 214)', borderRadius: '1em'}}>i</span>
-                    </Item>
-                    <Item>5. 空腹血糖
-                        <span style={{margin: '.5em', display: 'inline-block', textAlign: 'center' , width: '1em', height: '1em', fontSize: '.5em',lineHeight: '1em',backgroundColor:'#fff', color:'rgb(48, 207, 214)', border: '1px solid rgb(48, 207, 214)', borderRadius: '1em'}}>i</span>
-                    </Item>
-                    <Item>6. 糖化血红蛋白
-                        <span style={{margin: '.5em', display: 'inline-block', textAlign: 'center' , width: '1em', height: '1em', fontSize: '.5em',lineHeight: '1em',backgroundColor:'#fff', color:'rgb(48, 207, 214)', border: '1px solid rgb(48, 207, 214)', borderRadius: '1em'}}>i</span>
-                    </Item>
-                    <Item>7.
-                    <Badge text='前列腺癌' 
-                    style={{backgroundColor: '#fff', color: 'rgb(224,84,70)', border: '1px solid rgb(224,84,70)', borderRadius: '10px', margin: '0 5px'}}/>
-                    tPSA <span style={{margin: '.5em', display: 'inline-block', textAlign: 'center' , width: '1em', height: '1em', fontSize: '.5em',lineHeight: '1em',backgroundColor:'#fff', color:'rgb(48, 207, 214)', border: '1px solid rgb(48, 207, 214)', borderRadius: '1em'}}>i</span>
-                    </Item>
+                <List renderHeader={this.renderHeader}>
+                    {
+                        this.state.items.map( (item,index) => {
+                            return <ExamItem key={index} ownKey={index+1} itemName={item.itemName} desc={item.desc} />
+                        })
+                    }
                 </List>
-                <div></div>
+                <div>
+
+                </div>
             </div>
         );
     }
