@@ -17,7 +17,7 @@ class ExamDetail extends Component {
             <div>
                 <NavBar icon={<Icon type="left"/>}
                 onLeftClick = {this.handleBack }
-            >预约体检</NavBar>
+            >套餐详情</NavBar>
                 <Card full>
                     <Card.Header
                         title={<div><Badge text="男" style={{ marginLeft: 12, padding: '0 3px', backgroundColor: '#16b4ff', borderRadius: 2 }}/><span> 青年套餐</span></div>}
