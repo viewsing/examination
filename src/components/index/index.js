@@ -58,6 +58,13 @@ class Index extends Component {
         })
     }
     handleGo(path) {
+        const username = sessionStorage.getItem('username');
+        if (path === '/examReport') {
+            if (!username) {
+                this.context.history.push('/login');
+                return;
+            }
+        }
         this.context.history.push(path + '/' + this.state.pickerHospital[0]);
     }
     handleOk(val) {
