@@ -14,7 +14,9 @@ import PersonalOrders from './components/personal/PersonalOrders.js';
 import './App.css';
 import axios from 'axios';
 import createHashHistory from "history/createHashHistory";
-import ExamDetail from './components/appointment/ExamDetail.js'
+import ExamDetail from './components/appointment/ExamDetail.js';
+import Appointing from './components/appointment/Appointing.js';
+import Paying from './components/appointment/Paying.js';
 
 
 const axiosInstance = axios.create();
@@ -45,7 +47,7 @@ class App extends Component {
         return {
             history: history,
             axios: axiosInstance,
-            loading: <div style={{ position: 'fixed', left: '50%', top: '50%' }}><ActivityIndicator size="large" /></div>
+            loading: <div style={{ position: 'fixed', left: '49%', top: '49%' }}><ActivityIndicator size="large" /></div>
         }
     }
     render() {
@@ -61,6 +63,8 @@ class App extends Component {
                     <Route path="/login" component={Login}/>
                     <Route path="/orders" component={PersonalOrders}/>
                     <Route path="/examDetail/:branchCode/:examinationCode" component={ExamDetail}/>
+                    <Route path="/appointing/:branchCode/:examinationCode/:examinationName" component={Appointing}/>
+                    <Route path="/paying" component={Paying}/>
                 </div>
             </Router>
         );

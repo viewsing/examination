@@ -1,564 +1,563 @@
 {
-  "userregistry": {
-    "resultCode": "0",
-    "resultDesc": "success"
-  },
-  "userbindPatientInfo": {
-    "resultCode": "0",
-    "resultDesc": "success"
-  },
-  "userlogin": {
-    "resultCode": "0",
-    "resultDesc": "success",
-    "result": {
-      "username": "zhuanght",
-      "patName": "庄浩棠",
-      "patSex": "M",
-      "patBirth": "1996-01-19",
-      "patIdCard": "440112199601190617",
-      "patAddress": "广州市越秀区东风东路768号302房",
-      "patMobile": "15603078105",
-      "companyName": "广东天泽阳光康众医疗投资管理有限公司",
-      "job": "Java开发工程师"
-    }
-  },
-  "userlogout": {
-    "resultCode": "0",
-    "resultDesc": "success"
-  },
-  "hospitalgetHospitalInfo": {
-    "resultCode": "0",
-    "resultDesc": "success",
-    "result": [
-      {
-        "id": "23f0ab42f32e4a1d96f90e39731f50b7",
-        "branchCode": "zssy",
-        "branchName": "中山大学附属第三医院",
-        "levle": "三甲",
-        "category": "综合性医院",
-        "telephone": "45145145",
-        "desc": "中山大学附属第三医院（原中山医科大学附属第三医院），学科门类齐全，专科特色明显,是一所承担预防保健、医疗、康复以及医学教育和科研任务的大型综合性医院，是卫生部直属的三级甲等医院和国家爱婴医院、广东省文明医院.The Third Affiliated Hospital,Sun Yat-Sen University",
-        "location": "广东省广州市天河区天河路600号",
-        "picUrl": "http://127.0.0.1:8080/hr_examination_platform/picture/被偷走的那五年1516519191571.jpg"
-      },
-      {
-        "id": "534sab42f32e4a1d96f90e39731f50b7",
-        "branchCode": "sszy",
-        "branchName": "广州大学附属医院",
-        "levle": "三甲",
-        "category": "综合性医院",
-        "telephone": "345145145",
-        "desc": "医院设有国家临床重点专科7个，分别为内分泌科、耳鼻喉科、骨伤科、脾胃病科、妇科、肿瘤科、临床药学，国家中医药管理局重点专科14个，分别为急诊科、内分泌科、耳鼻喉科、骨伤科、肿瘤科、妇科、心血管科、针灸科、脾胃病科、脑病科、风湿病科、重症医学科、护理学、临床药学",
-        "location": "广东省广州市机场路16号",
-        "picUrl": "http://localhost:8080/hr_examination_user/hospital/zssy201801051015.jpg"
-      }
-    ]
-  },
-  "examinationgetExaminationInfo": {
-    "resultCode": "0",
-    "resultDesc": "success",
-    "result": [
-      {
-        "id": "23f0ab42f32e4a1d96f90e39731f50b7",
-        "branchCode": "zssy",
-        "examinationCode": "xzbtc",
-        "examinationName": "心脏病套餐",
-        "des": "可筛查心脏疾患，了解冠心病患者的心脏受损情况，心脏彩超是冠心病高危人群常规体检方法。",
-        "suitAge": "18~50",
-        "suitSex": "ALL",
-        "fee": "286532",
-        "branchName": "中山大学附属第三医院"
-      },
-      {
-        "id": "23f0ab42f32e4a1d96f90e39731f50b7",
-        "branchCode": "zssy",
-        "examinationCode": "xzbtc",
-        "examinationName": "心脏病套餐",
-        "des": "可筛查心脏疾患，了解冠心病患者的心脏受损情况，心脏彩超是冠心病高危人群常规体检方法。",
-        "suitAge": "18~50",
-        "suitSex": "ALL",
-        "fee": "286532",
-        "branchName": "广州大学附属医院"
-      }
-    ]
-  },
-  "examinationgetExaminationDetail": {
-    "resultCode": "0",
-    "resultDesc": "success",
-    "result": [
-      {
-        "id": "23f0ab42f32e4a1d96f90e39731f50b7",
-        "branchCode": "zssy",
-        "examinationCode": "xzbtc",
-        "itemCode": "nk",
-        "itemName": "内科",
-        "desc": "通过视、触、叩、听检查心、肺、肝、脾等重要脏器的基本状况，询问相关病史、家族史，发现常见疾病的相关征兆，或初步排除常见疾病。"
-      },
-      {
-        "id": "2155fffb710f422ea661625061d67786",
-        "branchCode": "zssy",
-        "examinationCode": "xzbtc",
-        "itemCode": "ydjc",
-        "itemName": "眼压检查",
-        "desc": "通过眼底镜检查玻璃体、后极部视网膜、视神经乳头和视网膜中央血管、黄斑等有无异常情况。裂隙灯下眼底检查立体感明显，范围更广。"
-      }
-    ]
-  },
-  "examinationpreExamination": {
-    "resultCode": "0",
-    "resultDesc": "success",
-    "result": {
-      "orderNo": "6012201801100004353"
-    }
-  },
-  "examinationpreExaminationPay": {
-    "resultCode": "0",
-    "resultDesc": "success"
-  },
-  "examinationgetReportInfo": {
-    "resultCode": "0",
-    "resultDesc": "success",
-    "result": [
-      {
-        "id": "01670aade4654684a9098a31ef84fd2d",
-        "branchCode": "zssy",
-        "ordeNo": "6012201801100004353",
-        "reportCode": "xzbtc_3151",
-        "regDate": "2018-03-21",
-        "patName": "刘芳",
-        "patIdCard": "心脏病套餐",
-        "examinationCode": "xzbtc",
-        "examinationName": "心脏病套餐",
-        "itemTotal": "15"
-      },
-      {
-        "id": "01670aade4654684a9098a31ef84fd2d",
-        "branchCode": "zssy",
-        "ordeNo": "6012201801100004353",
-        "reportCode": "xzbtc_3151",
-        "regDate": "2018-03-21",
-        "patName": "刘芳",
-        "patIdCard": "心脏病套餐",
-        "examinationCode": "xzbtc",
-        "examinationName": "心脏病套餐",
-        "itemTotal": "15"
-      }
-    ]
-  },
-  "examinationgetReportDetail": {
-    "resultCode": "0",
-    "resultDesc": "success",
-    "result": [
-      {
-        "id": "01670aade4654684a9098a31ef84fd2d",
-        "branchCode": "zssy",
-        "reportCode": "xzbtc_3151",
-        "itemCode": "nk",
-        "itemName": "内科",
-        "doctorCode": "10515",
-        "doctorName": "刘天宇",
-        "checkTime": "2018-03-10 10:25:35",
-        "range": "-",
-        "result": "心:未见异常;肺:未见异常;肝:未见异常;脾:未见异常;",
-        "abnormal": "-",
-        "focus": "血压偏高",
-        "advise": "少熬夜,多锻炼身体,注意休息.",
-        "followUp": "",
-        "mattersNeedAttention": ""
-      },
-      {
-        "id": "01670aade4654684a9098a31ef84fd2d",
-        "branchCode": "zssy",
-        "reportCode": "xzbtc_3151",
-        "itemCode": "yyjc",
-        "itemName": "眼压",
-        "doctorCode": "10515",
-        "doctorName": "刘天宇",
-        "checkTime": "2018-03-10 10:25:35",
-        "range": "10~21mmHg",
-        "result": "15mmHg",
-        "abnormal": "0",
-        "focus": "血压偏高",
-        "advise": "少熬夜,多锻炼身体,注意休息.",
-        "followUp": "",
-        "mattersNeedAttention": ""
-      }
-    ]
-  },
-  "usergetPatientInfo": {
-    "resultCode": "0",
-    "resultDesc": "success",
-    "result": {
-      "id": "23f0ab42f32e4a1d96f90e39731f50b7",
-      "username": "zhuanght",
-      "patName": "庄浩棠",
-      "patSex": "M",
-      "patBirth": "1996-01-19",
-      "patIdCard": "440112199601190617",
-      "patAddress": "广州市越秀区东风东路768号302房",
-      "patMobile": "15603078105",
-      "companyName": "广东天泽阳光康众医疗投资管理有限公司",
-      "job": "Java开发工程师"
-    }
-  },
-  "userupdPatientInfo": {
-    "resultCode": "0",
-    "resultDesc": "success"
-  },
-  "userupdUser": {
-    "resultCode": "0",
-    "resultDesc": "success"
-  },
-  "examinationorders": {
-    "resultCode": "0",
-    "resultDesc": "success",
-    "result": [
-      {
-        "id": "010e9b113aa04575a4be50114ab1bc22",
-        "tradeMode": "1",
-        "orderNo": "1011201801090000919",
-        "patName": "庄浩棠",
-        "patIdCard": "440112199601190617",
-        "patMobile": "15603078105",
-        "branchCode": "zssy",
-        "examinationCode": "xzbtc",
-        "examinationName": "心脏病套餐",
-        "regDate": "2018-03-29",
-        "timeFlag": "1",
-        "beginTime": "08:00",
-        "endTime": "11:30",
-        "fee": "286532",
-        "status": 1,
-        "branchName": "中山大学附属第三医院"
-      },
-      {
-        "id": "010e9b113aa04575a4be50114ab1bc22",
-        "tradeMode": "1",
-        "orderNo": "1011201801090000919",
-        "patName": "庄浩棠",
-        "patIdCard": "440112199601190617",
-        "patMobile": "15603078105",
-        "branchCode": "zssy",
-        "examinationCode": "xzbtc",
-        "examinationName": "心脏病套餐",
-        "regDate": "2018-03-29",
-        "timeFlag": "1",
-        "beginTime": "08:00",
-        "endTime": "11:30",
-        "fee": "286532",
-        "status": 0,
-        "branchName": "广州大学附属医院"
-      }
-    ]
-  },
-  "platformuserlogin": {
-    "resultCode": "0",
-    "resultDesc": "success"
-  },
-  "platformuserlogout": {
-    "resultCode": "0",
-    "resultDesc": "success"
-  },
-  "platformhospitalupload": {
-    "resultCode": "0",
-    "resultDesc": "success",
-    "result": {
-      "picUrl": "http://127.0.0.1:8080/hr_examination_platform/picture/被偷走的那五年1516519191571.jpg"
-    }
-  },
-  "platformhospitaladdHospital": {
-    "resultCode": "0",
-    "resultDesc": "success"
-  },
-  "platformhospitalgetHospital": {
-    "resultCode": "0",
-    "resultDesc": "success",
-    "result": {
-      "totalRecord": "150",
-      "pageSize": "10",
-      "totalPage": "15",
-      "currentPage": "1",
-      "dataList": [
-        {
-          "id": "23f0ab42f32e4a1d96f90e39731f50b7",
-          "branchCode": "zssy",
-          "branchName": "中山大学附属第三医院",
-          "levle": "三甲",
-          "category": "综合性医院",
-          "telephone": "",
-          "desc": "",
-          "location": "广东省广州市天河区天河路600号",
-          "picUrl": "http://127.0.0.1:8080/hr_examination_platform/picture/被偷走的那五年1516519191571.jpg"
-        },
-        {
-          "id": "23f0ab42f32e4a1d96f90e39731f50b7",
-          "branchCode": "zssy",
-          "branchName": "中山大学附属第三医院",
-          "levle": "三甲",
-          "category": "综合性医院",
-          "telephone": "",
-          "desc": "",
-          "location": "广东省广州市天河区天河路600号",
-          "picUrl": "http://127.0.0.1:8080/hr_examination_platform/picture/被偷走的那五年1516519191571.jpg"
+    "userregistry": {
+        "resultCode": "0",
+        "resultDesc": "success"
+    },
+    "userbindPatientInfo": {
+        "resultCode": "0",
+        "resultDesc": "success"
+    },
+    "userlogin": {
+        "resultCode": "0",
+        "resultDesc": "success",
+        "result": {
+            "username": "zhuanght",
+            "patName": "庄浩棠",
+            "patSex": "M",
+            "patBirth": "1996-01-19",
+            "patIdCard": "440112199601190617",
+            "patAddress": "广州市越秀区东风东路768号302房",
+            "patMobile": "15603078105",
+            "companyName": "广东天泽阳光康众医疗投资管理有限公司",
+            "job": "Java开发工程师"
         }
-      ]
-    }
-  },
-  "platformhospitalupdHospital": {
-    "resultCode": "0",
-    "resultDesc": "success"
-  },
-  "platformhospitaldelHospital": {
-    "resultCode": "0",
-    "resultDesc": "success"
-  },
-  "platformexaminationorders": {
-    "resultCode": "0",
-    "resultDesc": "success",
-    "result": {
-      "totalRecord": "150",
-      "pageSize": "10",
-      "totalPage": "15",
-      "currentPage": "1",
-      "dataList": [
-        {
-          "id": "23f0ab42f32e4a1d96f90e39731f50b7",
-          "tradeMode": "1",
-          "orderNo": "6012201801100004353",
-          "patName": "庄浩棠",
-          "patIdCard": "440112199601190617",
-          "patMobile": "15603078105",
-          "branchCode": "zssy",
-          "examinationCode": "xzbtc",
-          "examinationName": "心脏病套餐",
-          "regDate": "2018-03-29",
-          "timeFlag": "1",
-          "beginTime": "08:00",
-          "endTime": "11:30",
-          "fee": "286532",
-          "status": "1",
-          "time": "2018-01-01 10:00:00"
-        },
-        {
-          "id": "23f0ab42f32e4a1d96f90e39731f50b7",
-          "tradeMode": "1",
-          "orderNo": "6012201801100004353",
-          "patName": "庄浩棠",
-          "patIdCard": "440112199601190617",
-          "patMobile": "15603078105",
-          "branchCode": "zssy",
-          "examinationCode": "xzbtc",
-          "examinationName": "心脏病套餐",
-          "regDate": "2018-03-29",
-          "timeFlag": "1",
-          "beginTime": "08:00",
-          "endTime": "11:30",
-          "fee": "286532",
-          "status": "1",
-          "time": "2018-01-01 10:00:00"
-        }
-      ]
-    }
-  },
-  "platformexaminationagtOrder": {
-    "resultCode": "0",
-    "resultDesc": "success",
-    "result": {
-      "id": "23f0ab42f32e4a1d96f90e39731f50b7",
-      "orderNo": "6012201801100004353",
-      "agtOrderNo": "庄浩棠",
-      "tradeMode": "1",
-      "amount": "1500",
-      "payTime": "2018-01-01 10:00:00"
-    }
-  },
-  "zssyuserlogin": {
-    "resultCode": "0",
-    "resultDesc": "success"
-  },
-  "zssyuserlogout": {
-    "resultCode": "0",
-    "resultDesc": "success"
-  },
-  "zssyhospitaladdHospital": {
-    "resultCode": "0",
-    "resultDesc": "success"
-  },
-  "zssyhospitalgetHospital": {
-    "resultCode": "0",
-    "resultDesc": "success",
-    "result": {
-      "id": "23f0ab42f32e4a1d96f90e39731f50b7",
-      "branchCode": "zssy",
-      "branchName": "中山大学附属第三医院",
-      "levle": "三甲",
-      "category": "综合性医院",
-      "telephone": "",
-      "desc": "",
-      "location": "广东省广州市天河区天河路600号"
-    }
-  },
-  "zssyhospitalupdHospital": {
-    "resultCode": "0",
-    "resultDesc": "success"
-  },
-  "zssyhospitaldelHospital": {
-    "resultCode": "0",
-    "resultDesc": "success"
-  },
-  "zssyexaminationaddExamination": {
-    "resultCode": "0",
-    "resultDesc": "success"
-  },
-  "zssyexaminationgetExaminationInfo": {
-    "resultCode": "0",
-    "resultDesc": "success",
-    "result": {
-      "totalRecord": "",
-      "pageSize": "",
-      "totalPage": "",
-      "currentPage": "",
-      "dataList": [
-        {
-          "id": "6ae5819bec574017b2d8c3bf10b6750a",
-          "examinationCode": "心脏病套餐",
-          "examinationName": "xzbtc",
-          "des": "可筛查心脏疾患，了解冠心病患者的心脏受损情况，心脏彩超是冠心病高危人群常规体检方法。",
-          "suitAge": "无限制",
-          "suitSex": "ALL",
-          "fee": "153582"
-        },
-        {
-          "id": "6ae5819bec574017b2d8c3bf10b6750a",
-          "examinationCode": "心脏病套餐",
-          "examinationName": "xzbtc",
-          "des": "可筛查心脏疾患，了解冠心病患者的心脏受损情况，心脏彩超是冠心病高危人群常规体检方法。",
-          "suitAge": "无限制",
-          "suitSex": "ALL",
-          "fee": "153582"
-        }
-      ]
-    }
-  },
-  "zssyexaminationgetExaminationDetail": {
-    "resultCode": "0",
-    "resultDesc": "success",
-    "result": [
-      {
-        "id": "9ada929f38a54db993558095253dccca",
-        "examinationCode": "xzbtc",
-        "examinationName": "心脏病套餐",
-        "desc": "可筛查心脏疾患，了解冠心病患者的心脏受损情况，心脏彩超是冠心病高危人群常规体检方法。",
-        "suitAge": "所有",
-        "suitSex": "A",
-        "fee": 153582,
-        "examinationDetail": [
-          {
-            "id": "6ae5819bec574017b2d8c3bf10b6750a",
-            "itemCode": "nk",
-            "itemName": "内科",
-            "desc": "通过视、触、叩、听检查心、肺、肝、脾等重要脏器的基本状况，询问相关病史、家族史，发现常见疾病的相关征兆，或初步排除常见疾病。",
-            "checkPart": "全身"
-          },
-          {
-            "id": "6ae5819bec574017b2d8c3bf10b6750a",
-            "itemCode": "ydjc",
-            "itemName": "眼底检查",
-            "desc": "通过眼底镜检查玻璃体、后极部视网膜、视神经乳头和视网膜中央血管、黄斑等有无异常情况。裂隙灯下眼底检查立体感明显，范围更广。",
-            "checkPart": "眼睛"
-          }
+    },
+    "userlogout": {
+        "resultCode": "0",
+        "resultDesc": "success"
+    },
+    "hospitalgetHospitalInfo": {
+        "resultCode": "0",
+        "resultDesc": "success",
+        "result": [{
+                "id": "23f0ab42f32e4a1d96f90e39731f50b7",
+                "branchCode": "zssy",
+                "branchName": "中山大学附属第三医院",
+                "levle": "三甲",
+                "category": "综合性医院",
+                "telephone": "45145145",
+                "desc": "中山大学附属第三医院（原中山医科大学附属第三医院），学科门类齐全，专科特色明显,是一所承担预防保健、医疗、康复以及医学教育和科研任务的大型综合性医院，是卫生部直属的三级甲等医院和国家爱婴医院、广东省文明医院.The Third Affiliated Hospital,Sun Yat-Sen University",
+                "location": "广东省广州市天河区天河路600号",
+                "picUrl": "http://127.0.0.1:8080/hr_examination_platform/picture/被偷走的那五年1516519191571.jpg"
+            },
+            {
+                "id": "534sab42f32e4a1d96f90e39731f50b7",
+                "branchCode": "sszy",
+                "branchName": "广州大学附属医院",
+                "levle": "三甲",
+                "category": "综合性医院",
+                "telephone": "345145145",
+                "desc": "医院设有国家临床重点专科7个，分别为内分泌科、耳鼻喉科、骨伤科、脾胃病科、妇科、肿瘤科、临床药学，国家中医药管理局重点专科14个，分别为急诊科、内分泌科、耳鼻喉科、骨伤科、肿瘤科、妇科、心血管科、针灸科、脾胃病科、脑病科、风湿病科、重症医学科、护理学、临床药学",
+                "location": "广东省广州市机场路16号",
+                "picUrl": "http://localhost:8080/hr_examination_user/hospital/zssy201801051015.jpg"
+            }
         ]
-      }
-    ]
-  },
-  "zssyexaminationupdExamination": {
-    "resultCode": "0",
-    "resultDesc": "success"
-  },
-  "zssyexaminationdelExamination": {
-    "resultCode": "0",
-    "resultDesc": "success"
-  },
-  "zssyexaminationdelExaminationDetail": {
-    "resultCode": "0",
-    "resultDesc": "success"
-  },
-  "zssyexaminationgetReportInfo": {
-    "resultCode": "0",
-    "resultDesc": "success",
-    "result": {
-      "totalRecord": "",
-      "pageSize": "",
-      "totalPage": "",
-      "currentPage": "",
-      "dataList": [
-        {
-          "id": "6ae5819bec574017b2d8c3bf10b6750a",
-          "branchCode": "zssy",
-          "orderNo": "1011201801110003330",
-          "reportCode": "xzbtc_3152",
-          "regDate": "2018-01-10",
-          "patName": "庄浩棠",
-          "patIdCard": "440112199601190617",
-          "examinationCode": "xzbtc",
-          "examinationName": "心脏病套餐",
-          "itemTotal": "8",
-          "status": "1"
-        },
-        {
-          "id": "6ae5819bec574017b2d8c3bf10b6750a",
-          "branchCode": "zssy",
-          "orderNo": "1011201801110003330",
-          "reportCode": "xzbtc_3152",
-          "regDate": "2018-01-10",
-          "patName": "庄浩棠",
-          "patIdCard": "440112199601190617",
-          "examinationCode": "xzbtc",
-          "examinationName": "心脏病套餐",
-          "itemTotal": "",
-          "status": "0"
+    },
+    "examinationgetExaminationInfo": {
+        "resultCode": "0",
+        "resultDesc": "success",
+        "result": [{
+                "id": "23f0ab42f32e4a1d96f90e39731f50b7",
+                "branchCode": "zssy",
+                "examinationCode": "xzbtc",
+                "examinationName": "心脏病套餐",
+                "des": "可筛查心脏疾患，了解冠心病患者的心脏受损情况，心脏彩超是冠心病高危人群常规体检方法。",
+                "suitAge": "18~50",
+                "suitSex": "ALL",
+                "fee": "286532",
+                "branchName": "中山大学附属第三医院"
+            },
+            {
+                "id": "23f0ab42f32e4a1d96f90e39731f50b7",
+                "branchCode": "zssy",
+                "examinationCode": "xzbtc",
+                "examinationName": "心脏病套餐",
+                "des": "可筛查心脏疾患，了解冠心病患者的心脏受损情况，心脏彩超是冠心病高危人群常规体检方法。",
+                "suitAge": "18~50",
+                "suitSex": "ALL",
+                "fee": "286532",
+                "branchName": "广州大学附属医院"
+            }
+        ]
+    },
+    "examinationgetExaminationDetail": {
+        "resultCode": "0",
+        "resultDesc": "success",
+        "result": {
+            "id": "9ada929f38a54db993558095253dccca",
+            "branchCode": "zssy",
+            "branchName": "中山大学附属第三人民医院",
+            "examinationCode": "xzbtc",
+            "examinationName": "心脏病套餐",
+            "desc": "可筛查心脏疾患，了解冠心病患者的心脏受损情况，心脏彩超是冠心病高危人群常规体检方法。",
+            "suitAge": "所有",
+            "suitSex": "A",
+            "fee": "153582",
+            "examinationDetail": [{
+                    "id": "23f0ab42f32e4a1d96f90e39731f50b7",
+                    "branchCode": "zssy",
+                    "branchName": "中山大学附属第三人民医院",
+                    "examinationCode": "xzbtc",
+                    "itemCode": "nk",
+                    "itemName": "内科",
+                    "desc": "通过视、触、叩、听检查心、肺、肝、脾等重要脏器的基本状况，询问相关病史、家族史，发现常见疾病的相关征兆，或初步排除常见疾病。"
+                },
+                {
+                    "id": "2155fffb710f422ea661625061d67786",
+                    "branchCode": "zssy",
+                    "branchName": "中山大学附属第三人民医院",
+                    "examinationCode": "xzbtc",
+                    "itemCode": "ydjc",
+                    "itemName": "眼压检查",
+                    "desc": "通过眼底镜检查玻璃体、后极部视网膜、视神经乳头和视网膜中央血管、黄斑等有无异常情况。裂隙灯下眼底检查立体感明显，范围更广。"
+                }
+            ]
         }
-      ]
+    },
+    "examinationpreExamination": {
+        "resultCode": "0",
+        "resultDesc": "success",
+        "result": {
+            "orderNo": "6012201801100004353"
+        }
+    },
+    "examinationpreExaminationPay": {
+        "resultCode": "0",
+        "resultDesc": "success"
+    },
+    "examinationgetReportInfo": {
+        "resultCode": "0",
+        "resultDesc": "success",
+        "result": [{
+                "id": "01670aade4654684a9098a31ef84fd2d",
+                "branchCode": "zssy",
+                "ordeNo": "6012201801100004353",
+                "reportCode": "xzbtc_3151",
+                "regDate": "2018-03-21",
+                "patName": "刘芳",
+                "patIdCard": "心脏病套餐",
+                "examinationCode": "xzbtc",
+                "examinationName": "心脏病套餐",
+                "itemTotal": "15"
+            },
+            {
+                "id": "01670aade4654684a9098a31ef84fd2d",
+                "branchCode": "zssy",
+                "ordeNo": "6012201801100004353",
+                "reportCode": "xzbtc_3151",
+                "regDate": "2018-03-21",
+                "patName": "刘芳",
+                "patIdCard": "心脏病套餐",
+                "examinationCode": "xzbtc",
+                "examinationName": "心脏病套餐",
+                "itemTotal": "15"
+            }
+        ]
+    },
+    "examinationgetReportDetail": {
+        "resultCode": "0",
+        "resultDesc": "success",
+        "result": [{
+                "id": "01670aade4654684a9098a31ef84fd2d",
+                "branchCode": "zssy",
+                "reportCode": "xzbtc_3151",
+                "itemCode": "nk",
+                "itemName": "内科",
+                "doctorCode": "10515",
+                "doctorName": "刘天宇",
+                "checkTime": "2018-03-10 10:25:35",
+                "range": "-",
+                "result": "心:未见异常;肺:未见异常;肝:未见异常;脾:未见异常;",
+                "abnormal": "-",
+                "focus": "血压偏高",
+                "advise": "少熬夜,多锻炼身体,注意休息.",
+                "followUp": "",
+                "mattersNeedAttention": ""
+            },
+            {
+                "id": "01670aade4654684a9098a31ef84fd2d",
+                "branchCode": "zssy",
+                "reportCode": "xzbtc_3151",
+                "itemCode": "yyjc",
+                "itemName": "眼压",
+                "doctorCode": "10515",
+                "doctorName": "刘天宇",
+                "checkTime": "2018-03-10 10:25:35",
+                "range": "10~21mmHg",
+                "result": "15mmHg",
+                "abnormal": "0",
+                "focus": "血压偏高",
+                "advise": "少熬夜,多锻炼身体,注意休息.",
+                "followUp": "",
+                "mattersNeedAttention": ""
+            }
+        ]
+    },
+    "usergetPatientInfo": {
+        "resultCode": "0",
+        "resultDesc": "success",
+        "result": {
+            "id": "23f0ab42f32e4a1d96f90e39731f50b7",
+            "username": "zhuanght",
+            "patName": "庄浩棠",
+            "patSex": "M",
+            "patBirth": "1996-01-19",
+            "patIdCard": "440112199601190617",
+            "patAddress": "广州市越秀区东风东路768号302房",
+            "patMobile": "15603078105",
+            "companyName": "广东天泽阳光康众医疗投资管理有限公司",
+            "job": "Java开发工程师"
+        }
+    },
+    "userupdPatientInfo": {
+        "resultCode": "0",
+        "resultDesc": "success"
+    },
+    "userupdUser": {
+        "resultCode": "0",
+        "resultDesc": "success"
+    },
+    "examinationorders": {
+        "resultCode": "0",
+        "resultDesc": "success",
+        "result": [{
+                "id": "010e9b113aa04575a4be50114ab1bc22",
+                "tradeMode": "1",
+                "orderNo": "1011201801090000919",
+                "patName": "庄浩棠",
+                "patIdCard": "440112199601190617",
+                "patMobile": "15603078105",
+                "branchCode": "zssy",
+                "examinationCode": "xzbtc",
+                "examinationName": "心脏病套餐",
+                "regDate": "2018-03-29",
+                "timeFlag": "1",
+                "beginTime": "08:00",
+                "endTime": "11:30",
+                "fee": "286532",
+                "status": 1,
+                "branchName": "中山大学附属第三医院"
+            },
+            {
+                "id": "010e9b113aa04575a4be50114ab1bc22",
+                "tradeMode": "1",
+                "orderNo": "1011201801090000919",
+                "patName": "庄浩棠",
+                "patIdCard": "440112199601190617",
+                "patMobile": "15603078105",
+                "branchCode": "zssy",
+                "examinationCode": "xzbtc",
+                "examinationName": "心脏病套餐",
+                "regDate": "2018-03-29",
+                "timeFlag": "1",
+                "beginTime": "08:00",
+                "endTime": "11:30",
+                "fee": "286532",
+                "status": 0,
+                "branchName": "广州大学附属医院"
+            }
+        ]
+    },
+    "platformuserlogin": {
+        "resultCode": "0",
+        "resultDesc": "success"
+    },
+    "platformuserlogout": {
+        "resultCode": "0",
+        "resultDesc": "success"
+    },
+    "platformhospitalupload": {
+        "resultCode": "0",
+        "resultDesc": "success",
+        "result": {
+            "picUrl": "http://127.0.0.1:8080/hr_examination_platform/picture/被偷走的那五年1516519191571.jpg"
+        }
+    },
+    "platformhospitaladdHospital": {
+        "resultCode": "0",
+        "resultDesc": "success"
+    },
+    "platformhospitalgetHospital": {
+        "resultCode": "0",
+        "resultDesc": "success",
+        "result": {
+            "totalRecord": "150",
+            "pageSize": "10",
+            "totalPage": "15",
+            "currentPage": "1",
+            "dataList": [{
+                    "id": "23f0ab42f32e4a1d96f90e39731f50b7",
+                    "branchCode": "zssy",
+                    "branchName": "中山大学附属第三医院",
+                    "levle": "三甲",
+                    "category": "综合性医院",
+                    "telephone": "",
+                    "desc": "",
+                    "location": "广东省广州市天河区天河路600号",
+                    "picUrl": "http://127.0.0.1:8080/hr_examination_platform/picture/被偷走的那五年1516519191571.jpg"
+                },
+                {
+                    "id": "23f0ab42f32e4a1d96f90e39731f50b7",
+                    "branchCode": "zssy",
+                    "branchName": "中山大学附属第三医院",
+                    "levle": "三甲",
+                    "category": "综合性医院",
+                    "telephone": "",
+                    "desc": "",
+                    "location": "广东省广州市天河区天河路600号",
+                    "picUrl": "http://127.0.0.1:8080/hr_examination_platform/picture/被偷走的那五年1516519191571.jpg"
+                }
+            ]
+        }
+    },
+    "platformhospitalupdHospital": {
+        "resultCode": "0",
+        "resultDesc": "success"
+    },
+    "platformhospitaldelHospital": {
+        "resultCode": "0",
+        "resultDesc": "success"
+    },
+    "platformexaminationorders": {
+        "resultCode": "0",
+        "resultDesc": "success",
+        "result": {
+            "totalRecord": "150",
+            "pageSize": "10",
+            "totalPage": "15",
+            "currentPage": "1",
+            "dataList": [{
+                    "id": "23f0ab42f32e4a1d96f90e39731f50b7",
+                    "tradeMode": "1",
+                    "orderNo": "6012201801100004353",
+                    "patName": "庄浩棠",
+                    "patIdCard": "440112199601190617",
+                    "patMobile": "15603078105",
+                    "branchCode": "zssy",
+                    "examinationCode": "xzbtc",
+                    "examinationName": "心脏病套餐",
+                    "regDate": "2018-03-29",
+                    "timeFlag": "1",
+                    "beginTime": "08:00",
+                    "endTime": "11:30",
+                    "fee": "286532",
+                    "status": "1",
+                    "time": "2018-01-01 10:00:00"
+                },
+                {
+                    "id": "23f0ab42f32e4a1d96f90e39731f50b7",
+                    "tradeMode": "1",
+                    "orderNo": "6012201801100004353",
+                    "patName": "庄浩棠",
+                    "patIdCard": "440112199601190617",
+                    "patMobile": "15603078105",
+                    "branchCode": "zssy",
+                    "examinationCode": "xzbtc",
+                    "examinationName": "心脏病套餐",
+                    "regDate": "2018-03-29",
+                    "timeFlag": "1",
+                    "beginTime": "08:00",
+                    "endTime": "11:30",
+                    "fee": "286532",
+                    "status": "1",
+                    "time": "2018-01-01 10:00:00"
+                }
+            ]
+        }
+    },
+    "platformexaminationagtOrder": {
+        "resultCode": "0",
+        "resultDesc": "success",
+        "result": {
+            "id": "23f0ab42f32e4a1d96f90e39731f50b7",
+            "orderNo": "6012201801100004353",
+            "agtOrderNo": "庄浩棠",
+            "tradeMode": "1",
+            "amount": "1500",
+            "payTime": "2018-01-01 10:00:00"
+        }
+    },
+    "zssyuserlogin": {
+        "resultCode": "0",
+        "resultDesc": "success"
+    },
+    "zssyuserlogout": {
+        "resultCode": "0",
+        "resultDesc": "success"
+    },
+    "zssyhospitaladdHospital": {
+        "resultCode": "0",
+        "resultDesc": "success"
+    },
+    "zssyhospitalgetHospital": {
+        "resultCode": "0",
+        "resultDesc": "success",
+        "result": {
+            "id": "23f0ab42f32e4a1d96f90e39731f50b7",
+            "branchCode": "zssy",
+            "branchName": "中山大学附属第三医院",
+            "levle": "三甲",
+            "category": "综合性医院",
+            "telephone": "",
+            "desc": "",
+            "location": "广东省广州市天河区天河路600号"
+        }
+    },
+    "zssyhospitalupdHospital": {
+        "resultCode": "0",
+        "resultDesc": "success"
+    },
+    "zssyhospitaldelHospital": {
+        "resultCode": "0",
+        "resultDesc": "success"
+    },
+    "zssyexaminationaddExamination": {
+        "resultCode": "0",
+        "resultDesc": "success"
+    },
+    "zssyexaminationgetExaminationInfo": {
+        "resultCode": "0",
+        "resultDesc": "success",
+        "result": {
+            "totalRecord": "",
+            "pageSize": "",
+            "totalPage": "",
+            "currentPage": "",
+            "dataList": [{
+                    "id": "6ae5819bec574017b2d8c3bf10b6750a",
+                    "examinationCode": "心脏病套餐",
+                    "examinationName": "xzbtc",
+                    "des": "可筛查心脏疾患，了解冠心病患者的心脏受损情况，心脏彩超是冠心病高危人群常规体检方法。",
+                    "suitAge": "无限制",
+                    "suitSex": "ALL",
+                    "fee": "153582"
+                },
+                {
+                    "id": "6ae5819bec574017b2d8c3bf10b6750a",
+                    "examinationCode": "心脏病套餐",
+                    "examinationName": "xzbtc",
+                    "des": "可筛查心脏疾患，了解冠心病患者的心脏受损情况，心脏彩超是冠心病高危人群常规体检方法。",
+                    "suitAge": "无限制",
+                    "suitSex": "ALL",
+                    "fee": "153582"
+                }
+            ]
+        }
+    },
+    "zssyexaminationgetExaminationDetail": {
+        "resultCode": "0",
+        "resultDesc": "success",
+        "result": [{
+            "id": "9ada929f38a54db993558095253dccca",
+            "examinationCode": "xzbtc",
+            "examinationName": "心脏病套餐",
+            "desc": "可筛查心脏疾患，了解冠心病患者的心脏受损情况，心脏彩超是冠心病高危人群常规体检方法。",
+            "suitAge": "所有",
+            "suitSex": "A",
+            "fee": 153582,
+            "examinationDetail": [{
+                    "id": "6ae5819bec574017b2d8c3bf10b6750a",
+                    "itemCode": "nk",
+                    "itemName": "内科",
+                    "desc": "通过视、触、叩、听检查心、肺、肝、脾等重要脏器的基本状况，询问相关病史、家族史，发现常见疾病的相关征兆，或初步排除常见疾病。",
+                    "checkPart": "全身"
+                },
+                {
+                    "id": "6ae5819bec574017b2d8c3bf10b6750a",
+                    "itemCode": "ydjc",
+                    "itemName": "眼底检查",
+                    "desc": "通过眼底镜检查玻璃体、后极部视网膜、视神经乳头和视网膜中央血管、黄斑等有无异常情况。裂隙灯下眼底检查立体感明显，范围更广。",
+                    "checkPart": "眼睛"
+                }
+            ]
+        }]
+    },
+    "zssyexaminationupdExamination": {
+        "resultCode": "0",
+        "resultDesc": "success"
+    },
+    "zssyexaminationdelExamination": {
+        "resultCode": "0",
+        "resultDesc": "success"
+    },
+    "zssyexaminationdelExaminationDetail": {
+        "resultCode": "0",
+        "resultDesc": "success"
+    },
+    "zssyexaminationgetReportInfo": {
+        "resultCode": "0",
+        "resultDesc": "success",
+        "result": {
+            "totalRecord": "",
+            "pageSize": "",
+            "totalPage": "",
+            "currentPage": "",
+            "dataList": [{
+                    "id": "6ae5819bec574017b2d8c3bf10b6750a",
+                    "branchCode": "zssy",
+                    "orderNo": "1011201801110003330",
+                    "reportCode": "xzbtc_3152",
+                    "regDate": "2018-01-10",
+                    "patName": "庄浩棠",
+                    "patIdCard": "440112199601190617",
+                    "examinationCode": "xzbtc",
+                    "examinationName": "心脏病套餐",
+                    "itemTotal": "8",
+                    "status": "1"
+                },
+                {
+                    "id": "6ae5819bec574017b2d8c3bf10b6750a",
+                    "branchCode": "zssy",
+                    "orderNo": "1011201801110003330",
+                    "reportCode": "xzbtc_3152",
+                    "regDate": "2018-01-10",
+                    "patName": "庄浩棠",
+                    "patIdCard": "440112199601190617",
+                    "examinationCode": "xzbtc",
+                    "examinationName": "心脏病套餐",
+                    "itemTotal": "",
+                    "status": "0"
+                }
+            ]
+        }
+    },
+    "zssyexaminationgetReportDetail": {
+        "resultCode": "0",
+        "resultDesc": "success",
+        "result": [{
+                "id": "01670aade4654684a9098a31ef84fd2d",
+                "reportCode": "xzbtc_3151",
+                "item_code": "nk",
+                "item_name": "内科",
+                "doctor_code": "10515",
+                "doctor_name": "刘天宇",
+                "range": "-",
+                "result": "心:未见异常;肺:未见异常;肝:未见异常;脾:未见异常;",
+                "abnormal": "-",
+                "focus": "血压偏高",
+                "advise": "少熬夜,多锻炼身体,注意休息.",
+                "followUp": "",
+                "mattersNeedAttention": ""
+            },
+            {
+                "id": "01670aade4654684a9098a31ef84fd2d",
+                "reportCode": "xzbtc_3151",
+                "item_code": "yyjc",
+                "item_name": "眼压",
+                "doctor_code": "10515",
+                "doctor_name": "刘天宇",
+                "range": "10~21mmHg",
+                "result": "15mmHg",
+                "abnormal": "0",
+                "focus": "血压偏高",
+                "advise": "少熬夜,多锻炼身体,注意休息.",
+                "followUp": "",
+                "mattersNeedAttention": ""
+            }
+        ]
+    },
+    "zssyhospitalupdReportDetail": {
+        "resultCode": "0",
+        "resultDesc": "success"
     }
-  },
-  "zssyexaminationgetReportDetail": {
-    "resultCode": "0",
-    "resultDesc": "success",
-    "result": [
-      {
-        "id": "01670aade4654684a9098a31ef84fd2d",
-        "reportCode": "xzbtc_3151",
-        "item_code": "nk",
-        "item_name": "内科",
-        "doctor_code": "10515",
-        "doctor_name": "刘天宇",
-        "range": "-",
-        "result": "心:未见异常;肺:未见异常;肝:未见异常;脾:未见异常;",
-        "abnormal": "-",
-        "focus": "血压偏高",
-        "advise": "少熬夜,多锻炼身体,注意休息.",
-        "followUp": "",
-        "mattersNeedAttention": ""
-      },
-      {
-        "id": "01670aade4654684a9098a31ef84fd2d",
-        "reportCode": "xzbtc_3151",
-        "item_code": "yyjc",
-        "item_name": "眼压",
-        "doctor_code": "10515",
-        "doctor_name": "刘天宇",
-        "range": "10~21mmHg",
-        "result": "15mmHg",
-        "abnormal": "0",
-        "focus": "血压偏高",
-        "advise": "少熬夜,多锻炼身体,注意休息.",
-        "followUp": "",
-        "mattersNeedAttention": ""
-      }
-    ]
-  },
-  "zssyhospitalupdReportDetail": {
-    "resultCode": "0",
-    "resultDesc": "success"
-  }
 }

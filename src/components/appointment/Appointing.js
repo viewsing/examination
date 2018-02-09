@@ -1,0 +1,174 @@
+import React, {Component} from 'react';
+import { NavBar, List, Icon, Calendar, SegmentedControl, WhiteSpace, WingBlank, Button, Toast } from 'antd-mobile';
+import PropTypes from 'prop-types';
+
+const now = new Date();
+const timeSements = ['08:00-10:00', '10:00-12:00', '13:00-15:00', '15:00-17:00', '19:00-21:00'];
+const timeFlag = {
+    0: 1,
+    1: 3,
+    2: 4
+}
+let timeSement = '08:00-10:00';
+class Appointing extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            calendarShow: false,
+            regDate: now.getFullYear() + '-' + (now.getMonth()+1) + '-' + now.getDate(),
+            timeFlagIndex: 0,
+            tradeMode: 0,
+            examinationName: this.props.match.params.examinationName,
+            branchCode: this.props.match.params.branchCode,
+            examinationCode: this.props.match.params.examinationCode,
+            time: [timeSements[0], timeSements[1]]
+        }
+        this.handleBack = this.handleBack.bind(this);
+        this.handleCalendar = this.handleCalendar.bind(this);
+        this.onTimeFlagChange = this.onTimeFlagChange.bind(this);
+        this.onTradeModeChange = this.onTradeModeChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+    handleBack(){
+        this.context.history.goBack();
+    }
+    handleCalendar(date){
+        this.setState({
+            calendarShow: false,
+            regDate: date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate()
+        })
+    }
+    onTradeModeChange(val) {
+        let ret;
+        switch(val) {
+            case '银联':
+                ret = 0;
+            break;
+            case '微信':
+                ret = 1;
+            break;
+            case '支付宝':
+                ret = 2;
+            break;
+        }
+        this.setState({
+            tradeMode: ret
+        })
+    }
+    onTimeFlagChange(val) {
+        if (val === '上午') {
+            this.setState({
+                timeFlagIndex: 0,
+                time: [timeSements[0], timeSements[1]]
+            })
+        } else if (val === '下午'){
+            this.setState({
+                timeFlagIndex: 1,
+                time: [timeSements[2], timeSements[3]]
+            })
+        } else {
+            this.setState({
+                timeFlagIndex: 2,
+                time: [timeSements[4]]
+            })
+        }
+    }
+    onTimeChange(val) {
+        timeSement = val;
+    }
+    onSubmit(){
+        Toast.info('正在提交', 7);
+        this.context.axios({
+            url: window.USERURL +  'examination/preExamination',
+            data: {
+                tradeMode: this.state.tradeMode + 1,
+                username: sessionStorage.getItem('username'),
+                branchCode: this.state.branchCode,
+                examinationCode: this.state.examinationCode,
+                examinationName: this.state.examinationName,
+                regDate: this.state.regDate,
+                timeFlag: timeFlag[this.state.timeFlagIndex],
+                beginTime: timeSement.split('-')[0],
+                endTime: timeSement.split('-')[1]
+            }
+        }).then( response => {
+            Toast.hide();
+            if (response.data.resultCode == 0) {
+                let data = {
+                    orderNo: response.data.result.orderNo,
+                    tradeMode: this.state.tradeMode + 1
+                }
+                sessionStorage.setItem('paying', JSON.stringify(data));
+                Toast.info('正在跳转支付页面...', 1, () => {
+                    this.context.history.push('/paying')
+                })
+            }
+        })
+    }
+    render(){
+        return <div>
+            <NavBar icon={<Icon type="left"/>}
+                onLeftClick = { this.handleBack }
+            >预约</NavBar>
+            <List>
+                <WhiteSpace/>
+                <WingBlank><div style={{fontSize: '17px', lineHeight: 1.5, padding: '7px 0'}}>支付方式:</div></WingBlank>
+                <List.Item key="0">
+                    <SegmentedControl
+                        tintColor="#f96268"
+                        selectedIndex={this.state.tradeMode}
+                        values={['银联', '微信', '支付宝']}
+                        onValueChange={this.onTradeModeChange}
+                    />
+                </List.Item>
+                <List.Item key="1" extra={this.state.examinationName}>
+                    套餐:
+                </List.Item>
+                <List.Item key="2" arrow="horizontal"
+                    extra={this.state.regDate}
+                    onClick={() => {
+                        document.getElementsByTagName('body')[0].style.overflowY = 'hidden';
+                        this.setState({
+                            calendarShow: true,
+                        });
+                    }}
+                >
+                    选择日期:
+                </List.Item>
+                <List.Item key="3">
+                    <SegmentedControl
+                        selectedIndex = {this.state.timeFlagIndex}
+                        values={['上午', '下午', '晚上']}
+                        onValueChange={this.onTimeFlagChange}
+                    />
+                </List.Item>
+                <List.Item key="4">
+                    <SegmentedControl
+                        values={this.state.time}
+                        onValueChange={this.onTimeChange}
+                    />
+                </List.Item>
+                <WhiteSpace size="lg"/>
+                <List.Item key="5">
+                    <Button type="primary" onClick={this.onSubmit}>提交</Button>
+                </List.Item>
+            </List>
+            <Calendar
+            type="one"
+            visible={this.state.calendarShow}
+            defaultDate={ new Date(this.state.regDate) }
+            minDate={new Date(+now - 5184000000)}
+            maxDate={new Date(+now + 31536000000)}
+            onConfirm={this.handleCalendar}
+            onCancel={()=>this.setState({calendarShow: false})}
+            />
+        </div>
+    }
+}
+
+Appointing.contextTypes = {
+    history: PropTypes.object,
+    axios: PropTypes.func
+}
+
+export default Appointing;
