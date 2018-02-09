@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { NavBar, List, Icon, Result } from 'antd-mobile';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom'
 
 class PayResult extends Component {
     constructor(props) {
@@ -16,9 +17,9 @@ class PayResult extends Component {
                 onLeftClick = { this.handleBack }
             >支付结果</NavBar>
             <Result
-                img={<Icon type="check-circle" className="spe" style={{ fill: '#1F90E6' }} />}
+                img={<Icon type="check-circle" style={{ fill: '#1F90E6', width: '60px', height: '60px' }} />}
                 title="支付成功"
-                message={<div>998.00元 <del>1098元</del></div>}
+                message={<div><Link to="/">回到首页</Link></div>}
             />
         </div>
     }

@@ -43,6 +43,7 @@ class Appointing extends Component {
         this.onTimeFlagChange = this.onTimeFlagChange.bind(this);
         this.onTradeModeChange = this.onTradeModeChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.handlePay = this.handlePay.bind(this);
     }
     handleBack(){
         this.context.history.goBack();
@@ -88,6 +89,28 @@ class Appointing extends Component {
             })
         }
     }
+    handlePay(){
+        return  new Promise((resolve) => {
+            Toast.info('正在支付...', 7);
+            this.context.axios({
+                url: window.USERURL + 'examination/preExaminationPay',
+                data: {
+                    orderNo: this.state.orderNo
+                }
+            }).then( response => {
+                if (response.data.resultCode == 0) {
+                    Toast.info('支付成功', 1.5, () => {
+                        resolve();
+                        this.context.history.replace('/payResult')
+                    });
+                } else {
+                    Toast.info('支付失败,请联系系统管理员', 2, () => {
+                        resolve();
+                    })
+                }
+            })
+        })
+    }
     onTimeChange(val) {
         timeSement = val;
     }
@@ -120,17 +143,7 @@ class Appointing extends Component {
                     }
                     Modal.alert('付款', <PayType imgSrc={imgSrc} fee={response.data.result.fee} />, [
                         { text: '取消'},
-                        { text: '确定', onPress: () => {
-                            Toast.info('正在支付...', 7);
-                            this.context.axios({
-                                url: window.USERURL + 'examination/preExaminationPay',
-                                data: {
-                                    orderNo: this.state.orderNo
-                                }
-                            }).then( response => {
-                                Toast.hide();
-                            })
-                        }},
+                        { text: '确定', onPress: this.handlePay},
                     ])
                 })
             }
