@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
-import { NavBar, List, Icon, Calendar, SegmentedControl, WhiteSpace, WingBlank, Button, Toast } from 'antd-mobile';
+import { NavBar, List, Icon, Calendar, SegmentedControl, WhiteSpace, WingBlank, Button, Toast, Modal } from 'antd-mobile';
 import PropTypes from 'prop-types';
+import zhifubao from '../../img/zhifubao.png';
+import weixin from '../../img/weixin.png';
+import yinlian from '../../img/yinlian.png';
 
 const now = new Date();
 const timeSements = ['08:00-10:00', '10:00-12:00', '13:00-15:00', '15:00-17:00', '19:00-21:00'];
@@ -10,6 +13,18 @@ const timeFlag = {
     2: 4
 }
 let timeSement = '08:00-10:00';
+
+function PayType (props) {
+    return <div>
+        <img src={props.imgSrc} alt="支付方式"/>
+        <p style={{
+            margin: '.5em',
+            color: '#222',
+            fontSize: '1.2em'
+        }}>￥{props.fee}</p>
+    </div>
+}
+
 class Appointing extends Component {
     constructor(props) {
         super(props);
@@ -94,13 +109,29 @@ class Appointing extends Component {
         }).then( response => {
             Toast.hide();
             if (response.data.resultCode == 0) {
-                let data = {
-                    orderNo: response.data.result.orderNo,
-                    tradeMode: this.state.tradeMode + 1
-                }
-                sessionStorage.setItem('paying', JSON.stringify(data));
-                Toast.info('正在跳转支付页面...', 1, () => {
-                    this.context.history.push('/paying')
+                Toast.info('准备付款...', 1, () => {
+                    let imgSrc;
+                    if(this.state.tradeMode == 0) {
+                        imgSrc = yinlian;
+                    } else if (this.state.tradeMode == 1) {
+                        imgSrc = weixin;
+                    } else {
+                        imgSrc = zhifubao;
+                    }
+                    Modal.alert('付款', <PayType imgSrc={imgSrc} fee={response.data.result.fee} />, [
+                        { text: '取消'},
+                        { text: '确定', onPress: () => {
+                            Toast.info('正在支付...', 7);
+                            this.context.axios({
+                                url: window.USERURL + 'examination/preExaminationPay',
+                                data: {
+                                    orderNo: this.state.orderNo
+                                }
+                            }).then( response => {
+                                Toast.hide();
+                            })
+                        }},
+                    ])
                 })
             }
         })

@@ -118,7 +118,8 @@
         "resultCode": "0",
         "resultDesc": "success",
         "result": {
-            "orderNo": "6012201801100004353"
+            "orderNo": "6012201801100004353",
+            "fee": "15533"
         }
     },
     "examinationpreExaminationPay": {
