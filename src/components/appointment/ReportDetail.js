@@ -24,6 +24,8 @@ class ReportDetail extends Component {
                 })
             } else if (response.data.resultCode == 1) {
                 Toast.info('没有查询到相关数据', 2);
+            } else if (response.data.resultCode == -1){
+                Toast.info('系统错误，请与系统管理员联系', 2);
             }
         })
     }

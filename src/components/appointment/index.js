@@ -89,7 +89,7 @@ class Appointment extends Component {
                 this.setState({
                     status: 1
                 })
-            } else {
+            } else if (response.data.resultCode == -1){
                 Toast.info('请求失败！请与系统管理员联系', 2)
             }
         })
@@ -100,8 +100,8 @@ class Appointment extends Component {
     render(){
         let content;
         if (this.state.status == 0) {
-            content = this.state.exams.map( exam => {
-                return <Exam exam={exam} />
+            content = this.state.exams.map( (exam, index) => {
+                return <Exam exam={exam} key={index} />
             })
         } else if (this.state.status == 1) {
             content = <div style={{textAlign: 'center'}}>未查询到体检项目</div>

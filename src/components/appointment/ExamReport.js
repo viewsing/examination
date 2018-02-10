@@ -70,7 +70,7 @@ class ExamReport extends Component {
                 this.setState({
                     status: 1
                 })
-            } else {
+            } else if (response.data.resultCode == -1){
                 Toast.info('请求失败！请与系统管理员联系', 2)
             }
         })

@@ -18,13 +18,12 @@ class RegisterForm extends Component {
                     url: window.USERURL + 'user/registry',
                     data: params
                 }).then( response => {
-                    Toast.hide();
                     if (response.data.resultCode == 0) {
                         Toast.info('注册成功', 1, () => {
-                            sessionStorage.setItem('username', params.account);
+                            sessionStorage.setItem('username', params.username);
                             this.context.history.push('/personalInfo')
                         })
-                    } else {
+                    } else if (response.data.resultCode == -1){
                         Toast.info('注册失败！请与系统管理员联系', 2)
                     }
                 })
@@ -47,19 +46,19 @@ class RegisterForm extends Component {
             backgroundColor: '#fff'
         }}>
             <List
-                renderFooter={() => getFieldError('account') && (<div style={{color: '#ef6241'}}>{getFieldError('account').join(',')}</div>)}
+                renderFooter={() => getFieldError('username') && (<div style={{color: '#ef6241'}}>{getFieldError('username').join(',')}</div>)}
             >
                 <InputItem
-                    {...getFieldProps('account', {
+                    {...getFieldProps('username', {
                         rules: [
                         { required: true, message: '帐号不能为空' },
                         { validator: this.validateAccount },
                         ],
                     })}
                     clear
-                    error={!!getFieldError('account')}
+                    error={!!getFieldError('username')}
                     onErrorClick={() => {
-                        alert(getFieldError('account').join('、'));
+                        alert(getFieldError('username').join('、'));
                     }}
                     placeholder="请输入帐号"
                 >

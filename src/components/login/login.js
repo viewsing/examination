@@ -18,13 +18,12 @@ class LoginForm extends Component {
                     url: window.USERURL + 'user/login',
                     data: params
                 }).then( response => {
-                    Toast.hide();
                     if (response.data.resultCode == 0) {
                         Toast.info('登录成功', 1, () => {
                             sessionStorage.setItem('username', params.account);
                             this.context.history.push('/')
                         })
-                    } else {
+                    } else if (response.data.resultCode == -1){
                         Toast.info('登录失败！请与系统管理员联系', 2)
                     }
                 })

@@ -130,7 +130,6 @@ class Appointing extends Component {
                 endTime: timeSement.split('-')[1]
             }
         }).then( response => {
-            Toast.hide();
             if (response.data.resultCode == 0) {
                 Toast.info('准备付款...', 1, () => {
                     let imgSrc;
@@ -146,6 +145,8 @@ class Appointing extends Component {
                         { text: '确定', onPress: this.handlePay},
                     ])
                 })
+            } else if (response.data.resultCode == -1){
+                Toast.info('系统错误，请与系统管理员联系', 2)
             }
         })
     }
