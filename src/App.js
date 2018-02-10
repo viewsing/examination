@@ -56,7 +56,12 @@ class App extends Component {
         return (
             <Router >
                 <div style={{height: '100%'}}>
-                    <Redirect from="/" to="/index" />  
+                    <Redirect from="/" to="/index" /> 
+                    {/* <Route path="/" children={({ match, ...rest }) => (
+                        <Container>
+                            {match && <Something {...rest}/>}
+                        </Container>
+                    )}/>  */}
                     <Route exact path="/index" component={Index}/>
                     <Route path="/personalList" component={PersonalList}/>
                     <Route path="/personalInfo" component={PersonalInfo}/>
