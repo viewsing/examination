@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {Toast, ActivityIndicator} from 'antd-mobile';
 
@@ -23,6 +23,7 @@ import ReportDetail from './components/appointment/ReportDetail.js';
 const axiosInstance = axios.create();
 //全局请求头，请求方法配置
 axiosInstance.defaults.headers.post['Content-Type'] = 'application/json';
+axiosInstance.defaults.withCredentials = true;
 
 axiosInstance.interceptors.request.use(function (config) {
     config.method = 'get';
@@ -55,7 +56,8 @@ class App extends Component {
         return (
             <Router >
                 <div style={{height: '100%'}}>
-                    <Route exact path="/" component={Index}/>
+                    <Redirect from="/" to="/index" />  
+                    <Route exact path="/index" component={Index}/>
                     <Route path="/personalList" component={PersonalList}/>
                     <Route path="/personalInfo" component={PersonalInfo}/>
                     <Route path="/examReport" component={ExamReport}/>

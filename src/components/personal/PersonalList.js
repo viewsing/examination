@@ -28,7 +28,7 @@ class PersonalList extends Component {
                 }).then( response => {
                     if ( response.data.resultCode == 0 ) {
                         sessionStorage.clear();
-                        self.context.history.push('/');
+                        self.context.history.push('/index');
                     }
                 })
             } },

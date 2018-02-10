@@ -60,7 +60,7 @@ class PersonalInfoForm extends Component {
                     Toast.hide();
                     if (response.data.resultCode == 0) {
                         Toast.info('保存成功', 1, () => {
-                            this.context.history.push('/')
+                            this.context.history.push('/index')
                         })
                     } else if (response.data.resultCode == 2){
                         Toast.info(response.data.resultDesc, 2)
