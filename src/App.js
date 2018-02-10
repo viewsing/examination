@@ -17,6 +17,7 @@ import createHashHistory from "history/createHashHistory";
 import ExamDetail from './components/appointment/ExamDetail.js';
 import Appointing from './components/appointment/Appointing.js';
 import PayResult from './components/appointment/PayResult.js';
+import ReportDetail from './components/appointment/ReportDetail.js';
 
 
 const axiosInstance = axios.create();
@@ -63,6 +64,7 @@ class App extends Component {
                     <Route path="/login" component={Login}/>
                     <Route path="/orders" component={PersonalOrders}/>
                     <Route path="/examDetail/:branchCode/:examinationCode" component={ExamDetail}/>
+                    <Route path="/reportDetail/:branchCode/:reportCode" component={ReportDetail}/>
                     <Route path="/appointing/:branchCode/:examinationCode/:examinationName" component={Appointing}/>
                     <Route path="/payResult" component={PayResult}/>
                 </div>

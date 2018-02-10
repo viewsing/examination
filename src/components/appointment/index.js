@@ -60,8 +60,7 @@ class Exam extends Component {
 }
 
 Exam.contextTypes = {
-    history: PropTypes.object,
-    axios: PropTypes.func
+    history: PropTypes.object
 }
 
 class Appointment extends Component {
@@ -75,11 +74,10 @@ class Appointment extends Component {
     }
     componentWillMount() {
         const username = sessionStorage.getItem('username');
-        const lastIndex = this.context.history.location.pathname.lastIndexOf('/');
         this.context.axios({
             url: window.USERURL + 'examination/getExaminationInfo',
             data: {
-                branchCode: this.context.history.location.pathname.substring(lastIndex)
+                branchCode: this.props.match.params.branchCode
             }
         }).then( response => {
             if (response.data.resultCode == 0) {
@@ -106,7 +104,7 @@ class Appointment extends Component {
                 return <Exam exam={exam} />
             })
         } else if (this.state.status == 1) {
-            content = <div>未查询到体检项目</div>
+            content = <div style={{textAlign: 'center'}}>未查询到体检项目</div>
         } else {
             content = this.context.loading
         }
