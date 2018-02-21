@@ -40,7 +40,7 @@ class TabBar2 extends Component {
                 }
                 selected={this.state.selectedTab === 'index'}
                 onPress={ ()=>{
-                    this.handleRouter('/')
+                    this.handleRouter('/index')
                 } }
                 data-seed="logId"
                 />
