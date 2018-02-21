@@ -26,13 +26,14 @@ axiosInstance.defaults.headers.post['Content-Type'] = 'application/json';
 axiosInstance.defaults.withCredentials = true;
 
 axiosInstance.interceptors.request.use(function (config) {
-    config.method = 'get';
+    config.method = 'post';
     return config;
 });
 
 //全局登录控制，如果resultCode为3则跳转至登录页面
 axiosInstance.interceptors.response.use(function (response) {
     if (response.data.resultCode == 3) {
+        Toast.info('请先登录', 2);
         history.push('/login')
     } else if (response.data.resultCode == 2) {
         Toast.info(response.data.resultDesc);
@@ -56,13 +57,8 @@ class App extends Component {
         return (
             <Router >
                 <div style={{height: '100%'}}>
-                    <Redirect from="/" to="/index" /> 
-                    {/* <Route path="/" children={({ match, ...rest }) => (
-                        <Container>
-                            {match && <Something {...rest}/>}
-                        </Container>
-                    )}/>  */}
-                    <Route exact path="/index" component={Index}/>
+                    <Route exact path="/" component={Index} /> 
+                    <Route path="/index" component={Index}/>
                     <Route path="/personalList" component={PersonalList}/>
                     <Route path="/personalInfo" component={PersonalInfo}/>
                     <Route path="/examReport" component={ExamReport}/>
@@ -74,6 +70,11 @@ class App extends Component {
                     <Route path="/reportDetail/:branchCode/:reportCode" component={ReportDetail}/>
                     <Route path="/appointing/:branchCode/:examinationCode/:examinationName" component={Appointing}/>
                     <Route path="/payResult" component={PayResult}/>
+                    {/* <Route path="/" children={({ match, ...rest }) => (
+                        <Container>
+                            {match && <Something {...rest}/>}
+                        </Container>
+                    )}/>  */}
                 </div>
             </Router>
         );

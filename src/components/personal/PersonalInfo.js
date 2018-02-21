@@ -37,6 +37,9 @@ class PersonalInfoForm extends Component {
                     status: 1
                 })
             } else if (response.data.resultCode == 1){
+                this.setState({
+                    status: 1
+                })
                 submitURL = window.USERURL + 'user/updUser'
             } else {
                 Toast.info('请求失败！请与系统管理员联系', 2)

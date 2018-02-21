@@ -12,7 +12,7 @@ const sexStatus = {
         name: '女',
         color: '#108ee9'
     },
-    'ALL': {
+    'A': {
         name: '所有',
         color: '#9790e5'
     }
