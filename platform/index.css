@@ -1,0 +1,64 @@
+/*ajax遮罩*/
+#loading {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #0F0F0F;
+	opacity: .2;
+}
+#loading img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+/*navbar*/
+.top-bar {
+	margin-bottom: 3px;
+}
+.logo {
+	margin-left: -15px;
+}
+.logo>img {
+	width: 60px;
+	height: 60px;
+}
+/*侧栏菜单*/
+.sidebar {
+	height: calc(100vh - 65px);
+	background: rgb(100,100,100);
+}
+.sidebar-menu > ul {
+	margin-bottom: 0px;
+}
+.sidebar-menu .list-group-item {
+	border-radius: 0px;
+}
+.menu-first {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+.menu-first>.list-group .list-group-item {
+	color: #fff;
+	cursor: pointer;
+	background: rgb(73,73,73);
+	border-color: rgb(100,100,100);
+}
+.menu-second>.list-group .list-group-item{
+	text-indent: 1em;
+	background: rgba(73,73,73,.7);
+}
+/*bootstrap重设*/
+.modal-header, .modal-footer {
+	padding: 10px;
+}
+
+.table > tbody > tr > td, th {
+	text-align: center;
+	line-height: 3;
+}
+
+.btn-handle {
+	margin: .5em;
+}
