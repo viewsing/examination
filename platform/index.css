@@ -1,3 +1,7 @@
+/* 消除默认样式 */
+a:-webkit-any-link {
+	text-decoration: none;
+}
 /*ajax遮罩*/
 #loading {
 	width: 100vw;
@@ -34,26 +38,34 @@
 }
 .sidebar-menu .list-group-item {
 	border-radius: 0px;
+	font-size: 17px;
 }
 .menu-first {
 	margin-left: -15px;
 	margin-right: -15px;
 }
-.menu-first>.list-group .list-group-item {
+.menu-first > .list-group .list-group-item {
 	color: #fff;
 	cursor: pointer;
 	background: rgb(73,73,73);
 	border-color: rgb(100,100,100);
 }
-.menu-second>.list-group .list-group-item{
+.menu-second > .list-group .list-group-item{
 	text-indent: 1em;
 	background: rgba(73,73,73,.7);
 }
+
+/* 高亮菜单 */
+.list-group > .activeMenu > .list-group-item{
+	background-color: #6994e2;
+}
+
 /*bootstrap重设*/
 .modal-header, .modal-footer {
 	padding: 10px;
 }
 
+/* dataTables */
 .table > tbody > tr > td, th {
 	text-align: center;
 	line-height: 3;
@@ -61,4 +73,12 @@
 
 .btn-handle {
 	margin: .5em;
+}
+
+/* 页面布局 */
+.g_searchField {
+	margin: 1em;
+}
+.g_operatedField {
+	margin: 1em;
 }

@@ -7,7 +7,7 @@
             type: 'POST',
             data: function(status){
                 return JSON.stringify({
-                    branchName: status.search.value,
+                    branchName: $('#inputBranchCode').val(),
                     pageNum: status.start
                 });
             },
@@ -66,29 +66,56 @@
         ]
     }, CONFIG.dataTableConf));
 
+    //查看编辑删除按钮
     $('#m_hospitalsTable').on('click', function(e){
         var btn = e.target;
         if (btn.nodeName !== 'BUTTON') return;
         var data = Table.row($(btn).parents('tr')).data();
         if (btn.classList.contains('btn-detail')) {
             handleDetail(data);
+        } else if (btn.classList.contains('btn-edit')) {
+            handleEdit(data);
+        } else if (btn.classList.contains('btn-delete')) {
+            handleDelete(data);
         }
+    })
+
+    //新增
+    $('#hospitals_add').on('click', function(e){
+        $.iPopWin('pages/hospitals/detail.html', {
+            title: '新增',
+            idPrefix: 'hospitals',
+			width: '50vw'
+		})
+    })
+
+    //查询
+    $('#queryHospitals').on('click', function(){
+        Table.draw();
     })
 
     function handleDetail(data) {
         $.iPopWin('pages/hospitals/detail.html', {
-			title: '查看',
+            title: '查看',
+            readOnly: true,
+            idPrefix: 'hospitals',
 			data: {aaData: data},
-			width: '50vw',
-			btns: []
+			width: '50vw'
 		})
     }
 
     function handleEdit(data) {
-        
+        $.iPopWin('pages/hospitals/detail.html', {
+            title: '编辑',
+            idPrefix: 'hospitals',
+			data: {aaData: data},
+			width: '50vw'
+		})
     }
 
     function handleDelete(data, type, rowData, setting) {
-        
+        $.iConfirm('提示', '确认删除?', function(){
+
+        });
     }
 })()
