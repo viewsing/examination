@@ -8,6 +8,11 @@
             data: function(status){
                 return JSON.stringify({
                     branchName: $('#inputBranchName').val(),
+                    orderNo: $('#inputOrderNo').val(),
+                    patName: $('#inputPatName').val(),
+                    patIdCard: $('#inputPatIdCard').val(),
+                    tradeMode: $('#inputTradeMode').val(),
+                    regDate: $('#inputRegDate').val(),
                     pageNum: status.start
                 });
             },
@@ -19,8 +24,13 @@
         },
         columns: [
             {
-                data: 'tradeMode',
-                title: '支付平台',
+                data: 'branchName',
+                title: '医院名称',
+                sortable: false
+            },
+            {
+                data: 'time',
+                title: '下单时间',
                 sortable: false
             },
             {
@@ -34,29 +44,22 @@
                 sortable: false
             },
             {
-                data: 'patIdCard',
-                title: '身份证',
-                sortable: false
-            },
-            {
-                data: 'patMobile',
-                title: '联系电话',
-                sortable: false
-            },
-            {
-                data: 'branchCode',
-                title: '医院编号',
-                sortable: false
-            },
-            {
-                data: 'branchName',
-                title: '医院名称',
-                sortable: false
-            },
-            {
-                data: 'examinationCode',
-                title: '体检项目编号',
-                sortable: false
+                data: 'status',
+                title: '支付状态',
+                sortable: false,
+                render: function(data) {
+                    switch(data) {
+                        case '0':
+                            return '<span class="label label-primary">未支付</span>';
+                        break;
+                        case '1':
+                            return '<span class="label label-success">已支付</span>';                            
+                        break;
+                        case '2':
+                            return '<span class="label label-warning">已退费</span>'                            
+                        break;
+                    }
+                }
             },
             {
                 data: 'examinationName',
@@ -64,61 +67,55 @@
                 sortable: false
             },
             {
-                data: 'regDate',
-                title: '预约日期',
-                sortable: false
-            },
-            {
-                data: 'timeFlag',
-                title: '预约时段',
-                sortable: false
-			},
-            {
-                data: 'beginTime',
-                title: '开始时间',
-                sortable: false
-			},
-            {
-                data: 'endTime',
-                title: '结束时间',
-                sortable: false
-			},
-            {
                 data: 'fee',
                 title: '费用',
                 sortable: false
-			},
+            },
             {
-                data: 'status',
-                title: '状态',
-                sortable: false
-			},
-            {
-                data: 'time',
-                title: '下单时间',
-                sortable: false
-			},
-            {
-                data: 'agtOrderNo',
-                title: '第三方交易流水号',
-                sortable: false
-			},
-            {
-                data: 'amount',
-                title: '支付金额',
-                sortable: false
-			},
-            {
-                data: 'payTime',
-                title: '支付时间',
-                sortable: false
-			}
+                data: 'id',
+                title: '操作',
+                sortable: false,
+                render: function(data, type, rowData, setting){
+                    return '<div><button class="btn btn-sm btn-primary btn-handle btn-detail"">查看</button></div>'
+                }
+            }
         ]
     }, CONFIG.dataTableConf));
+
+    //查看按钮
+    $('#m_ordersTable').on('click', function(e){
+        var btn = e.target;
+        if (btn.nodeName !== 'BUTTON') return;
+        var data = Table.row($(btn).parents('tr')).data();
+        if (btn.classList.contains('btn-detail')) {
+            handleDetail(data);
+        }
+    })
+
+    $('#inputRegDate').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
 
     //查询
     $('#queryOrders').on('click', function(){
         Table.draw();
     })
+
+    function handleDetail(data) {
+        $.iPopWin('pages/orders/detail.html', {
+            title: '查看',
+            readOnly: true,
+            idPrefix: 'orders',
+			data: {aaData: data},
+			width: '50vw'
+		})
+    }
 
 })()

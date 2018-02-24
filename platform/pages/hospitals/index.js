@@ -7,7 +7,7 @@
             type: 'POST',
             data: function(status){
                 return JSON.stringify({
-                    branchName: $('#inputBranchCode').val(),
+                    branchName: $('#inputBranchName').val(),
                     pageNum: status.start
                 });
             },
@@ -19,13 +19,13 @@
         },
         columns: [
             {
-                data: 'branchCode',
-                title: '医院编码',
+                data: 'branchName',
+                title: '医院名称',
                 sortable: false
             },
             {
-                data: 'branchName',
-                title: '医院名称',
+                data: 'branchCode',
+                title: '医院编码',
                 sortable: false
             },
             {
@@ -80,18 +80,45 @@
         }
     })
 
+    
+    //查询
+    $('#queryHospitals').on('click', function(){
+        Table.draw();
+    })
+    
     //新增
     $('#hospitals_add').on('click', function(e){
         $.iPopWin('pages/hospitals/detail.html', {
             title: '新增',
             idPrefix: 'hospitals',
-			width: '50vw'
-		})
-    })
-
-    //查询
-    $('#queryHospitals').on('click', function(){
-        Table.draw();
+            width: '50vw',
+            btns: [
+                {
+                    text: '确定',
+                    click: function(){
+                        var form = $("#hospital_detail")
+                        if (!form.validationEngine('validate')) {
+                            return false;
+                        }
+                        var jsonArr = form.serializeArray(),
+                            json = {};
+                        for (var i=0; i < jsonArr.length; i++) {
+                            json[jsonArr[i].name] = jsonArr[i].value;
+                        }
+                        $.ajax({
+                            url: CONFIG.PLATFORMURL + 'hospital/addHospital',
+                            data: JSON.stringify(json),
+                            type: 'POST',
+                            success: function(result) {
+                                if (result.resultCode == 0) {
+                                    Table.draw();
+                                }
+                            }
+                        })
+                    }
+                }
+            ]
+        }, handleModal)
     })
 
     function handleDetail(data) {
@@ -109,13 +136,69 @@
             title: '编辑',
             idPrefix: 'hospitals',
 			data: {aaData: data},
-			width: '50vw'
-		})
+            width: '50vw',
+            btns: [
+                {
+                    text: '确定',
+                    click: function(){
+                        var form = $("#hospital_detail")
+                        if (!form.validationEngine('validate')) {
+                            return false;
+                        }
+                        var jsonArr = form.serializeArray(),
+                            json = {};
+                        for (var i=0; i < jsonArr.length; i++) {
+                            json[jsonArr[i].name] = jsonArr[i].value;
+                        }
+                        $.ajax({
+                            url: CONFIG.PLATFORMURL + 'hospital/updHospital',
+                            data: JSON.stringify(json),
+                            type: 'POST',
+                            success: function(result) {
+                                if (result.resultCode == 0) {
+                                    Table.draw();
+                                }
+                            }
+                        })
+                    }
+                }
+            ]
+		}, handleModal)
+    }
+    
+    function handleModal(){
+        //上传图片
+        $('#uploadPic').on('change', function(event){
+            var file = this.files[0];
+            var formData = new FormData();
+            formData.append('file', file);
+            $.ajax({
+                url: CONFIG.PLATFORMURL + 'hospital/upload',
+                data: formData,
+                processData: false,
+                type: 'POST',
+                contentType: false,
+                success: function(result){
+                    $('#hospitals_picUrl').val(result.result.picUrl);
+                }
+            })
+        })
     }
 
     function handleDelete(data, type, rowData, setting) {
         $.iConfirm('提示', '确认删除?', function(){
-
+            $.ajax({
+                url: CONFIG.PLATFORMURL + 'hospital/delHospital',
+                data: JSON.stringify({
+                    id: data.id
+                }),
+                type: 'POST',
+                success: function(result) {
+                    if (result.resultCode == 0) {
+                        Table.draw();
+                    }
+                }
+            })
         });
     }
 })()

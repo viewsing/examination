@@ -6,6 +6,31 @@
 					<label for="inputBranchName">医院名称:</label>
 					<input type="text" class="form-control" id="inputBranchName">
 				</div>
+				<div class="form-group">
+					<label for="inputOrderNo">订单号:</label>
+					<input type="text" class="form-control" id="inputOrderNo">
+				</div>
+				<div class="form-group">
+					<label for="inputPatName">患者姓名:</label>
+					<input type="text" class="form-control" id="inputPatName">
+				</div>
+				<div class="form-group">
+					<label for="inputPatIdCard">身份证:</label>
+					<input type="text" class="form-control" id="inputPatIdCard">
+				</div>
+				<div class="form-group">
+					<label for="inputTradeMode">支付平台:</label>
+					<select name="inputTradeMode" id="inputTradeMode">
+						<option value="" selected>无</option>
+						<option value="1">银联</option>
+						<option value="2">微信</option>
+						<option value="3">支付宝</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="inputRegDate">预约日期:</label>
+					<input type="text" class="form-control" id="inputRegDate" data-date="" data-date-format="yyyy-mm-dd">
+				</div>
 				<button type="button" class="btn btn-primary" id="queryOrders">查询</button>
 			</form>
 		</div>

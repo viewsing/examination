@@ -1,7 +1,7 @@
 //全局设置
 var CONFIG = {
     dummy: true,
-    PLATFORMURL: 'http://211.159.189.178:8080/hr_examination_platform/',
+    PLATFORMURL: 'http://211.159.189.178:8080/exApp/',
     dataTableConf: {
 		searching: false,
 		lengthChange: false,
@@ -43,6 +43,12 @@ $.ajaxSetup({
 			json = JSON.parse(data);
 			if (json.resultCode && json.resultCode == 3) {
 				window.location.pathname = '/platform/login.html';
+				return;
+			} else if (json.resultCode && json.resultCode == 2) {
+				alert(json.resultDesc);
+				return;
+			} else if (json.resultCode && json.resultCode == -1) {
+				alert('系统错误，请联系系统管理员');
 				return;
 			}
 		}
@@ -122,7 +128,9 @@ $.iPopWin = function(url, options, callback){
 	//确定按钮
 	if (options.btns && options.btns[0]) {
 		wrapper.find('[data-confirm]').on('click', function(event) {
-			options.btns[0].click();
+			if (options.btns[0].click() === false){
+				return false;
+			};
 			wrapper.modal('hide');
 		})
 	} else {
@@ -204,4 +212,68 @@ $.iConfirm = function(title, msg, callback) {
 		show: true,
 		backdrop: 'static'
 	});
+}
+
+//alert组件
+$.iAlert = function(title, msg, callback) {
+	var temp = `
+		<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      	<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="exampleModalLabel">${title || ''}</h4>
+		     	</div>
+				<div class="modal-body">
+					${msg}
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+		    </div>
+		  </div>
+		</div>`;
+	var wrapper = $(temp);
+
+	wrapper.find('.modal-dialog').css('width', '30vw');
+
+	//隐藏时移除(为了实现多层弹框)
+	wrapper.on('hidden.bs.modal', function (e) {
+		wrapper.remove();
+	})
+
+	//显示弹框
+	wrapper.modal({
+		show: true,
+		backdrop: 'static'
+	});
+}
+
+//Toast组件
+$.iToast = function(title, msg, callback) {
+	var temp = `
+	<div class="toast">
+		<div class="toast-dialog">
+		<div class="toast-content">
+				<div class="toast-header">
+				<h4 class="toast-title">${title || ''}</h4>
+				</div>
+			<div class="toast-body">
+				${msg}
+			</div>
+		</div>
+		</div>
+	</div>`;
+	var wrapper = $(temp);
+
+	wrapper.css('display', 'none');
+	document.body.appendChild(wrapper[0])
+	
+	//显示弹框
+	wrapper.fadeIn();
+
+	setTimeout( function(){
+		wrapper.fadeOut();
+		wrapper.remove();
+	}, 2000)
 }

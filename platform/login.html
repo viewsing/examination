@@ -17,6 +17,12 @@
             padding-bottom: 40px;
             background-color: #eee;
         }
+        
+        .container {
+            position: absolute;
+            top: 22%;
+            left: 17%;
+        }
 
         .form-signin {
             max-width: 330px;
@@ -66,7 +72,7 @@
     <![endif]-->
 </head>
 
-<body>
+<body style="background-image: url(./img/bg.jpg)">
 
     <div class="container">
 
@@ -92,28 +98,29 @@
                 this.bind();
             },
             bind: function(){
-                this.loginBtn.onclick = function(){
-                    if (username.validate() && password.validate()) {
-                        var xhr = new XMLHttpRequest();
-                        var data = {
-                            username: username.usernameNode.value,
-                            password: password.passwordNode.value
-                        };
-                        data = JSON.stringify(data);
-                        xhr.onreadystatechange = function(event) {
-                            if (xhr.readyState == 4) {
-                                if (xhr.status == 200) {
-                                    window.location.pathname = '/platform/index.html';
-                                }
+                this.loginBtn.onclick = this.login;
+            },
+            login: function(){
+                if (username.validate() && password.validate()) {
+                    var xhr = new XMLHttpRequest();
+                    var data = {
+                        username: username.usernameNode.value,
+                        password: password.passwordNode.value
+                    };
+                    data = JSON.stringify(data);
+                    xhr.onreadystatechange = function(event) {
+                        if (xhr.readyState == 4) {
+                            if (xhr.status == 200) {
+                                window.location.pathname = '/platform/index.html';
                             }
                         }
-                        xhr.open('POST', 'http://211.159.189.178:8080/hr_examination_platform/user/login');
-                        xhr.setRequestHeader('Content-Type', 'application/json');
-                        xhr.withCredentials = true;
-                        xhr.send(data);
-                    } else {
-                        alert('请输入正确的帐号密码');
                     }
+                    xhr.open('POST', 'http://211.159.189.178:8080/exApp/user/login');
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.withCredentials = true;
+                    xhr.send(data);
+                } else {
+                    alert('请输入正确的帐号密码');
                 }
             }
         }
@@ -182,6 +189,12 @@
             }
         }
         password.init();
+
+        document.addEventListener('keyup', function(event){
+            if (event.keyCode === 13) {
+                login.login();
+            }
+        })
     </script>
 </body>
 

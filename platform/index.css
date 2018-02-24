@@ -2,6 +2,10 @@
 a:-webkit-any-link {
 	text-decoration: none;
 }
+select {
+	height: 2em;
+	width: 13em;
+}
 /*ajax遮罩*/
 #loading {
 	width: 100vw;
@@ -27,6 +31,9 @@ a:-webkit-any-link {
 .logo>img {
 	width: 60px;
 	height: 60px;
+}
+.navbar-rightOperations {
+	float: right;
 }
 /*侧栏菜单*/
 .sidebar {
@@ -65,6 +72,14 @@ a:-webkit-any-link {
 	padding: 10px;
 }
 
+.form-inline > .form-group {
+	margin: 0 1em 1em 0;
+}
+
+.form-inline > .btn {
+	vertical-align: top;
+}
+
 /* dataTables */
 .table > tbody > tr > td, th {
 	text-align: center;
@@ -81,4 +96,17 @@ a:-webkit-any-link {
 }
 .g_operatedField {
 	margin: 1em;
+}
+
+/* Toast组件 */
+.toast {
+	width: 16em;
+	height: 8em;
+	position: absolute;
+	right: 6%;
+	top: 10%;
+	z-index: 9999;
+	border-radius: .5em;
+	padding: 1em;
+	background-color: #8bd2f5;
 }
