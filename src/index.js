@@ -6,7 +6,6 @@ import registerServiceWorker from './registerServiceWorker';
 
 window.USERURL = 'http://211.159.189.178:8080/hr_examination_user/';
 // window.USERURL = 'http://localhost:3002/hr_examination_user/';
-window.ZSSYURL = 'http://localhost:3002/hr_examination_zssy/';
 window.developing = false;
 
 ReactDOM.render(<App />, document.getElementById('root'));
