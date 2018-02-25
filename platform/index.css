@@ -6,6 +6,8 @@ select {
 	height: 2em;
 	width: 13em;
 }
+
+
 /*ajax遮罩*/
 #loading {
 	width: 100vw;
@@ -21,6 +23,8 @@ select {
 	top: 50%;
 	left: 50%;
 }
+
+
 /*navbar*/
 .top-bar {
 	margin-bottom: 3px;
@@ -32,12 +36,29 @@ select {
 	width: 60px;
 	height: 60px;
 }
-.navbar-rightOperations {
-	float: right;
+.navbar-content {
+	height: 4em;
 }
+
+/* navbar右边操作列 */
+.navbar-rightOperations {
+	height: 100%;
+	float: right;
+	display: flex;
+	align-items: center;
+}
+#logout {
+	width: 22px;
+    height: 22px;
+	display: block;
+	cursor: pointer;
+	background-image: url('./img/logout.svg')
+}
+
+
 /*侧栏菜单*/
 .sidebar {
-	height: calc(100vh - 65px);
+	height: calc(100vh - 4.5em);
 	background: rgb(100,100,100);
 }
 .sidebar-menu > ul {
@@ -67,6 +88,35 @@ select {
 	background-color: #6994e2;
 }
 
+
+/* 主要内容区 */
+.main {
+	height: calc(100vh - 4.5em);
+}
+.main-breadcrumb {
+	height: 7%;
+}
+#main-content {
+	height: 93%;
+	overflow-y: auto;
+}
+/* 主内容区滚动条样式 */
+#main-content::-webkit-scrollbar {/*滚动条整体样式*/
+	width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
+	height: 4px;
+}
+#main-content::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+	border-radius: 5px;
+	-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+	background: rgba(0,0,0,0.2);
+}
+#main-content::-webkit-scrollbar-track {/*滚动条里面轨道*/
+	-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+	border-radius: 0;
+	background: rgba(0,0,0,0.1);
+}
+
+
 /*bootstrap重设*/
 .modal-header, .modal-footer {
 	padding: 10px;
@@ -80,6 +130,7 @@ select {
 	vertical-align: top;
 }
 
+
 /* dataTables */
 .table > tbody > tr > td, th {
 	text-align: center;
@@ -90,13 +141,15 @@ select {
 	margin: .5em;
 }
 
+
 /* 页面布局 */
 .g_searchField {
-	margin: 1em;
+	margin: 1em 0 0 1em;
 }
 .g_operatedField {
-	margin: 1em;
+	margin-left: 1em;
 }
+
 
 /* Toast组件 */
 .toast {

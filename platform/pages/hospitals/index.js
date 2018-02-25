@@ -100,20 +100,25 @@
                         if (!form.validationEngine('validate')) {
                             return false;
                         }
-                        var jsonArr = form.serializeArray(),
-                            json = {};
-                        for (var i=0; i < jsonArr.length; i++) {
-                            json[jsonArr[i].name] = jsonArr[i].value;
+                        //要先上传图片
+                        var picInput = $('#uploadPic')[0];
+                        if (!picInput.files[0]) {
+                            alert('请先选择要上传的医院图片');
+                            return false;
                         }
-                        $.ajax({
-                            url: CONFIG.PLATFORMURL + 'hospital/addHospital',
-                            data: JSON.stringify(json),
+                        
+                        var formData = new FormData();
+                        formData.append('file', picInput.files[0]);
+                        var uploadPic = $.ajax({
+                            url: CONFIG.PLATFORMURL + 'hospital/upload',
+                            data: formData,
+                            processData: false,
                             type: 'POST',
-                            success: function(result) {
-                                if (result.resultCode == 0) {
-                                    Table.draw();
-                                }
-                            }
+                            contentType: false
+                        })
+                        //上传成功后提交表单
+                        uploadPic.done(function(result){
+                            submitForm(result, form, 'hospital/addHospital');
                         })
                     }
                 }
@@ -128,7 +133,9 @@
             idPrefix: 'hospitals',
 			data: {aaData: data},
 			width: '50vw'
-		})
+		}, function(){
+            $('#previewPic').attr('src', data.picUrl);
+        })
     }
 
     function handleEdit(data) {
@@ -141,47 +148,73 @@
                 {
                     text: '确定',
                     click: function(){
-                        var form = $("#hospital_detail")
+                        var form = $("#hospital_detail");
+                        //校验
                         if (!form.validationEngine('validate')) {
                             return false;
                         }
-                        var jsonArr = form.serializeArray(),
-                            json = {};
-                        for (var i=0; i < jsonArr.length; i++) {
-                            json[jsonArr[i].name] = jsonArr[i].value;
+                        //如果有文件则上传图片
+                        var picInput = $('#uploadPic')[0];
+                        var uploadPic;
+                        if (picInput.files[0]) {
+                            var formData = new FormData();
+                            formData.append('file', file);
+                            uploadPic = $.ajax({
+                                url: CONFIG.PLATFORMURL + 'hospital/upload',
+                                data: formData,
+                                processData: false,
+                                type: 'POST',
+                                contentType: false
+                            })
                         }
-                        $.ajax({
-                            url: CONFIG.PLATFORMURL + 'hospital/updHospital',
-                            data: JSON.stringify(json),
-                            type: 'POST',
-                            success: function(result) {
-                                if (result.resultCode == 0) {
-                                    Table.draw();
-                                }
-                            }
-                        })
+                        //上传成功后提交表单
+                        if (uploadPic) {
+                            uploadPic.done(function(result){
+                                submitForm(result, form, 'hospital/updHospital');
+                            })
+                        } else {
+                            submitForm(null, form, 'hospital/updHospital');
+                        }
                     }
                 }
             ]
-		}, handleModal)
+		}, function(){
+            handleModal(data);
+        })
     }
     
-    function handleModal(){
-        //上传图片
+    function handleModal(data){
+        //图片预览
         $('#uploadPic').on('change', function(event){
             var file = this.files[0];
-            var formData = new FormData();
-            formData.append('file', file);
-            $.ajax({
-                url: CONFIG.PLATFORMURL + 'hospital/upload',
-                data: formData,
-                processData: false,
-                type: 'POST',
-                contentType: false,
-                success: function(result){
-                    $('#hospitals_picUrl').val(result.result.picUrl);
+            var fr = new FileReader();
+            fr.readAsDataURL(file);
+            fr.onload = function(e){
+                $('#previewPic').attr('src', e.target.result);
+            } 
+        });
+        //原有图片
+        data && $('#previewPic').attr('src', data.picUrl);
+    }
+
+    function submitForm(result, form, interface) {
+        if ( result && result.resultCode == 0) {
+            form.find('#hospitals_picUrl').val(result.result.picUrl);
+        }
+        var jsonArr = form.serializeArray(),
+            json = {};
+        for (var i=0; i < jsonArr.length; i++) {
+            json[jsonArr[i].name] = jsonArr[i].value;
+        }
+        $.ajax({
+            url: CONFIG.PLATFORMURL + interface,
+            data: JSON.stringify(json),
+            type: 'POST',
+            success: function(result) {
+                if (result.resultCode == 0) {
+                    Table.draw();
                 }
-            })
+            }
         })
     }
 
