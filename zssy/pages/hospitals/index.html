@@ -1,0 +1,57 @@
+<body>
+	<div>
+		<div class="page_grid g_operatedField" style="margin-top: 1em;">
+			<button class="btn btn-primary" id="exams_add">添加</button>
+			<button class="btn btn-primary" id="exams_edit">更新</button>
+			<button class="btn btn-primary" id="exams_delete">删除</button>
+		</div>
+		<hr/>
+		<div class="page_grid g_dataField">
+			<form class="form-horizontal" id="hospital_detail">
+				<div class="form-group">
+					<label for="hospitals_branchCode" class="col-sm-2 control-label">编码:</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control validate[required]" id="hospitals_branchCode" name="branchCode">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="hospitals_branchName" class="col-sm-2 control-label">名称:</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control validate[required]" id="hospitals_branchName"  name="branchName">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="hospitals_levle" class="col-sm-2 control-label">级别:</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control validate[required]" id="hospitals_levle"  name="levle">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="hospitals_category" class="col-sm-2 control-label">类别:</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control validate[required]" id="hospitals_category"  name="category">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="hospitals_telephone" class="col-sm-2 control-label">电话:</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control validate[required]" id="hospitals_telephone"  name="telephone">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="hospitals_desc" class="col-sm-2 control-label">介绍:</label>
+					<div class="col-sm-9">
+						<textarea name="desc" class="form-control validate[required]" id="hospitals_desc"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="hospitals_location" class="col-sm-2 control-label">位置:</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control validate[required]" id="hospitals_location"  name="location">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="pages/hospitals/index.js" type="text/javascript" charset="utf-8"></script>
+</body>

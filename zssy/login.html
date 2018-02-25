@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>医院HIS系统</title>
+    <!-- Bootstrap core CSS -->
+    <link href="./refer/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #eee;
+        }
+        
+        .form-signin {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+
+        .form-signin .form-signin-heading {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .form-signin .form-control {
+            position: relative;
+            height: auto;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .form-signin .error {
+            color: #e06c75;
+            border-color: #e06c75;
+        }
+
+        .form-signin .form-control:focus {
+            z-index: 2;
+        }
+
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    </style>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body style="background-image: url(./img/bg.jpg)">
+
+    <div class="login-container">
+
+        <form class="form-signin">
+            <h2 class="form-signin-heading"><img src="./img/login.png" alt="登录"></h2>
+            <div class="form-group">
+                <label for="username">帐号:</label>
+                <input type="text" id="username" class="form-control" placeholder="请输入帐号" required autofocus>
+            </div>
+            <div class="form-group">
+                <label for="password">密码:</label>
+                <input type="password" id="password" class="form-control" placeholder="请输入密码" required>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" id="loginBtn" type="button">登录</button>
+        </form>
+    </div>
+    <!-- /container -->
+    <script>
+        var login = {
+            init: function(){
+                this.loginBtn = document.getElementById('loginBtn');
+                this.bind();
+            },
+            bind: function(){
+                this.loginBtn.onclick = this.login;
+            },
+            login: function(){
+                if (username.validate() && password.validate()) {
+                    var xhr = new XMLHttpRequest();
+                    var data = {
+                        username: username.usernameNode.value,
+                        password: password.passwordNode.value
+                    };
+                    data = JSON.stringify(data);
+                    xhr.onreadystatechange = function(event) {
+                        if (xhr.readyState == 4) {
+                            if (xhr.status == 200) {
+                                window.location.pathname = '/zssy/index.html';
+                            }
+                        }
+                    }
+                    xhr.open('POST', 'http://211.159.189.178:8080/zssy/user/login');
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.withCredentials = true;
+                    xhr.send(data);
+                } else {
+                    alert('请输入正确的帐号密码');
+                }
+            }
+        }
+        login.init();
+
+        var username = {
+            init: function(){
+                this.usernameNode = document.getElementById('username');
+                this.bind();
+            },
+            bind: function(){
+                var self = this;
+                this.usernameNode.onblur = function(event){
+                    self.validate();
+                }
+            },
+            validate: function(){
+                var re = /^[a-zA-Z0-9_-]{4,16}$/;
+                var warningNode = this.usernameNode.previousElementSibling;
+                if (warningNode.className.indexOf('warning')===-1) {
+                    warningNode = document.createElement('span');
+                    warningNode.className = 'warning error';
+                    warningNode.innerText = '帐号应由4-16位大小写字母或数字、下划线组成';
+                }
+                if (re.test(this.usernameNode.value)) {
+                    this.usernameNode.classList.remove('error');
+                    warningNode.parentNode && warningNode.parentNode.removeChild(warningNode);
+                    return true;
+                } else {
+                    this.usernameNode.parentNode.insertBefore(warningNode, this.usernameNode);
+                    this.usernameNode.classList.add('error');
+                    return false;
+                }
+            }
+        }
+        username.init();
+
+        var password = {
+            init: function(){
+                this.passwordNode = document.getElementById('password');
+                this.bind();
+            },
+            bind: function(){
+                var self = this;
+                this.passwordNode.onblur = function(event){
+                    self.validate();
+                }
+            },
+            validate: function(){
+                var re = /^[a-zA-Z0-9_\-!@#\$%]{4,16}$/;
+                var warningNode = this.passwordNode.previousElementSibling;
+                if (warningNode.className.indexOf('warning')===-1) {
+                    warningNode = document.createElement('span');
+                    warningNode.className = 'warning error';
+                    warningNode.innerText = '密码应由4-16位大小写字母或数字、下划线组成';
+                }
+                if (re.test(this.passwordNode.value)) {
+                    this.passwordNode.classList.remove('error');
+                    warningNode.parentNode && warningNode.parentNode.removeChild(warningNode);
+                    return true;
+                } else {
+                    this.passwordNode.parentNode.insertBefore(warningNode, this.passwordNode);
+                    this.passwordNode.classList.add('error');
+                    return false;
+                }
+            }
+        }
+        password.init();
+
+        document.addEventListener('keyup', function(event){
+            if (event.keyCode === 13) {
+                login.login();
+            }
+        })
+    </script>
+</body>
+
+</html>

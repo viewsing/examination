@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form class="form-horizontal" id="exam_detail">
+        <div class="form-group">
+            <label for="exams_examinationName" class="col-sm-2 control-label">名称:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control validate[required]" id="exams_examinationName" name="examinationName">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exams_examinationCode" class="col-sm-2 control-label">编码:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control validate[required]" id="exams_examinationCode" name="examinationCode">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exams_desc" class="col-sm-2 control-label">描述:</label>
+            <div class="col-sm-9">
+                <textarea name="desc" class="form-control validate[required]" id="exams_desc"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exams_suitAge" class="col-sm-2 control-label">适用年龄段:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control validate[required]" id="exams_suitAge" name="suitAge">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exams_suitSex" class="col-sm-2 control-label">适用性别:</label>
+            <div class="col-sm-9">
+                <select name="suitSex" id="exams_suitSex">
+                    <option selected value="A">所有</option>
+                    <option value="M">男</option>
+                    <option value="F">女</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exams_fee" class="col-sm-2 control-label">费用(元):</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control validate[required]" id="exams_fee" name="fee">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">子项目:</label>
+            <div class="col-sm-9">
+                <div class="panel-group" id="examinationDetail" role="tablist" aria-multiselectable="true">
+
+                </div>
+                <div>
+                    <button type="button" id="addChildrenItem" class="btn btn-sm btn-primary">新建子项目</button>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="exams_id" name="id">
+    </form>
+</body>
+</html>

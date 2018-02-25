@@ -127,10 +127,20 @@ select {
 	vertical-align: top;
 }
 
+/* 修复新版bootstrap多层模态框问题 */
+.modal-backdrop {
+	z-index: 1050;
+}
+/* 修复多层模态框关闭后导致下层不能滚动 */
+.modal {
+	overflow-y: auto;
+}
+
 
 /* dataTables */
 .table > tbody > tr > td, th {
 	text-align: center;
+	max-width: 200px;
 	line-height: 3;
 }
 

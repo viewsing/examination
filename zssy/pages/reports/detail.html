@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form class="form-horizontal" id="hospital_detail">
+        <div class="form-group">
+            <label for="hospitals_branchCode" class="col-sm-2 control-label">编码:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control validate[required]" id="hospitals_branchCode" name="branchCode">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="hospitals_branchName" class="col-sm-2 control-label">名称:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control validate[required]" id="hospitals_branchName"  name="branchName">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="hospitals_levle" class="col-sm-2 control-label">级别:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control validate[required]" id="hospitals_levle"  name="levle">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="hospitals_category" class="col-sm-2 control-label">类别:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control validate[required]" id="hospitals_category"  name="category">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="hospitals_telephone" class="col-sm-2 control-label">电话:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control validate[required]" id="hospitals_telephone"  name="telephone">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="hospitals_desc" class="col-sm-2 control-label">介绍:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control validate[required]" id="hospitals_desc"  name="desc">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="hospitals_location" class="col-sm-2 control-label">位置:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control validate[required]" id="hospitals_location"  name="location">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="hospitals_location" class="col-sm-2 control-label">上传图片:</label>
+            <div class="col-sm-9">
+                <input type="file" id="uploadPic" accept="image/*">
+                <img src="" id="previewPic" alt="图片预览" style="margin-top: 1em;" width="200px" height="200px">
+            </div>
+        </div>
+        <input type="hidden" name="picUrl" id="hospitals_picUrl">
+    </form>
+</body>
+</html>
