@@ -17,8 +17,14 @@ window.onhashchange = function(e){
 }
 //刷新页面回到index
 window.onload = function(e) {
-    window.location.hash = '';
-    window.location.hash = 'hospitals';
+	window.location.hash = '';
+	for (var route in Router) {
+		if (Router.hasOwnProperty(route)) {
+			if (Router[route].default) {
+				window.location.hash = route;
+			}
+		}
+	}
 }
 
 //ajax遮罩

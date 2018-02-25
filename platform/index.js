@@ -79,7 +79,7 @@ $('#logout').on('click', function(e){
             type: 'POST',
             success: function(result){
                 if (result.resultCode == 0) {
-                    window.location.pathname = 'platform/login.html';
+                    window.location.pathname = '/platform/login.html';
                 }
             }
         })
