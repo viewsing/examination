@@ -8,6 +8,18 @@ class LoginForm extends Component {
         super(props);
         this.onSubmit = this.onSubmit.bind(this);
     }
+    componentDidMount(){
+        this.context.axios({
+            url: window.USERURL + 'user/login'
+        }).then( response => {
+            if (response.data.resultCode == 0) {
+                Toast.info('登录成功', 1, () => {
+                    sessionStorage.setItem('username', response.data.result.username);
+                    this.context.history.goBack()
+                })
+            }
+        })
+    }
     onSubmit = () => {
         const self = this;
         this.props.form.validateFields({ force: true }, (error) => {
@@ -21,7 +33,7 @@ class LoginForm extends Component {
                     if (response.data.resultCode == 0) {
                         Toast.info('登录成功', 1, () => {
                             sessionStorage.setItem('username', params.username);
-                            this.context.history.push('/index')
+                            this.context.history.goBack()
                         })
                     } else if (response.data.resultCode == -1){
                         Toast.info('登录失败！请与系统管理员联系', 2)
