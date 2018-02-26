@@ -13,6 +13,7 @@ const timeFlag = {
     2: 4
 }
 let timeSement = '08:00-10:00';
+let orderNo;
 
 function PayType (props) {
     return <div>
@@ -95,7 +96,7 @@ class Appointing extends Component {
             this.context.axios({
                 url: window.USERURL + 'examination/preExaminationPay',
                 data: {
-                    orderNo: this.state.orderNo
+                    orderNo: orderNo
                 }
             }).then( response => {
                 if (response.data.resultCode == 0) {
@@ -131,6 +132,7 @@ class Appointing extends Component {
             }
         }).then( response => {
             if (response.data.resultCode == 0) {
+                orderNo = response.data.result.orderNo;
                 Toast.info('准备付款...', 1, () => {
                     let imgSrc;
                     if(this.state.tradeMode == 0) {

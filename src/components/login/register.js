@@ -21,7 +21,7 @@ class RegisterForm extends Component {
                     if (response.data.resultCode == 0) {
                         Toast.info('注册成功', 1, () => {
                             sessionStorage.setItem('username', params.username);
-                            this.context.history.push('/personalInfo')
+                            this.context.history.replace('/personalInfo')
                         })
                     } else if (response.data.resultCode == -1){
                         Toast.info('注册失败！请与系统管理员联系', 2)

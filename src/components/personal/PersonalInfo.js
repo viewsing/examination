@@ -5,7 +5,7 @@ import { createForm } from 'rc-form';
 
 const nowTimeStamp = Date.now();
 const now = new Date(nowTimeStamp);
-let submitURL = window.USERURL + 'user/bindPatientInfo';
+let submitURL = window.USERURL + 'user/updUser';
 class PersonalInfoForm extends Component {
     constructor(props){
         super(props);
@@ -17,6 +17,7 @@ class PersonalInfoForm extends Component {
             status: 0,
             patSex: 'M',
             dpValue: now,
+            disId: false
         }
         this.onSubmit = this.onSubmit.bind(this);
     }
@@ -31,16 +32,21 @@ class PersonalInfoForm extends Component {
           }).then( response => {
             if (response.data.resultCode == 0) {
                 response.data.result.patBirth = new Date(response.data.result.patBirth);
+                // rc-form设置多余的数据会静默失败。。。
+                delete response.data.result.createPerson, delete response.data.result.createTime;
+                delete response.data.result.modifyPerson, delete response.data.result.modifyTime;
+                delete response.data.result.username;
                 form.setFieldsValue(response.data.result);
                 this.setState({
                     patSex: response.data.result.patSex,
-                    status: 1
+                    status: 1,
+                    disId: true
                 })
             } else if (response.data.resultCode == 1){
                 this.setState({
                     status: 1
                 })
-                submitURL = window.USERURL + 'user/updUser'
+                submitURL = window.USERURL + 'user/bindPatientInfo';
             } else {
                 Toast.info('请求失败！请与系统管理员联系', 2)
             }
@@ -50,10 +56,12 @@ class PersonalInfoForm extends Component {
     }
     onSubmit = () => {
         const self = this;
+        let username = window.sessionStorage.getItem('username');
         this.props.form.validateFields({ force: true }, (error) => {
             const params = this.props.form.getFieldsValue();
             params.patBirth = params.patBirth.getFullYear() + '-' + (params.patBirth.getMonth()+1) + '-' + params.patBirth.getDate();
             params.patSex = this.state.patSex;
+            params.username = username;
             if (!error) {
                 Toast.info('保存中...', 7)
                 self.context.axios({
@@ -162,7 +170,7 @@ class PersonalInfoForm extends Component {
                  身份证输入框 
                 **************
                  ***/}
-                <InputItem {...getFieldProps('patIdCard',{
+                <InputItem disabled={this.state.disId} {...getFieldProps('patIdCard',{
                     rules: [
                         { required: true, message: '身份证号码不能为空' },
                         { pattern:  /^\d{6}(18|19|20)?\d{2}(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{3}(\d|[xX])$/, message: '请输入正确的身份证号' }
@@ -176,6 +184,9 @@ class PersonalInfoForm extends Component {
                 placeholder="请输入身份证号码" type="number">
                     身份证
                 </InputItem>
+
+                {/* id */}
+                <InputItem {...getFieldProps('id')} type="hidden"/>
                 
                 {/***
                 **************

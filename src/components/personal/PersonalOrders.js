@@ -105,7 +105,7 @@ class PersonalOrders extends Component {
                 return <Order order={order} />
             })
         } else if (this.state.status == 1) {
-            content = <div>未查询到订单</div>
+            content = <div style={{textAlign: 'center'}}>未查询到订单</div>
         } else {
             content = this.context.loading
         }

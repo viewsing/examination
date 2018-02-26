@@ -158,7 +158,7 @@
                         var uploadPic;
                         if (picInput.files[0]) {
                             var formData = new FormData();
-                            formData.append('file', file);
+                            formData.append('file', picInput.files[0]);
                             uploadPic = $.ajax({
                                 url: CONFIG.PLATFORMURL + 'hospital/upload',
                                 data: formData,
