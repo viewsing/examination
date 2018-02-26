@@ -142,6 +142,8 @@ select {
 	text-align: center;
 	max-width: 200px;
 	line-height: 3;
+	overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .btn-handle {

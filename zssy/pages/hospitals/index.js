@@ -1,81 +1,62 @@
 //@ sourceURL=hospitals.js
 (function(){
+    
+    var hospitalId;
+    var exams_add = $('#exams_add');
+    var exams_edit = $('#exams_edit');
+    var exams_delete = $('#exams_delete');
+    var operateField = $('.g_operatedField');
 
+    $('.g_operatedField').on('click', function(e){
+        if (e.target.id === 'exams_add') {
+            handleAdd();
+        } else if (e.target.id === 'exams_edit') {
+            handleEdit();
+        } else if (e.target.id === 'exams_delete') {
+            handleDelete();
+        }
+    })
+    
     handleDetail();
 
-    $('#exams_add').on('click', handleAdd);
-    $('#exams_edit').on('click', handleEdit);
-    $('#exams_delete').on('click', handleDelete);
-
     function handleDetail() {
+        exams_add.remove();
+        exams_edit.remove();
+        exams_delete.remove();
         $.ajax({
             url: CONFIG.PLATFORMURL + 'hospital/getHospital',
             success: function(result){
+                var context = $('#hospital_detail');
                 if (result.resultCode == 0){
-                    var context = $('#hospital_detail');
                     $.each(result.result, function(key, value) {
+                        if (key === 'id') {
+                            hospitalId = value;
+                        }
                         context.find('#hospitals_' + key).val(value).attr('title', value);
                     })
-                    $('#exams_add').remove();
+                    operateField.append(exams_edit);
+                    operateField.append(exams_delete);
                 } else {
-                    $('#exams_edit').remove();
-                    $('#exams_delete').remove();
+                    operateField.append(exams_add);
+                    context.find('input, textarea').val('').attr('title', '');
                 }
             }
         })
     }
 
     function handleAdd(){
-
+        submitForm('hospital/addHospital');
     }
 
     function handleEdit() {
-        $.iPopWin('pages/hospitals/detail.html', {
-            title: '编辑',
-            idPrefix: 'hospitals',
-			data: {aaData: data},
-            width: '50vw',
-            btns: [
-                {
-                    text: '确定',
-                    click: function(){
-                        var form = $("#hospital_detail");
-                        //校验
-                        if (!form.validationEngine('validate')) {
-                            return false;
-                        }
-                        //如果有文件则上传图片
-                        var picInput = $('#uploadPic')[0];
-                        var uploadPic;
-                        if (picInput.files[0]) {
-                            var formData = new FormData();
-                            formData.append('file', file);
-                            uploadPic = $.ajax({
-                                url: CONFIG.PLATFORMURL + 'hospital/upload',
-                                data: formData,
-                                processData: false,
-                                contentType: false
-                            })
-                        }
-                        //上传成功后提交表单
-                        if (uploadPic) {
-                            uploadPic.done(function(result){
-                                submitForm(result, form, 'hospital/updHospital');
-                            })
-                        } else {
-                            submitForm(null, form, 'hospital/updHospital');
-                        }
-                    }
-                }
-            ]
-		}, function(){
-            handleModal(data);
-        })
+        submitForm('hospital/updHospital');
     }
     
-    function submitForm() {
-        if ( result && result.resultCode == 0) {
-            form.find('#hospitals_picUrl').val(result.result.picUrl);
+    function submitForm(interface) {
+        var form = $('#hospital_detail');
+        //校验
+        if (!form.validationEngine('validate')) {
+            return false;
         }
         var jsonArr = form.serializeArray(),
             json = {};
@@ -85,9 +66,10 @@
         $.ajax({
             url: CONFIG.PLATFORMURL + interface,
             data: JSON.stringify(json),
+            type: 'POST',
             success: function(result) {
                 if (result.resultCode == 0) {
-                    Table.draw();
+                    handleDetail();
                 }
             }
         })
@@ -97,8 +79,9 @@
         $.iConfirm('提示', '确认删除?', function(){
             $.ajax({
                 url: CONFIG.PLATFORMURL + 'hospital/delHospital',
+                type: 'POST',
                 data: JSON.stringify({
-                    id: data.id
+                    id: hospitalId
                 }),
                 success: function(result) {
                     if (result.resultCode == 0) {

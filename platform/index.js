@@ -4,7 +4,10 @@ var CONFIG = {
     PLATFORMURL: 'http://211.159.189.178:8080/exApp/',
     dataTableConf: {
 		searching: false,
-		lengthChange: false,
+        lengthChange: false,
+        ajax: {
+            type: 'POST'
+        },
         language: {  
             "sProcessing": "处理中...",  
             "sLengthMenu": "显示 _MENU_ 项结果",  
@@ -56,12 +59,13 @@ $.ajaxSetup({
 		return data;
 	},
 	contentType: 'application/json',
-	type: 'GET'
+	type: 'POST'
 });
 
 //路由
 var Router = {
 	'hospitals': {
+        default: true,
 		html: 'pages/hospitals/index.html',
 		text: '医院管理'
 	},

@@ -132,6 +132,8 @@ select {
 .table > tbody > tr > td, th {
 	text-align: center;
 	line-height: 3;
+	overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .btn-handle {

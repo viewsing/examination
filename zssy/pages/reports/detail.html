@@ -7,57 +7,79 @@
     <title>Document</title>
 </head>
 <body>
-    <form class="form-horizontal" id="hospital_detail">
+    <form class="form-horizontal" id="report_detail">
         <div class="form-group">
-            <label for="hospitals_branchCode" class="col-sm-2 control-label">编码:</label>
+            <label for="reports_orderNo" class="col-sm-2 control-label">平台订单号:</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control validate[required]" id="hospitals_branchCode" name="branchCode">
+                <input type="text" class="form-control validate[required]" disabled id="reports_orderNo" name="orderNo">
             </div>
         </div>
         <div class="form-group">
-            <label for="hospitals_branchName" class="col-sm-2 control-label">名称:</label>
+            <label for="reports_reportCode" class="col-sm-2 control-label">报告编号:</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control validate[required]" id="hospitals_branchName"  name="branchName">
+                <input type="text" class="form-control validate[required]" disabled id="reports_reportCode" name="reportCode">
             </div>
         </div>
         <div class="form-group">
-            <label for="hospitals_levle" class="col-sm-2 control-label">级别:</label>
+            <label for="reports_regDate" class="col-sm-2 control-label">体检日期:</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control validate[required]" id="hospitals_levle"  name="levle">
+                <input type="text" class="form-control validate[required]" disabled id="reports_regDate" name="regDate">
             </div>
         </div>
         <div class="form-group">
-            <label for="hospitals_category" class="col-sm-2 control-label">类别:</label>
+            <label for="reports_patName" class="col-sm-2 control-label">患者姓名:</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control validate[required]" id="hospitals_category"  name="category">
+                <input type="text" class="form-control validate[required]" disabled id="reports_patName" name="patName">
             </div>
         </div>
         <div class="form-group">
-            <label for="hospitals_telephone" class="col-sm-2 control-label">电话:</label>
+            <label for="reports_patIdCard" class="col-sm-2 control-label">身份证:</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control validate[required]" id="hospitals_telephone"  name="telephone">
+                <input type="text" class="form-control validate[required]" disabled id="reports_patIdCard" name="patIdCard">
             </div>
         </div>
         <div class="form-group">
-            <label for="hospitals_desc" class="col-sm-2 control-label">介绍:</label>
+            <label for="reports_examinationCode" class="col-sm-2 control-label">体检项目编号:</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control validate[required]" id="hospitals_desc"  name="desc">
+                <input type="text" class="form-control validate[required]" disabled id="reports_examinationCode" name="examinationCode">
             </div>
         </div>
         <div class="form-group">
-            <label for="hospitals_location" class="col-sm-2 control-label">位置:</label>
+            <label for="reports_examinationName" class="col-sm-2 control-label">体检项目名称:</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control validate[required]" id="hospitals_location"  name="location">
+                <input type="text" class="form-control validate[required]" disabled id="reports_examinationName" name="examinationName">
             </div>
         </div>
         <div class="form-group">
-            <label for="hospitals_location" class="col-sm-2 control-label">上传图片:</label>
+            <label for="reports_itemTotal" class="col-sm-2 control-label">体检项目总数:</label>
             <div class="col-sm-9">
-                <input type="file" id="uploadPic" accept="image/*">
-                <img src="" id="previewPic" alt="图片预览" style="margin-top: 1em;" width="200px" height="200px">
+                <input type="text" class="form-control validate[required]" disabled id="reports_itemTotal" name="itemTotal">
             </div>
         </div>
-        <input type="hidden" name="picUrl" id="hospitals_picUrl">
+        <div class="form-group">
+            <label for="reports_reportTime" class="col-sm-2 control-label">报告生成时间:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control validate[required]" disabled id="reports_reportTime" name="reportTime">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="reports_status" class="col-sm-2 control-label">报告生成时间:</label>
+            <div class="col-sm-9">
+                <select name="status" id="reports_status" disabled>
+                    <option value="0">未体检</option>
+                    <option value="1">已体检</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">体检明细:</label>
+            <div class="col-sm-9">
+                <div class="panel-group" id="examinationReportDetail" role="tablist" aria-multiselectable="true">
+
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="exams_id" name="id">
     </form>
 </body>
 </html>

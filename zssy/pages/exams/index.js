@@ -42,7 +42,16 @@
             {
                 data: 'suitSex',
                 title: '适用性别',
-                sortable: false
+                sortable: false,
+                render: function(data) {
+                    if (data === 'A') {
+                        return '所有';
+                    } else if (data === 'M') {
+                        return '男';
+                    } else if (data === 'F') {
+                        return '女';
+                    }
+                }
             },
             {
                 data: 'fee',
@@ -232,30 +241,24 @@
                 </a>
                 <button type="button" class="btn btn-sm btn-danger delChildrenItem" style="position: absolute;right: 5%; top:21%; padding: 1px 3px;">删除</button>
             </div>
-            <div id="${item.id}" class="panel-collapse collapse in">
+            <div id="${item.id}" class="panel-collapse collapse">
                 <div class="panel-body">
                     <div class="form-group">
-                        <label for="name_${item.itemCode}" class="col-sm-2 control-label">名称:</label>
+                        <label for="name_${item.id}" class="col-sm-2 control-label">名称:</label>
                         <div class="col-sm-9">
-                            <input type="text" value="${item.itemName}" title="${item.itemName}" class="form-control validate[required]" data-name="itemName" id="name_${item.itemCode}">
+                            <input type="text" value="${item.itemName}" title="${item.itemName}" class="form-control validate[required]" data-name="itemName" id="name_${item.id}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="code_${item.itemCode}" class="col-sm-2 control-label">编号:</label>
+                        <label for="desc_${item.id}" class="col-sm-2 control-label">描述:</label>
                         <div class="col-sm-9">
-                            <input type="text" value="${item.itemCode}" title="${item.itemCode}" class="form-control validate[required]" data-name="itemCode" id="code_${item.itemCode}">
+                            <textarea title="${item.desc}" class="form-control validate[required]" data-name="desc" id="desc_${item.id}">${item.desc}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="desc_${item.itemCode}" class="col-sm-2 control-label">描述:</label>
+                        <label for="check_${item.id}" class="col-sm-2 control-label">检查部位:</label>
                         <div class="col-sm-9">
-                            <textarea title="${item.desc}" class="form-control validate[required]" data-name="desc" id="desc_${item.itemCode}">${item.desc}</textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="check_${item.itemCode}" class="col-sm-2 control-label">检查部位:</label>
-                        <div class="col-sm-9">
-                            <input type="text" value="${item.checkPart}" title="${item.checkPart}" class="form-control validate[required]" data-name="checkPart" id="check_${item.itemCode}">
+                            <input type="text" value="${item.checkPart}" title="${item.checkPart}" class="form-control validate[required]" data-name="checkPart" id="check_${item.id}">
                         </div>
                     </div>
                 </div>
@@ -275,7 +278,6 @@
             var item = {};
             var $panel = $(panel);
             item.itemName = $panel.find('[data-name="itemName"]').val();
-            item.itemCode = $panel.find('[data-name="itemCode"]').val();
             item.desc = $panel.find('[data-name="desc"]').val();
             item.checkPart = $panel.find('[data-name="checkPart"]').val();
             var id = $panel.find('[data-name="id"]').val()

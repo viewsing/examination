@@ -66,11 +66,11 @@ $.ajaxSetup({
 //路由
 var Router = {
 	'hospitals': {
+        default: true,
 		html: 'pages/hospitals/index.html',
 		text: '医院信息'
 	},
 	'exams': {
-        default: true,
 		html: 'pages/exams/index.html',
 		text: '体检项目管理'
 	},
