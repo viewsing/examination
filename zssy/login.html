@@ -123,11 +123,13 @@
                     xhr.onreadystatechange = function(event) {
                         if (xhr.readyState == 4) {
                             if (xhr.status == 200) {
-                                window.location.pathname = '/zssy/index.html';
+                                window.location.pathname = './index.html';
+                                // window.location.pathname = '/zssy/index.html';
                             }
                         }
                     }
-                    xhr.open('POST', 'http://211.159.189.178:8080/zssy/user/login');
+                    // xhr.open('POST', 'http://211.159.189.178:8080/zssy/user/login');
+                    xhr.open('POST', '/hr_examination_zssy/user/login');
                     xhr.setRequestHeader('Content-Type', 'application/json');
                     xhr.withCredentials = true;
                     document.getElementById('loading').style.display = 'block';

@@ -1,7 +1,8 @@
 //全局设置
 var CONFIG = {
     dummy: true,
-    PLATFORMURL: 'http://211.159.189.178:8080/exApp/',
+    // PLATFORMURL: 'http://211.159.189.178:8080/exApp/',
+    PLATFORMURL: '/hr_examination_platform/',
     dataTableConf: {
 		searching: false,
         lengthChange: false,
@@ -46,7 +47,8 @@ $.ajaxSetup({
 		if (type === 'json') {
 			json = JSON.parse(data);
 			if (json.resultCode && json.resultCode == 3) {
-				window.location.pathname = '/platform/login.html';
+                // window.location.pathname = '/platform/login.html';
+				window.location.pathname = './login.html';
 				return;
 			} else if (json.resultCode && json.resultCode == 2) {
 				alert(json.resultDesc);
@@ -83,7 +85,8 @@ $('#logout').on('click', function(e){
             type: 'POST',
             success: function(result){
                 if (result.resultCode == 0) {
-                    window.location.pathname = '/platform/login.html';
+                    // window.location.pathname = '/platform/login.html';
+                    window.location.pathname = './login.html';
                 }
             }
         })
