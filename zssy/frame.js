@@ -98,7 +98,7 @@ $.iPopWin = function(url, options){
 		options.before && options.before(wrapper);
 		//数据只读
 		if (options.readOnly) {
-			wrapper.find('.modal-body').find('button, input, select').attr('disabled', 'disabled');
+			wrapper.find('.modal-body').find('button, input, select, textarea').attr('disabled', 'disabled');
 		}
 		//显示弹框
 		wrapper.modal({

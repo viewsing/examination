@@ -26,11 +26,6 @@
                 sortable: false
             },
             {
-                data: 'reportCode',
-                title: '体检报告编码',
-                sortable: false
-            },
-            {
                 data: 'status',
                 title: '状态',
                 sortable: false,
@@ -58,28 +53,14 @@
                 sortable: false
             },
             {
-                data: 'examinationCode',
-                title: '体检项目编号',
-                sortable: false
-            },
-            {
                 data: 'examinationName',
                 title: '体检项目名称',
                 sortable: false
             },
             {
-                data: 'itemTotal',
-                title: '检查项目总数',
-                sortable: false
-            },
-            {
-                data: 'reportTime',
-                title: '报告生成时间',
-                sortable: false
-            },
-            {
                 data: 'id',
                 title: '操作',
+                width: '14%',
                 sortable: false,
                 render: function(data, type, rowData, setting){
                     return '<div><button class="btn btn-sm btn-primary btn-handle btn-detail"">查看</button>'+

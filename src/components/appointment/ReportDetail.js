@@ -53,7 +53,7 @@ class ReportDetail extends Component {
                         <List.Item extra={detail.examinationName} > 项目名称: </List.Item>
                         <List.Item extra={detail.itemTotal} > 项目总数: </List.Item>
                         <List.Item extra={detail.reportTime} > 生成时间: </List.Item>
-                        <List.Item extra={detail.status} > 状态: </List.Item>
+                        <List.Item extra={detail.status == '0' ? '未体检' : '已体检'} > 状态: </List.Item>
                     </List>
                     <WhiteSpace/>
                     <WingBlank style={{fontSize: '17px'}}>子项目如下:</WingBlank>
@@ -63,13 +63,13 @@ class ReportDetail extends Component {
                             this.state.items.map( (item, index) => {
                                 return <Accordion.Panel header={item.itemName}>
                                     <List>
-                                        <List.Item extra={item.doctorName} > 医生名称: </List.Item>
-                                        <List.Item extra={item.range} > 参考范围: </List.Item>
-                                        <List.Item extra={item.result} > 结果: </List.Item>
-                                        <List.Item extra={item.abnormal} > 结果异常: </List.Item>
-                                        <List.Item extra={item.advise} > 医生建议: </List.Item>
-                                        <List.Item extra={item.followUp} > 后续医疗: </List.Item>
-                                        <List.Item extra={item.mattersNeedAttention} > 注意事项: </List.Item>
+                                        <List.Item wrap extra={item.doctorName} > 医生名称: </List.Item>
+                                        <List.Item wrap extra={item.range} > 参考范围: </List.Item>
+                                        <List.Item wrap extra={item.result} > 结果: </List.Item>
+                                        <List.Item wrap extra={item.abnormal} > 结果异常: </List.Item>
+                                        <List.Item wrap extra={item.advise} > 医生建议: </List.Item>
+                                        <List.Item wrap extra={item.followUp} > 后续医疗: </List.Item>
+                                        <List.Item wrap extra={item.mattersNeedAttention} > 注意事项: </List.Item>
                                     </List>
                                 </Accordion.Panel>
                             })

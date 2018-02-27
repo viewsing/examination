@@ -112,6 +112,7 @@ select {
 #main-content {
 	height: 93%;
 	overflow-y: auto;
+	padding-bottom: 2em;
 }
 
 /*bootstrap重设*/
@@ -141,7 +142,6 @@ select {
 .table > tbody > tr > td, th {
 	text-align: center;
 	max-width: 200px;
-	line-height: 3;
 	overflow: hidden;
     text-overflow: ellipsis;
 }

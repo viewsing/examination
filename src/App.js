@@ -50,7 +50,7 @@ class App extends Component {
         return {
             history: history,
             axios: axiosInstance,
-            loading: <div style={{ position: 'fixed', left: '49%', top: '49%' }}><ActivityIndicator size="large" /></div>
+            loading: <div style={{ position: 'fixed', left: '47%', top: '49%' }}><ActivityIndicator size="large" /></div>
         }
     }
     render() {

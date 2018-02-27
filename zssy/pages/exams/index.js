@@ -61,6 +61,7 @@
             {
                 data: 'id',
                 title: '操作',
+                width: '20%',
                 sortable: false,
                 render: function(data, type, rowData, setting){
                     return '<div><button class="btn btn-sm btn-primary btn-handle btn-detail"">查看</button>'+
