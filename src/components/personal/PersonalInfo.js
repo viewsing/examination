@@ -186,7 +186,7 @@ class PersonalInfoForm extends Component {
                 </InputItem>
 
                 {/* id */}
-                <InputItem {...getFieldProps('id')} type="hidden"/>
+                <input {...getFieldProps('id')} type="hidden"/>
                 
                 {/***
                 **************

@@ -58,7 +58,8 @@ class ExamReport extends Component {
         this.context.axios({
             url: window.USERURL + 'examination/getReportInfo',
             data: {
-                branchCode: this.props.match.params.branchCode
+                branchCode: this.props.match.params.branchCode,
+                username: username
             }
         }).then( response => {
             if (response.data.resultCode == 0) {

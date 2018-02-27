@@ -36,7 +36,7 @@ axiosInstance.interceptors.response.use(function (response) {
         Toast.info('请先登录', 2);
         history.push('/login')
     } else if (response.data.resultCode == 2) {
-        Toast.info(response.data.resultDesc);
+        Toast.info(response.data.resultDesc, 1);
     }
     return response;
 }, function (error) {
@@ -61,7 +61,7 @@ class App extends Component {
                     <Route path="/index" component={Index}/>
                     <Route path="/personalList" component={PersonalList}/>
                     <Route path="/personalInfo" component={PersonalInfo}/>
-                    <Route path="/examReport" component={ExamReport}/>
+                    <Route path="/examReport/:branchCode" component={ExamReport}/>
                     <Route path="/appointment/:branchCode" component={Appointment}/>
                     <Route path="/register" component={Register}/>
                     <Route path="/login" component={Login}/>
