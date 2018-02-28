@@ -203,7 +203,7 @@ class Appointing extends Component {
             <Calendar
             type="one"
             visible={this.state.calendarShow}
-            defaultDate={ new Date(this.state.regDate) }
+            defaultDate={ new Date(this.state.regDate.replace(/-/g, '/')) }
             minDate={new Date(+now - 5184000000)}
             maxDate={new Date(+now + 31536000000)}
             onConfirm={this.handleCalendar}

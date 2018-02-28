@@ -31,7 +31,7 @@ class PersonalInfoForm extends Component {
             }
           }).then( response => {
             if (response.data.resultCode == 0) {
-                response.data.result.patBirth = new Date(response.data.result.patBirth);
+                response.data.result.patBirth = new Date(response.data.result.patBirth.replace(/-/g, '/'));
                 // rc-form设置多余的数据会静默失败。。。
                 delete response.data.result.createPerson, delete response.data.result.createTime;
                 delete response.data.result.modifyPerson, delete response.data.result.modifyTime;
@@ -156,7 +156,7 @@ class PersonalInfoForm extends Component {
                  ***/}
                 <DatePicker
                     mode = "date"
-                    minDate = {new Date(1900, 1, 1)}
+                    minDate = {new Date('1900/1/1')}
                     maxDate = { now }
                     {...getFieldProps('patBirth', {
                         initialValue: this.state.dpValue
