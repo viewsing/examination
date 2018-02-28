@@ -33,6 +33,7 @@ class Appointing extends Component {
             calendarShow: false,
             regDate: now.getFullYear() + '-' + (now.getMonth()+1) + '-' + now.getDate(),
             timeFlagIndex: 0,
+            timeIndex: 0,
             tradeMode: 0,
             examinationName: this.props.match.params.examinationName,
             branchCode: this.props.match.params.branchCode,
@@ -42,6 +43,7 @@ class Appointing extends Component {
         this.handleBack = this.handleBack.bind(this);
         this.handleCalendar = this.handleCalendar.bind(this);
         this.onTimeFlagChange = this.onTimeFlagChange.bind(this);
+        this.onTimeChange = this.onTimeChange.bind(this);
         this.onTradeModeChange = this.onTradeModeChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.handlePay = this.handlePay.bind(this);
@@ -76,12 +78,14 @@ class Appointing extends Component {
         if (val === '上午') {
             this.setState({
                 timeFlagIndex: 0,
-                time: [timeSements[0], timeSements[1]]
+                time: [timeSements[0], timeSements[1]],
+                timeIndex: 0
             })
         } else if (val === '下午'){
             this.setState({
                 timeFlagIndex: 1,
-                time: [timeSements[2], timeSements[3]]
+                time: [timeSements[2], timeSements[3]],
+                timeIndex: 0
             })
         } else {
             this.setState({
@@ -113,6 +117,10 @@ class Appointing extends Component {
         })
     }
     onTimeChange(val) {
+        var index = timeSements.indexOf(val);
+        this.setState({
+            timeIndex: index%2
+        })
         timeSement = val;
     }
     onSubmit(){
@@ -183,6 +191,7 @@ class Appointing extends Component {
                 <List.Item key="3">
                     <SegmentedControl
                         values={this.state.time}
+                        selectedIndex = {this.state.timeIndex}
                         onValueChange={this.onTimeChange}
                     />
                 </List.Item>

@@ -29,7 +29,7 @@ class Exam extends Component {
             <div style={{
                 margin: '1em 0',
                 backgroundColor: '#fff',
-                padding: '.5em',
+                padding: '0 .5em .5em',
                 color: '#ccc'
             }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', margin: '0 .5em', lineHeight: '1em'}}>
@@ -52,7 +52,7 @@ class Exam extends Component {
                 </div>
                 <div style={{ marginBottom: '.5em'}}>
                     <span>描述: </span>
-                    <span>{exam.des}</span>
+                    <span>{exam.desc}</span>
                 </div>
             </div>
         </div>
