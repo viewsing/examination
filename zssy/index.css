@@ -72,7 +72,8 @@ select {
 
 /*侧栏菜单*/
 .sidebar {
-	height: calc(100vh - 4.5em);
+	/* height: calc(100vh - 4.5em); */
+	height: calc(100vh - 86px);
 	background: rgb(100,100,100);
 }
 .sidebar-menu > ul {
@@ -105,7 +106,8 @@ select {
 
 /* 主要内容区 */
 .main {
-	height: calc(100vh - 4.5em);
+	/* height: calc(100vh - 4.5em); */
+	height: calc(100vh - 86px);
 }
 .main-breadcrumb {
 	height: 7%;
