@@ -159,7 +159,6 @@ class Appointing extends Component {
             >预约</NavBar>
             <List>
                 <WhiteSpace/>
-                <WingBlank><div style={{fontSize: '17px', lineHeight: 1.5, padding: '7px 0'}}>支付方式:</div></WingBlank>
                 <List.Item key="0" extra={this.state.examinationName}>
                     套餐:
                 </List.Item>
@@ -187,6 +186,7 @@ class Appointing extends Component {
                         onValueChange={this.onTimeChange}
                     />
                 </List.Item>
+                <WingBlank><div style={{fontSize: '17px', lineHeight: 1.5, padding: '7px 0'}}>支付方式:</div></WingBlank>
                 <List.Item key="4">
                     <SegmentedControl
                         tintColor="#f96268"
