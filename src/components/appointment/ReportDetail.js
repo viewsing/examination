@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
-import { NavBar, Icon, WhiteSpace, WingBlank, Toast, Accordion, List } from 'antd-mobile';
+import { NavBar, Icon, WhiteSpace, WingBlank, Badge, Toast, Accordion, List } from 'antd-mobile';
 import echometer from '../../img/echometer.png';
 import PropTypes from 'prop-types';
 import './ReportDetail.css'
+
+const Abnormal = {
+    0: '正常',
+    1: '偏高',
+    2: '偏低',
+    3: '阳性'
+}
 
 class ReportDetail extends Component {
     constructor(props) {
@@ -35,6 +42,15 @@ class ReportDetail extends Component {
     handleBack(){
         this.context.history.goBack();
     }
+    isFocus(itemName, focus){
+        if (focus == 1) {
+            return <span style={{
+                color: '#e06252'
+            }}>{itemName + '(重点关注)'}</span>
+        } else {
+            return itemName
+        }
+    }
     render() {
         let detail = this.state.detail;
         return (
@@ -45,15 +61,15 @@ class ReportDetail extends Component {
             >报告详情</NavBar>
                 <div style={{overflow: 'auto'}}>
                     <List>
-                        <List.Item extra={detail.branchName} > 医院名称: </List.Item>
-                        <List.Item extra={detail.orderNo} > 订单号: </List.Item>
-                        <List.Item extra={detail.regDate} > 体检日期: </List.Item>
-                        <List.Item extra={detail.patName} > 患者姓名: </List.Item>
-                        <List.Item extra={detail.patIdCard} > 身份证: </List.Item>
-                        <List.Item extra={detail.examinationName} > 项目名称: </List.Item>
-                        <List.Item extra={detail.itemTotal} > 项目总数: </List.Item>
-                        <List.Item extra={detail.reportTime} > 生成时间: </List.Item>
-                        <List.Item extra={detail.status == '0' ? '未体检' : '已体检'} > 状态: </List.Item>
+                        <List.Item key="0" extra={detail.branchName} > 医院名称: </List.Item>
+                        <List.Item key="1" extra={detail.orderNo} > 订单号: </List.Item>
+                        <List.Item key="2" extra={detail.regDate} > 体检日期: </List.Item>
+                        <List.Item key="3" extra={detail.patName} > 患者姓名: </List.Item>
+                        <List.Item key="4" extra={detail.patIdCard} > 身份证: </List.Item>
+                        <List.Item key="5" extra={detail.examinationName} > 项目名称: </List.Item>
+                        <List.Item key="6" extra={detail.itemTotal} > 项目总数: </List.Item>
+                        <List.Item key="7" extra={detail.reportTime} > 生成时间: </List.Item>
+                        <List.Item key="8" extra={detail.status == '0' ? '未体检' : '已体检'} > 状态: </List.Item>
                     </List>
                     <WhiteSpace/>
                     <WingBlank style={{fontSize: '17px'}}>子项目如下:</WingBlank>
@@ -61,15 +77,16 @@ class ReportDetail extends Component {
                     <Accordion>
                         {
                             this.state.items.map( (item, index) => {
-                                return <Accordion.Panel header={item.itemName}>
+                                return <Accordion.Panel header={this.isFocus(item.itemName, item.focus)} key={index}>
                                     <List>
-                                        <List.Item wrap extra={item.doctorName} > 医生名称: </List.Item>
-                                        <List.Item wrap extra={item.range} > 参考范围: </List.Item>
-                                        <List.Item wrap extra={item.result} > 结果: </List.Item>
-                                        <List.Item wrap extra={item.abnormal} > 结果异常: </List.Item>
-                                        <List.Item wrap extra={item.advise} > 医生建议: </List.Item>
-                                        <List.Item wrap extra={item.followUp} > 后续医疗: </List.Item>
-                                        <List.Item wrap extra={item.mattersNeedAttention} > 注意事项: </List.Item>
+                                        <List.Item key="0" wrap extra={item.doctorName} > 医生名称: </List.Item>
+                                        <List.Item key="1" wrap extra={item.range} > 参考范围: </List.Item>
+                                        <List.Item key="2" wrap extra={item.finding} > 检查所见: </List.Item>
+                                        <List.Item key="3" wrap extra={item.result} > 结果: </List.Item>
+                                        <List.Item key="4" wrap extra={Abnormal[item.abnormal]} > 异常提示: </List.Item>
+                                        <List.Item key="5" wrap extra={item.advise} > 医生建议: </List.Item>
+                                        <List.Item key="6" wrap extra={item.followUp} > 后续医疗: </List.Item>
+                                        <List.Item key="7" wrap extra={item.mattersNeedAttention} > 注意事项: </List.Item>
                                     </List>
                                 </Accordion.Panel>
                             })

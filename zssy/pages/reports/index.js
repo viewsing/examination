@@ -110,8 +110,10 @@
                         readOnly: true,
                         idPrefix: 'reports',
                         data: {aaData: result.result},
-                        width: '50vw',
+                        width: '60vw',
                         before: function(popWin){
+                            var $status = popWin.find('#reports_status');
+                            $status.val() == 0 ? $status.val('未体检') : $status.val('已体检');
                             result.result.examinationReportDetail.forEach(function(item){
                                 makeChildrenItem(popWin, item);
                             })
@@ -133,8 +135,10 @@
                         title: '编辑',
                         idPrefix: 'reports',
                         data: {aaData: result.result},
-                        width: '50vw',
+                        width: '60vw',
                         before: function(popWin){
+                            var $status = popWin.find('#reports_status');
+                            $status.val() == 0 ? $status.val('未体检') : $status.val('已体检');
                             result.result.examinationReportDetail.forEach(function(item){
                                 makeChildrenItem(popWin, item);
                             })
@@ -171,63 +175,68 @@
             <div id="${item.id}" class="panel-collapse collapse">
                 <div class="panel-body">
                     <div class="form-group">
-                        <label for="dCode_${item.id}" class="col-sm-2 control-label">医生编号:</label>
-                        <div class="col-sm-9">
+                        <label for="dCode_${item.id}" class="col-sm-3 control-label">医生编号:</label>
+                        <div class="col-sm-8">
                             <input type="text" value="${item.doctorCode}" title="${item.doctorCode}" class="form-control validate[required]" data-name="doctorCode" id="dCode_${item.id}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="dName_${item.id}" class="col-sm-2 control-label">医生姓名:</label>
-                        <div class="col-sm-9">
+                        <label for="dName_${item.id}" class="col-sm-3 control-label">医生姓名:</label>
+                        <div class="col-sm-8">
                             <input type="text" value="${item.doctorName}" title="${item.doctorName}" class="form-control validate[required]" data-name="doctorName" id="dName_${item.id}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="range_${item.id}" class="col-sm-2 control-label">参考范围:</label>
-                        <div class="col-sm-9">
+                        <label for="range_${item.id}" class="col-sm-3 control-label">参考范围:</label>
+                        <div class="col-sm-8">
                             <input type="text" value="${item.range}" title="${item.range}" class="form-control validate[required]" data-name="range" id="range_${item.id}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="result_${item.id}" class="col-sm-2 control-label">结果:</label>
-                        <div class="col-sm-9">
+                        <label for="result_${item.id}" class="col-sm-3 control-label">结果:</label>
+                        <div class="col-sm-8">
                             <input type="text" value="${item.result}" title="${item.result}" class="form-control validate[required]" data-name="result" id="result_${item.id}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="abnormal_${item.id}" class="col-sm-2 control-label">结果异常提示:</label>
-                        <div class="col-sm-9">
-                            <input type="text" value="${item.abnormal}" title="${item.abnormal}" class="form-control validate[required]" data-name="abnormal" id="abnormal_${item.id}">
+                        <label for="abnormal_${item.id}" class="col-sm-3 control-label">结果异常提示:</label>
+                        <div class="col-sm-8">
+                            <select data-name="abnormal" id="abnormal_${item.id}">
+                                <option value="0" ${item.abnormal == 0 ? 'selected' : ''}>正常</option>
+                                <option value="1" ${item.abnormal == 1 ? 'selected' : ''}>偏低</option>
+                                <option value="2" ${item.abnormal == 2 ? 'selected' : ''}>偏高</option>
+                                <option value="3" ${item.abnormal == 3 ? 'selected' : ''}>阳性</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="focus_${item.id}" class="col-sm-2 control-label">重点关注:</label>
-                        <div class="col-sm-9">
-                            <input type="text" value="${item.focus}" title="${item.focus}" class="form-control validate[required]" data-name="focus" id="focus_${item.id}">
+                        <label for="focus_${item.id}" class="col-sm-3 control-label">重点关注:</label>
+                        <div class="col-sm-8">
+                            <input type="checkbox" style="margin-top: 8px;width: 16px;height: 16px;" ${item.focus==1 ? 'checked' : ''} data-name="focus" id="focus_${item.id}" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="finding_${item.id}" class="col-sm-2 control-label">检查所见:</label>
-                        <div class="col-sm-9">
-                            <input type="text" value="${item.finding}" title="${item.finding}" class="form-control validate[required]" data-name="finding" id="finding_${item.id}">
+                        <label for="finding_${item.id}" class="col-sm-3 control-label">检查所见:</label>
+                        <div class="col-sm-8">
+                            <textarea data-name="finding" id="finding_${item.id}" class="form-control validate[required]" >${item.finding}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="advise_${item.id}" class="col-sm-2 control-label">医生建议:</label>
-                        <div class="col-sm-9">
-                            <input type="text" value="${item.advise}" title="${item.advise}" class="form-control validate[required]" data-name="advise" id="advise_${item.id}">
+                        <label for="advise_${item.id}" class="col-sm-3 control-label">医生建议:</label>
+                        <div class="col-sm-8">
+                            <textarea data-name="advise" id="advise_${item.id}" class="form-control validate[required]">${item.advise}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="followUp_${item.id}" class="col-sm-2 control-label">后续医疗:</label>
-                        <div class="col-sm-9">
-                            <input type="text" value="${item.followUp}" title="${item.followUp}" class="form-control validate[required]" data-name="followUp" id="followUp_${item.id}">
+                        <label for="followUp_${item.id}" class="col-sm-3 control-label">后续医疗:</label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control validate[required]" data-name="followUp" id="followUp_${item.id}">${item.followUp}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="mattersNeedAttention_${item.id}" class="col-sm-2 control-label">注意事项:</label>
-                        <div class="col-sm-9">
-                            <input type="text" value="${item.mattersNeedAttention}" title="${item.mattersNeedAttention}" class="form-control validate[required]" data-name="mattersNeedAttention" id="mattersNeedAttention_${item.id}">
+                        <label for="mattersNeedAttention_${item.id}" class="col-sm-3 control-label">注意事项:</label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control validate[required]" data-name="mattersNeedAttention" id="mattersNeedAttention_${item.id}">${item.mattersNeedAttention}</textarea>
                         </div>
                     </div>
                 </div>
@@ -256,7 +265,7 @@
             item.range = $panel.find('[data-name="range"]').val();
             item.result = $panel.find('[data-name="result"]').val();
             item.abnormal = $panel.find('[data-name="abnormal"]').val();
-            item.focus = $panel.find('[data-name="focus"]').val();
+            item.focus = $panel.find('[data-name="focus"]').prop('checked') ? 1 : 0;
             item.finding = $panel.find('[data-name="finding"]').val();
             item.advise = $panel.find('[data-name="advise"]').val();
             item.followUp = $panel.find('[data-name="followUp"]').val();

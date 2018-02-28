@@ -97,7 +97,7 @@
         $.iPopWin('pages/exams/detail.html', {
             title: '新增',
             idPrefix: 'exams',
-            width: '50vw',
+            width: '60vw',
             before: function(popWin){
                 //新建子项目
                 popWin.find('#addChildrenItem').on('click', function(e){
@@ -139,7 +139,7 @@
                         readOnly: true,
                         idPrefix: 'exams',
                         data: {aaData: result.result},
-                        width: '50vw',
+                        width: '60vw',
                         before: function(popWin){
                             result.result.examinationDetail.forEach(function(item){
                                 makeChildrenItem(popWin, item);
@@ -162,7 +162,7 @@
                         title: '编辑',
                         idPrefix: 'exams',
                         data: {aaData: result.result},
-                        width: '50vw',
+                        width: '60vw',
                         before: function(popWin){
                             //展示子项目
                             result.result.examinationDetail.forEach(function(item){

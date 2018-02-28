@@ -145,6 +145,7 @@ select {
 /* dataTables */
 .table > tbody > tr > td, th {
 	text-align: center;
+	vertical-align: middle;
 	max-width: 200px;
 	overflow: hidden;
     text-overflow: ellipsis;
