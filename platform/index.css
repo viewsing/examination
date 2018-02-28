@@ -51,7 +51,8 @@ select {
 	height: 60px;
 }
 .navbar-content {
-	height: 4em;
+	/* height: 4em; */
+	height: 83px;
 }
 
 /* navbar右边操作列 */
@@ -73,7 +74,7 @@ select {
 /*侧栏菜单*/
 .sidebar {
 	/* height: calc(100vh - 4.5em); */
-	height: calc(100vh - 86px);
+	height: calc(100vh - 88px);
 	background: rgb(100,100,100);
 }
 .sidebar-menu > ul {
@@ -107,7 +108,7 @@ select {
 /* 主要内容区 */
 .main {
 	/* height: calc(100vh - 4.5em); */
-	height: calc(100vh - 86px);
+	height: calc(100vh - 88px);
 }
 .main-breadcrumb {
 	height: 7%;
