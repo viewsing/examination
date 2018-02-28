@@ -160,18 +160,10 @@ class Appointing extends Component {
             <List>
                 <WhiteSpace/>
                 <WingBlank><div style={{fontSize: '17px', lineHeight: 1.5, padding: '7px 0'}}>支付方式:</div></WingBlank>
-                <List.Item key="0">
-                    <SegmentedControl
-                        tintColor="#f96268"
-                        selectedIndex={this.state.tradeMode}
-                        values={['银联', '微信', '支付宝']}
-                        onValueChange={this.onTradeModeChange}
-                    />
-                </List.Item>
-                <List.Item key="1" extra={this.state.examinationName}>
+                <List.Item key="0" extra={this.state.examinationName}>
                     套餐:
                 </List.Item>
-                <List.Item key="2" arrow="horizontal"
+                <List.Item key="1" arrow="horizontal"
                     extra={this.state.regDate}
                     onClick={() => {
                         document.getElementsByTagName('body')[0].style.overflowY = 'hidden';
@@ -182,17 +174,25 @@ class Appointing extends Component {
                 >
                     选择日期:
                 </List.Item>
-                <List.Item key="3">
+                <List.Item key="2">
                     <SegmentedControl
                         selectedIndex = {this.state.timeFlagIndex}
                         values={['上午', '下午', '晚上']}
                         onValueChange={this.onTimeFlagChange}
                     />
                 </List.Item>
-                <List.Item key="4">
+                <List.Item key="3">
                     <SegmentedControl
                         values={this.state.time}
                         onValueChange={this.onTimeChange}
+                    />
+                </List.Item>
+                <List.Item key="4">
+                    <SegmentedControl
+                        tintColor="#f96268"
+                        selectedIndex={this.state.tradeMode}
+                        values={['银联', '微信', '支付宝']}
+                        onValueChange={this.onTradeModeChange}
                     />
                 </List.Item>
                 <WhiteSpace size="lg"/>

@@ -33,6 +33,7 @@ select {
 }
 #loading img {
 	position: absolute;
+	user-select: none;
 	top: 50%;
 	left: 50%;
 }

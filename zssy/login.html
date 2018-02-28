@@ -12,6 +12,9 @@
     <link href="./refer/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
+        * {
+            user-select: none;
+        }
         body {
             padding-top: 40px;
             padding-bottom: 40px;
@@ -123,8 +126,15 @@
                     xhr.onreadystatechange = function(event) {
                         if (xhr.readyState == 4) {
                             if (xhr.status == 200) {
-                                window.location.pathname = './index.html';
-                                // window.location.pathname = '/zssy/index.html';
+                                var json = JSON.parse(xhr.responseText);
+                                if (json.resultCode == 0) {
+                                    window.location.pathname = '/zssy/index.html'; 
+                                } else if (json.resultCode == 2) {
+                                    alert(json.resultDesc);
+                                } else {
+                                    alert('系统错误，请联系系统管理员');
+                                }
+                                document.getElementById('loading').style.display = 'none';
                             }
                         }
                     }

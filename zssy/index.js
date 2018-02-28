@@ -2,7 +2,7 @@
 var CONFIG = {
     dummy: true,
     // PLATFORMURL: 'http://211.159.189.178:8080/zssy/',
-    PLATFORMURL: '/hr_examination_zssy/',
+    PLATFORMURL: '/zssy/',
     dataTableConf: {
         searching: false,
 		lengthChange: false,
@@ -41,15 +41,13 @@ $.ajaxSetup({
 	xhrFields: {
 		withCredentials: true
     },
-    type: 'POST',
 	//全局拦截未登录
 	dataFilter: function(data, type){
 		var json;
 		if (type === 'json') {
 			json = JSON.parse(data);
 			if (json.resultCode && json.resultCode == 3) {
-                window.location.pathname = './login.html';
-                // window.location.pathname = '/zssy/login.html';
+                window.location.pathname = '/zssy/login.html';
 				return;
 			} else if (json.resultCode && json.resultCode == 2) {
 				alert(json.resultDesc);
@@ -62,7 +60,7 @@ $.ajaxSetup({
 		return data;
 	},
 	contentType: 'application/json',
-	type: 'GET'
+	type: 'POST'
 });
 
 //路由
@@ -90,8 +88,7 @@ $('#logout').on('click', function(e){
             type: 'POST',
             success: function(result){
                 if (result.resultCode == 0) {
-                    window.location.pathname = './login.html';
-                    // window.location.pathname = '/zssy/login.html';
+                    window.location.pathname = '/zssy/login.html';
                 }
             }
         })
