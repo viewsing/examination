@@ -97,7 +97,7 @@ class ExamDetail extends Component {
         return (
             this.state.status === 1 ? 
             <div style={{
-                marginBottom: '5em'
+                paddingBottom: '5em'
             }}>
                 <NavBar icon={<Icon type="left"/>}
                 onLeftClick = {this.handleBack }
