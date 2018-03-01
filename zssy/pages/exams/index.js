@@ -176,8 +176,11 @@
                             popWin.on('click', '.delChildrenItem', function(e){
                                 var $self= $(this);
                                 $.iConfirm('提示', '确认删除该子项目？', function(){
-                                    var id = $self.prev().attr('href').substring(1);
-                                    if (id) {
+                                    var isNew = $self.attr('data-isNew');
+                                    if (isNew == '1') {
+                                        $self.parents('.panel').remove();
+                                    } else {
+                                        var id = $self.prev().attr('href').substring(1);
                                         $.ajax({
                                             url: CONFIG.PLATFORMURL + 'examination/delExaminationDetail',
                                             data: JSON.stringify({
@@ -189,8 +192,6 @@
                                                 }
                                             }
                                         })
-                                    } else {
-                                        $self.parents('.panel').remove();
                                     }
                                 })
                             })
@@ -240,7 +241,7 @@
                     ${item.itemName}
                     </h4>
                 </a>
-                <button type="button" class="btn btn-sm btn-danger delChildrenItem" style="position: absolute;right: 5%; top:21%; padding: 1px 3px;">删除</button>
+                <button type="button" ${item.isNew ? 'data-isNew="1"' : 'data-isNew="0"'} class="btn btn-sm btn-danger delChildrenItem" style="position: absolute;right: 5%; top:21%; padding: 1px 3px;">删除</button>
             </div>
             <div id="${item.id}" class="panel-collapse collapse">
                 <div class="panel-body">
@@ -264,7 +265,7 @@
                     </div>
                 </div>
             </div>
-            <input type="hidden" data-name="id" value=${item.id} />
+            <input type="hidden" ${item.isNew ? '' : 'data-name="id"'} value=${item.id} />
         </div>`;
         var panel = $(temp);
         popWin.find('#examinationDetail').append(panel);
@@ -282,7 +283,7 @@
             item.desc = $panel.find('[data-name="desc"]').val();
             item.checkPart = $panel.find('[data-name="checkPart"]').val();
             var id = $panel.find('[data-name="id"]').val()
-            id!=='undefined' && (item.id = id);
+            id && (item.id = id);
             ret.push(item);
         })
         return ret;
@@ -324,6 +325,8 @@
                         for (var i=0; i < jsonArr.length; i++) {
                             json[jsonArr[i].name] = jsonArr[i].value;
                         }
+                        json.isNew = true;
+                        json.id = Date.now();
                         makeChildrenItem(popWin, json);
                     }
                 }
