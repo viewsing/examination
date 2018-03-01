@@ -96,7 +96,9 @@ class ExamDetail extends Component {
     render() {
         return (
             this.state.status === 1 ? 
-            <div>
+            <div style={{
+                marginBottom: '5em'
+            }}>
                 <NavBar icon={<Icon type="left"/>}
                 onLeftClick = {this.handleBack }
             >套餐详情</NavBar>
@@ -129,6 +131,8 @@ class ExamDetail extends Component {
                     fontSize: '1.5em',
                     lineHeight: '3em',
                     bottom: '0',
+                    backgroundColor: '#fff',
+                    zIndex: 2,
                     borderTop: '1px solid #30cfd6'
                 }}>
                     <span style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around'}}>
