@@ -96,11 +96,11 @@ class ExamDetail extends Component {
     render() {
         return (
             this.state.status === 1 ? 
-            <div>
+            <div style={{height: '100%'}}>
                 <NavBar icon={<Icon type="left"/>}
                 onLeftClick = {this.handleBack }
             >套餐详情</NavBar>
-                <Card full>
+                <Card full style={{height: '11em'}}>
                     <Card.Header
                         title={<div><span>{this.state.examinationName}</span></div>}
                         thumb={echometer}
@@ -113,7 +113,7 @@ class ExamDetail extends Component {
                     <Card.Footer content={this.state.desc} />
                 </Card>
                 <WhiteSpace size='lg'/>
-                <List renderHeader={this.renderHeader}>
+                <List className="examDetail" renderHeader={this.renderHeader}>
                     {
                         this.state.items.map( (item,index) => {
                             return <ExamItem key={index} ownKey={index+1} itemName={item.itemName} desc={item.desc} />

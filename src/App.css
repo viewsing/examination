@@ -7,3 +7,8 @@
 .am-list-item .am-list-line .am-list-content {
   flex-basis: 22%;
 }
+
+.examDetail {
+  height: calc(100% - calc(16em + 60px));
+  overflow: auto;
+}
