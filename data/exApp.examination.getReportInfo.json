@@ -1,0 +1,23 @@
+{
+    "resultCode": "0",
+    "resultDesc": "success",
+    "result": [{
+        "id": "b17ae35906894cbf8516125bb912e117",
+        "createPerson": null,
+        "createTime": null,
+        "modifyPerson": null,
+        "modifyTime": null,
+        "branchCode": "zssy",
+        "branchName": "中山大学附属第三医院",
+        "orderNo": "601120180301000111172",
+        "reportCode": "0da4a_20180228_601120180301000111172",
+        "regDate": "2018-02-28",
+        "patName": "庄浩棠",
+        "patIdCard": "440112199601190617",
+        "examinationCode": "0da4a_20180228",
+        "examinationName": "心脏病套餐",
+        "itemTotal": "2",
+        "reportTime": "2018-03-01 00:06:20",
+        "status": "1"
+    }]
+}

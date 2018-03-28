@@ -1,0 +1,20 @@
+{
+    "resultCode": "0",
+    "resultDesc": "success",
+    "result": {
+        "id": "33f888272dbc45d3b6c665eed6de43de",
+        "createPerson": null,
+        "createTime": null,
+        "modifyPerson": null,
+        "modifyTime": null,
+        "username": "zhuanght",
+        "patName": "庄浩棠",
+        "patSex": "M",
+        "patBirth": "1996-1-19",
+        "patIdCard": "440112199601190617",
+        "patAddress": "广州市黄埔区夏园塘边公寓",
+        "patMobile": "15603078105",
+        "companyName": "广东天泽阳光康众医疗投资管理有限公司",
+        "job": "java"
+    }
+}

@@ -1,0 +1,47 @@
+{
+    "resultCode": "0",
+    "resultDesc": "success",
+    "result": [{
+        "id": "cdaaea9661c34c4c9bc733d814b922c9",
+        "createPerson": null,
+        "createTime": null,
+        "modifyPerson": null,
+        "modifyTime": null,
+        "branchCode": "zssy",
+        "branchName": "中山大学附属第三医院",
+        "levle": "三甲",
+        "category": "综合性医院",
+        "telephone": "020-85253333",
+        "desc": "中山大学附属第三医院（原中山医科大学附属第三医院），始建于1971年7月17日，是国家卫计委直管的综合性三级甲等医院。近年来先后荣获国家爱婴医院、广东省文明医院、全国医院文化建设先进单位、全国卫生系统先进集体、全国教育系统抗震救灾优秀集体等一系列荣誉称号。",
+        "location": "广东省广州市天河区天河路600号",
+        "picUrl": "http://211.159.189.178:8080/platform/picture/gzzssy1519903887386.jpg"
+    }, {
+        "id": "7c3c53b1784d439ca82ddfd0b7f839ce",
+        "createPerson": null,
+        "createTime": null,
+        "modifyPerson": null,
+        "modifyTime": null,
+        "branchCode": "gdykfy",
+        "branchName": "广东药学院附属第一医院",
+        "levle": "三甲",
+        "category": "综合性医院",
+        "telephone": "020-33526815",
+        "desc": "广东药科大学附属第一医院创建于1950年，前身为广州铁路中心医院，是三级甲等综合性医院。",
+        "location": "广州市越秀区农林下路19路",
+        "picUrl": "http://211.159.189.178:8080/platform/picture/gdykfy1519903895039.jpg"
+    }, {
+        "id": "82da647ed3ed41c9937397861cfe1c07",
+        "createPerson": null,
+        "createTime": null,
+        "modifyPerson": null,
+        "modifyTime": null,
+        "branchCode": "gzfe",
+        "branchName": "广州市妇女儿童医疗中心(珠江新城)",
+        "levle": "三甲",
+        "category": "专科医院",
+        "telephone": "020-36598845",
+        "desc": "广州市妇女儿童医疗中心成立于2006年9月，由原广州市儿童医院和广州市妇幼保健院（广州市妇婴医院）整合而成，是全国第四家通过HIMSS7级医院，全国第一家实现住院和门诊系统双7级医院。",
+        "location": "广州市金穗路9号",
+        "picUrl": "http://211.159.189.178:8080/platform/picture/gzfe1519903956918.jpg"
+    }]
+}
