@@ -1,0 +1,54 @@
+{
+    "resultCode": "0",
+    "resultDesc": "success",
+    "result": {
+        "totalRecord": "150",
+        "pageSize": "10",
+        "totalPage": "15",
+        "currentPage": "1",
+        "dataList": [{
+                "id": "23f0ab42f32e4a1d96f90e39731f50b7",
+                "tradeMode": "1",
+                "orderNo": "6012201801100004353",
+                "patName": "庄浩棠",
+                "patIdCard": "440112199601190617",
+                "patMobile": "15603078105",
+                "branchCode": "zssy",
+                "branchName": "中山大学附属第三人民医院",
+                "examinationCode": "xzbtc",
+                "examinationName": "心脏病套餐",
+                "regDate": "2018-03-29",
+                "timeFlag": "1",
+                "beginTime": "08:00",
+                "endTime": "11:30",
+                "fee": "286532",
+                "status": "1",
+                "time": "2018-01-01 10:00:00",
+                "agtOrderNo": "13513541153168153",
+                "amount": 286532,
+                "payTime": "2018-02-10 10:00:32"
+            },
+            {
+                "id": "23f0ab42f32e4a1d96f90e39731f50b7",
+                "tradeMode": "1",
+                "orderNo": "6012201801100004353",
+                "patName": "庄浩棠",
+                "patIdCard": "440112199601190617",
+                "patMobile": "15603078105",
+                "branchName": "中山大学附属第三人民医院",
+                "examinationCode": "xzbtc",
+                "examinationName": "心脏病套餐",
+                "regDate": "2018-03-29",
+                "timeFlag": "1",
+                "beginTime": "08:00",
+                "endTime": "11:30",
+                "fee": "286532",
+                "status": "1",
+                "time": "2018-01-01 10:00:00",
+                "agtOrderNo": "13513541153168153",
+                "amount": 286532,
+                "payTime": "2018-02-10 10:00:32"
+            }
+        ]
+    }
+}

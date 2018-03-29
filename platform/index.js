@@ -1,8 +1,7 @@
 //全局设置
 var CONFIG = {
     dummy: true,
-    // PLATFORMURL: 'http://211.159.189.178:8080/platform/',
-    PLATFORMURL: '/platform/',
+    PLATFORMURL: remoteURL + 'platform/',
     dataTableConf: {
 		searching: false,
         lengthChange: false,

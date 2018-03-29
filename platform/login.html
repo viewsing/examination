@@ -106,6 +106,7 @@
         <img src="./img/loading.gif"/>
     </div>
     <!-- /container -->
+    <script src="../config.js"></script>
     <script>
         var login = {
             init: function(){
@@ -138,8 +139,7 @@
                             }
                         }
                     }
-                    // xhr.open('POST', 'http://211.159.189.178:8080/platform/user/login');
-                    xhr.open('POST', '/platform/user/login');
+                    xhr.open('POST', remoteURL + 'platform/user/login');
                     xhr.setRequestHeader('Content-Type', 'application/json');
                     xhr.withCredentials = true;
                     xhr.send(data);

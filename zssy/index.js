@@ -1,7 +1,7 @@
 //全局设置
 var CONFIG = {
     dummy: true,
-    PLATFORMURL: 'http://211.159.189.178:8080/zssy/',
+    PLATFORMURL: remoteURL + 'zssy/',
     // PLATFORMURL: '/zssy/',
     dataTableConf: {
         searching: false,

@@ -1,0 +1,48 @@
+{
+    "resultCode": "0",
+    "resultDesc": "success",
+    "result": {
+        "id": "01670aade4654684a9098a31ef84fd2d",
+        "orderNo": "1011201801110003330",
+        "reportCode": "xzbtc_3151",
+        "regDate": "2018-01-10",
+        "patName": "张三丰",
+        "patIdCard": "440112199601190617",
+        "examinationCode": "80b0f_20180226",
+        "examinationName": "心脏病套餐",
+        "itemTotal": 8,
+        "reportTime": "2018-02-10 10:00:00",
+        "status": 1,
+        "examinationReportDetail":[
+            {
+                "id": "01670aade4654684a9098a31ef84fd2d",
+                "reportCode": "80b0f_20180226_101120180226170351743",
+                "itemName": "内科",
+                "doctorCode": "10515",
+                "doctorName": "刘天宇",
+                "range": "-",
+                "result": "心:未见异常;肺:未见异常;肝:未见异常;脾:未见异常;",
+                "abnormal": "-",
+                "focus": "",
+                "finding": "正常",
+                "advise": "少熬夜,多锻炼身体,注意休息.",
+                "followUp": "",
+                "mattersNeedAttention": ""
+            },{
+                "id": "01670aade4654684a9098a31ef84fd2d",
+                "reportCode": "80b5f_20180226_101120180226170351743",
+                "itemName": "眼压",
+                "doctorCode": "10515",
+                "doctorName": "刘天宇",
+                "range": "10~21mmHg",
+                "result": "15mmHg",
+                "abnormal": "0",
+                "focus": "1",
+                "finding": "正常",
+                "advise": "少熬夜,多锻炼身体,注意休息.",
+                "followUp": "",
+                "mattersNeedAttention": ""
+            }
+        ]
+    }
+}

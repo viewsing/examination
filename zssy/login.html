@@ -106,6 +106,7 @@
         <img src="./img/loading.gif"/>
     </div>
     <!-- /container -->
+    <script src="../config.js"></script>
     <script>
         var login = {
             init: function(){
@@ -138,8 +139,7 @@
                             }
                         }
                     }
-                    xhr.open('POST', 'http://211.159.189.178:8080/zssy/user/login');
-                    // xhr.open('POST', '/zssy/user/login');
+                    xhr.open('POST', remoteURL + 'zssy/user/login');
                     xhr.setRequestHeader('Content-Type', 'application/json');
                     xhr.withCredentials = true;
                     document.getElementById('loading').style.display = 'block';

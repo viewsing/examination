@@ -1,0 +1,33 @@
+{
+    "resultCode": "0",
+    "resultDesc": "success",
+    "result": {
+        "totalRecord": "150",
+        "pageSize": "10",
+        "totalPage": "15",
+        "currentPage": "1",
+        "dataList": [{
+                "id": "23f0ab42f32e4a1d96f90e39731f50b7",
+                "branchCode": "zssy",
+                "branchName": "中山大学附属第三医院",
+                "levle": "三甲",
+                "category": "综合性医院",
+                "telephone": "",
+                "desc": "",
+                "location": "广东省广州市天河区天河路600号",
+                "picUrl": "http://ww1.sinaimg.cn/large/8922edaegy1fptqo0nozgj20b208cq34.jpg"
+            },
+            {
+                "id": "53f0ab42f32e4a1d96f90e39731f50b7",
+                "branchCode": "zsey",
+                "branchName": "中山大学附属第二医院",
+                "levle": "三甲",
+                "category": "综合性医院",
+                "telephone": "",
+                "desc": "",
+                "location": "广东省广州市天河区天河路600号",
+                "picUrl": "http://ww1.sinaimg.cn/large/8922edaegy1fptqo0nozgj20b208cq34.jpg"
+            }
+        ]
+    }
+}

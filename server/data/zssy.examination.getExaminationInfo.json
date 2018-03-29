@@ -1,0 +1,29 @@
+{
+    "resultCode": "0",
+    "resultDesc": "success",
+    "result": {
+        "totalRecord": "150",
+        "pageSize": "10",
+        "totalPage": "15",
+        "currentPage": "1",
+        "dataList": [{
+                "id": "6ae5819bec574017b2d8c3bf10b6750a",
+                "examinationCode": "心脏病套餐",
+                "examinationName": "xzbtc",
+                "desc": "可筛查心脏疾患，了解冠心病患者的心脏受损情况，心脏彩超是冠心病高危人群常规体检方法。",
+                "suitAge": "无限制",
+                "suitSex": "A",
+                "fee": "153582"
+            },
+            {
+                "id": "6ae5819bec574017b2d8c3bf10b6750a",
+                "examinationCode": "心脏病套餐",
+                "examinationName": "xzbtc",
+                "desc": "可筛查心脏疾患，了解冠心病患者的心脏受损情况，心脏彩超是冠心病高危人群常规体检方法。",
+                "suitAge": "无限制",
+                "suitSex": "A",
+                "fee": "153582"
+            }
+        ]
+    }
+}

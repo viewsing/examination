@@ -1,0 +1,37 @@
+{
+    "resultCode": "0",
+    "resultDesc": "success",
+    "result": {
+        "totalRecord": "150",
+        "pageSize": "10",
+        "totalPage": "15",
+        "currentPage": "1",
+        "dataList": [{
+                "id": "6ae5819bec574017b2d8c3bf10b6750a",
+                "branchCode": "zssy",
+                "orderNo": "1011201801110003330",
+                "reportCode": "xzbtc_3152",
+                "regDate": "2018-01-10",
+                "patName": "庄浩棠",
+                "patIdCard": "440112199601190617",
+                "examinationCode": "xzbtc",
+                "examinationName": "心脏病套餐",
+                "itemTotal": "8",
+                "status": "1"
+            },
+            {
+                "id": "6ae5819bec574017b2d8c3bf10b6750a",
+                "branchCode": "zssy",
+                "orderNo": "1011201801110003330",
+                "reportCode": "xzbtc_3152",
+                "regDate": "2018-01-10",
+                "patName": "庄浩棠",
+                "patIdCard": "440112199601190617",
+                "examinationCode": "xzbtc",
+                "examinationName": "心脏病套餐",
+                "itemTotal": "",
+                "status": "0"
+            }
+        ]
+    }
+}
