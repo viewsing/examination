@@ -123,8 +123,9 @@
                         })
                     }
                 }
-            ]
-        }, handleModal)
+            ],
+            after: handleModal
+        })
     })
 
     function handleDetail(data) {
@@ -133,10 +134,11 @@
             readOnly: true,
             idPrefix: 'hospitals',
 			data: {aaData: data},
-			width: '50vw'
-		}, function(){
-            $('#previewPic').attr('src', data.picUrl);
-        })
+            width: '50vw',
+            after: function() {
+                $('#previewPic').attr('src', data.picUrl);
+            }
+		})
     }
 
     function handleEdit(data) {
@@ -178,10 +180,11 @@
                         }
                     }
                 }
-            ]
-		}, function(){
-            handleModal(data);
-        })
+            ],
+            after: function(){
+                handleModal(data);
+            }
+		})
     }
     
     function handleModal(data){

@@ -36,9 +36,10 @@ $( document ).ajaxStop(function() {
 });
 
 //iPopWin组件
-$.iPopWin = function(url, options, callback){
+$.iPopWin = function(url, options){
+	options = options || {};
 	var temp = `
-		<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+		<div class="modal fade" tabindex="-1" role="dialog">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -76,7 +77,8 @@ $.iPopWin = function(url, options, callback){
 	wrapper.on('shown.bs.modal', function (e) {
 		POPCALLBACKS.fire(options.data);
 		POPCALLBACKS.empty();
-		callback && callback();
+		//显示后执行
+		options.after && options.after(wrapper);
 	})
 	
 	//隐藏时移除(为了实现多层弹框)
@@ -89,9 +91,11 @@ $.iPopWin = function(url, options, callback){
 		//数据反显
 		if (options.data && options.data.aaData) {
 			$.each(options.data.aaData, function(key, value) {
-				wrapper.find('#' + options.idPrefix + '_' + key).val(value);
+				wrapper.find('#' + options.idPrefix + '_' + key).val(value).attr('title', value);
 			})
 		}
+		//显示前执行
+		options.before && options.before(wrapper);
 		//数据只读
 		if (options.readOnly) {
 			wrapper.find('.modal-body').find('button, input, select, textarea').attr('disabled', 'disabled');
@@ -110,7 +114,7 @@ var POPCALLBACKS = $.Callbacks();
 //confirm组件
 $.iConfirm = function(title, msg, callback) {
 	var temp = `
-		<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+		<div class="modal fade" tabindex="-1" role="dialog">
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
 		      	<div class="modal-header">
