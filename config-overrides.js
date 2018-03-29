@@ -6,6 +6,6 @@ module.exports = function override(config, env) {
         libraryName: 'antd-mobile',
         style: 'css'
     }], config);
-    config.output.publicPath = './';
+    // config.output.publicPath = './';
     return config;
 };
