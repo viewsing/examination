@@ -1,0 +1,14 @@
+{
+    "/user/getUrlTree": "data/getUrlTree.json",
+    "/asset/ip/page": "data/asset.ip.page.json",
+    "/asset/ip/del": "data/asset.ip.default.json",
+    "/asset/ip/detail": "data/asset.ip.detail.json",
+    "/asset/ip/modify": "data/asset.ip.default.json",
+    "/asset/ip/addSearch": "data/asset.ip.default.json",
+    "/vocational/type/page": "data/vocational.type.page.json",
+    "/vocational/type/detail": "data/vocational.type.detail.json",
+    "/vocational/type/modify": "data/vocational.type.default.json",
+    "/vocational/type/change": "data/vocational.type.default.json",
+    "/vocational/type/del": "data/vocational.type.default.json",
+    "/vocational/type/add": "data/vocational.type.default.json"
+}
