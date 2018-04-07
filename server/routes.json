@@ -10,7 +10,7 @@
     "/exApp/examination/getExaminationInfo": "data/exApp.examination.getExaminationInfo.json",
     "/exApp/examination/getExaminationDetail": "data/exApp.examination.getExaminationDetail.json",
     "/exApp/examination/preExaminationPay": "data/exApp.examination.preExaminationPay.json",
-    "/exApp/examination/preExamination": "data/exApp.examination.getHospitalInfo.json",
+    "/exApp/examination/preExamination": "data/exApp.examination.preExamination.json",
     "/exApp/examination/getReportInfo": "data/exApp.examination.getReportInfo.json",
     "/exApp/examination/getReportDetail": "data/exApp.examination.getReportDetail.json",
     "/exApp/examination/orders": "data/exApp.examination.orders.json",
